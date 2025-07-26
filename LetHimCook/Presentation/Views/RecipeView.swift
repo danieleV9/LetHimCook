@@ -2,9 +2,20 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Button {
+                    dismiss()
+                } label: {
+                    Label("Back", systemImage: "chevron.backward")
+                }
+                .labelStyle(.titleAndIcon)
+                Spacer()
+            }
+            .padding(.bottom, 4)
             Text("Recipe")
                 .font(.largeTitle)
                 .bold()
