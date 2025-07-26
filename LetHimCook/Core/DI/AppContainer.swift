@@ -14,10 +14,22 @@ enum AppContainer {
     static var container: DIContainer = DIContainer()
 
     static func configure() async {
-        
+
         await container.register(Logger.self, scope: .singleton) {
             ConsoleLogger()
         }
-        
+
+        await container.register(FoundationModelManager.self, scope: .singleton) {
+            FoundationModelManager.shared
+        }
+
+        await container.register(RecipeRepository.self, scope: .singleton) {
+            FoundationRecipeRepository(modelManager: try await container.resolve(FoundationModelManager.self))
+        }
+
+        await container.register(GetRecipeUseCase.self, scope: .singleton) {
+            GetRecipeUseCaseImpl(repository: try await container.resolve(RecipeRepository.self))
+        }
+
     }
 }

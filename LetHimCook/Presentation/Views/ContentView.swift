@@ -76,7 +76,7 @@ struct ContentView: View {
             .presentationDetents([.large])
         }
         .sheet(isPresented: Binding(get: { viewModel.isPresentingRecipe }, set: { viewModel.isPresentingRecipe = $0 })) {
-            RecipeView(ingredients: viewModel.ingredients)
+            RecipeView(viewModel: RecipeViewModel(ingredients: viewModel.ingredients))
         }
     }
 }
