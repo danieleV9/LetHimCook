@@ -18,17 +18,23 @@ struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 8) {
+                Text("LetHimCook")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
+                    .padding(.top, 16)
+
                 Image(viewModel.ingredients.isEmpty ? "fridge_closed" : "fridge_opened")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 200)
-                    .padding(.top, 0)
+                    .frame(height: 250)
+                    .padding(.top, 20)
 
                 // Live updated list of ingredients
                 if !viewModel.ingredients.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Ingredients:")
-                            .font(.headline)
+                            .font(.title)
                             .bold()
                         ForEach(viewModel.ingredients, id: \.self) { ingredient in
                             Text(ingredient)
@@ -94,4 +100,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
