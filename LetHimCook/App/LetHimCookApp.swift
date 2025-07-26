@@ -16,7 +16,16 @@ struct LetHimCookApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                MyRecinseView()
+                    .tabItem {
+                        Label("My recinse", systemImage: "book")
+                    }
+            }
         }
     }
 }
