@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MyRecinseView: View {
+struct MyRecipeView: View {
     @Bindable var viewModel = MyRecipesViewModel()
 
     var body: some View {
@@ -14,9 +14,14 @@ struct MyRecinseView: View {
         .task {
             await viewModel.loadRecipes()
         }
+        .onAppear {
+            Task {
+                await viewModel.loadRecipes()
+            }
+        }
     }
 }
 
 #Preview {
-    MyRecinseView()
+    MyRecipeView()
 }

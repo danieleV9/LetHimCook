@@ -8,7 +8,7 @@
 import Foundation
 
 public final class ConsoleLogger: Logger {
-    public nonisolated init() {}
+    public init() {}
 
     public func debug(_ message: String)   { print("🟢 DEBUG: \(message)") }
     public func info(_ message: String)    { print("🔵 INFO: \(message)") }

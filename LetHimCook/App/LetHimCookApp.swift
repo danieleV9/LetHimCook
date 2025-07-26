@@ -21,7 +21,7 @@ struct LetHimCookApp: App {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                MyRecinseView()
+                MyRecipeView()
                     .tabItem {
                         Label("My recipes", systemImage: "book")
                     }
