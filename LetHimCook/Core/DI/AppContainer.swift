@@ -15,20 +15,25 @@ enum AppContainer {
 
     static func configure() async {
 
+        let logger = ConsoleLogger()
+        let modelManager = FoundationModelManager.shared
+        let repository = FoundationRecipeRepository(modelManager: modelManager)
+        let useCase = GetRecipeUseCaseImpl(repository: repository)
+
         await container.register(Logger.self, scope: .singleton) {
-            ConsoleLogger()
+            logger
         }
 
         await container.register(FoundationModelManager.self, scope: .singleton) {
-            FoundationModelManager.shared
+            modelManager
         }
 
         await container.register(RecipeRepository.self, scope: .singleton) {
-            FoundationRecipeRepository(modelManager: try await container.resolve(FoundationModelManager.self))
+            repository
         }
 
         await container.register(GetRecipeUseCase.self, scope: .singleton) {
-            GetRecipeUseCaseImpl(repository: try await container.resolve(RecipeRepository.self))
+            useCase
         }
 
     }
