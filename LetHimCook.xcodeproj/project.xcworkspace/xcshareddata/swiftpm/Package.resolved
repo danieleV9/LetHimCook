@@ -1,0 +1,15 @@
+{
+  "originHash" : "3d5827ea6c11371907ae1800fe783e6d7dfe07c7d51eab47d064f77d776ae4e6",
+  "pins" : [
+    {
+      "identity" : "actordi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danieleV9/ActorDI",
+      "state" : {
+        "revision" : "633cfe3f7bbecc21baa25fad040a702230de38ca",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
