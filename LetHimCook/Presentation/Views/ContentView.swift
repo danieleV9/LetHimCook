@@ -37,7 +37,8 @@ struct ContentView: View {
                             .font(.title)
                             .bold()
                         ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                            Text(ingredient)
+                            Text("\u{2022}  " + ingredient)
+                                .font(.system(size: 19, weight: .regular))
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

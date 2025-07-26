@@ -23,7 +23,7 @@ struct LetHimCookApp: App {
                     }
                 MyRecinseView()
                     .tabItem {
-                        Label("My recinse", systemImage: "book")
+                        Label("My recipes", systemImage: "book")
                     }
             }
         }

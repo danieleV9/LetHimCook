@@ -26,13 +26,30 @@ struct IngredientInputView: View {
 
             List {
                 ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
-                    Text(ingredient)
+                    Text("\u{2022}  " + ingredient)
+                        .font(.system(size: 18))
                 }
                 .onDelete { offsets in
                     viewModel.removeIngredient(at: offsets)
                 }
             }
             .listStyle(.plain)
+
+            if !viewModel.ingredients.wrappedValue.isEmpty {
+                Button(action: {
+                    viewModel.reset()
+                }) {
+                    Label("Clean", systemImage: "trash")
+                        .font(.body)
+                        .foregroundColor(.red)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 6)
+                }
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+            }
 
             Spacer()
             Divider()
