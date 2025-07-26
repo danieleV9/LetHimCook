@@ -8,7 +8,7 @@ final class FoundationRecipeRepository: RecipeRepository {
     }
 
     func fetchRecipe(for ingredients: [String]) async throws -> Recipe {
-        let prompt = "Sei un esperto di cucina. Suggerisci una ricetta (esistente o nuova) usando questi ingredienti: \(ingredients.joined(separator: ", "))"
+        let prompt = "Suggerisci una ricetta usando questi ingredienti: \(ingredients.joined(separator: ", "))"
         let text = try await modelManager.predict(input: prompt)
         return Recipe(text: text)
     }

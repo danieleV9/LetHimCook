@@ -13,9 +13,7 @@ struct RecipeView: View {
                     Label("Back", systemImage: "chevron.backward")
                 }
                 .labelStyle(.titleAndIcon)
-                Spacer()
             }
-            .padding(.bottom, 4)
             Text("Recipe")
                 .font(.largeTitle)
                 .bold()
