@@ -20,7 +20,7 @@ enum AppContainer {
         let repository = FoundationRecipeRepository(modelManager: modelManager)
         let useCase = GetRecipeUseCaseImpl(repository: repository)
 
-        let savedRecipesRepository = UserDefaultsSavedRecipesRepository()
+        let savedRecipesRepository = CoreDataSavedRecipesRepository()
         let saveUseCase = SaveRecipeUseCaseImpl(repository: savedRecipesRepository)
         let getSavedUseCase = GetSavedRecipesUseCaseImpl(repository: savedRecipesRepository)
 
