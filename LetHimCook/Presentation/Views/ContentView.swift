@@ -16,57 +16,67 @@ struct ContentView: View {
           ))
 
     var body: some View {
-        ZStack {
-            Group {
-                VStack(spacing: 8) {
-                    Image(viewModel.ingredients.isEmpty ? "fridge_closed" : "fridge_opened")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 200)
-                        .padding(.top, 0)
+        ScrollView {
+            VStack(spacing: 8) {
+                Image(viewModel.ingredients.isEmpty ? "fridge_closed" : "fridge_opened")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200)
+                    .padding(.top, 0)
 
-                    // Live updated list of ingredients
-                    if !viewModel.ingredients.isEmpty {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Ingredients:")
-                                .font(.headline)
-                                .bold()
-                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                Text(ingredient)
-                            }
-                        }
-                        .padding()
-                    }
-
-                    if !viewModel.ingredients.isEmpty {
-                        Button(action: {
-                            viewModel.showRecipe()
-                        }) {
-                            Text("Find the recipe")
-                                .font(.title2)
-                                .bold()
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                        }
-                        .foregroundColor(.teal)
-                        .cornerRadius(12)
-                    }
-
-                    Button(action: {
-                        viewModel.showInput()
-                    }) {
-                        Text("Tell me what's in your fridge")
+                // Live updated list of ingredients
+                if !viewModel.ingredients.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Ingredients:")
+                            .font(.headline)
                             .bold()
+                        ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                            Text(ingredient)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                }
+            }
+            .padding(.horizontal)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, 100)
+        }
+        .safeAreaInset(edge: .bottom) {
+            VStack(spacing: 8) {
+                if !viewModel.ingredients.isEmpty {
+                    Button(action: {
+                        viewModel.showRecipe()
+                    }) {
+                        Text("Find the recipe")
                             .font(.title2)
+                            .bold()
                             .padding()
                             .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.teal)
                     .cornerRadius(12)
                 }
-                .padding(.horizontal)
-                .multilineTextAlignment(.center)
+
+                Button(action: {
+                    viewModel.showInput()
+                }) {
+                    Text("Tell me what's in your fridge")
+                        .bold()
+                        .font(.title2)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                }
+                .foregroundColor(.accentColor)
+                .cornerRadius(12)
             }
+            .padding([.horizontal, .top])
+            .padding(.bottom, 8)
+            .background(
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+            )
         }
         .sheet(isPresented: $viewModel.isPresentingInput) {
             IngredientInputView(viewModel: IngredientInputViewModel(ingredients: Binding(
