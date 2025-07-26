@@ -42,6 +42,7 @@ struct RecipeView: View {
             Spacer()
         }
         .padding()
+        .background(Color(.systemBackground))
         .task {
             await viewModel.loadRecipe()
         }
