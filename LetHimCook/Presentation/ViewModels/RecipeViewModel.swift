@@ -13,6 +13,7 @@ final class RecipeViewModel {
     }
 
     private var getRecipeUseCase: GetRecipeUseCase?
+    private var saveRecipeUseCase: SaveRecipeUseCase?
     private(set) var state: State = .idle
     private let ingredients: [String]
 
@@ -20,6 +21,7 @@ final class RecipeViewModel {
         self.ingredients = ingredients
         Task { [weak self] in
             self?.getRecipeUseCase = try? await AppContainer.container.resolve(GetRecipeUseCase.self)
+            self?.saveRecipeUseCase = try? await AppContainer.container.resolve(SaveRecipeUseCase.self)
             await self?.loadRecipe()
         }
     }
@@ -31,6 +33,7 @@ final class RecipeViewModel {
         do {
             let recipe = try await getRecipeUseCase.execute(with: ingredients)
             state = .success(recipe.text)
+            await saveRecipeUseCase?.execute(recipe: recipe)
         } catch {
             state = .failure("Failed to load recipe.")
         }

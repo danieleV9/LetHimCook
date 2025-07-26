@@ -1,5 +1,5 @@
 import Foundation
 
-struct Recipe: Sendable {
+struct Recipe: Codable, Sendable {
     let text: String
 }
