@@ -14,41 +14,52 @@ struct ContentView: View {
             get: { [] }, // temporary; will reset in onAppear
             set: { _ in }
           ))
+    @State private var isFridgeOpen = false
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 8) {
-                Text("LetHimCook")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
-                    .padding(.top, 16)
+        VStack {
+            Text("LetHimCook")
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
+                .padding(.top, 16)
+                .frame(maxWidth: .infinity)
+                .background(.clear)
+                .shadow(color: .black.opacity(0.07), radius: 6, y: 2)
 
-                Image(viewModel.ingredients.isEmpty ? "fridge_closed" : "fridge_opened")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 250)
-                    .padding(.top, 20)
-
-                // Live updated list of ingredients
-                if !viewModel.ingredients.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Ingredients:")
-                            .font(.title)
-                            .bold()
-                        ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                            Text("\u{2022}  " + ingredient)
-                                .font(.system(size: 19, weight: .regular))
+            ScrollView {
+                VStack(spacing: 8) {
+                    Image(isFridgeOpen || !viewModel.ingredients.isEmpty ? "fridge_opened" : "fridge_closed")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 250)
+                        .padding(.top, 20)
+                        .onTapGesture {
+                            guard viewModel.ingredients.isEmpty else { return }
+                            withAnimation(.easeInOut(duration: 0.6)) {
+                                isFridgeOpen.toggle()
+                            }
                         }
+                        .animation(.easeInOut(duration: 0.4), value: isFridgeOpen)
+
+                    // Live updated list of ingredients
+                    if !viewModel.ingredients.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Ingredients:")
+                                .font(.title)
+                                .bold()
+                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                                Text("\u{2022}  " + ingredient)
+                                    .font(.system(size: 19, weight: .regular))
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
-            .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity)
-            .padding(.bottom, 100)
+
         }
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 8) {

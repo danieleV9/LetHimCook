@@ -9,22 +9,28 @@ import SwiftUI
 
 @main
 struct LetHimCookApp: App {
-    init() {
-        Task {
-            await AppContainer.configure()
-        }
-    }
+    @State private var isConfigured = false
+    
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ContentView()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
+            Group {
+                if isConfigured {
+                    TabView {
+                        ContentView()
+                            .tabItem {
+                                Label("Home", systemImage: "house")
+                            }
+                        MyRecipeView()
+                            .tabItem {
+                                Label("My recipes", systemImage: "book")
+                            }
                     }
-                MyRecipeView()
-                    .tabItem {
-                        Label("My recipes", systemImage: "book")
+                } else {
+                    ProgressView().task {
+                        await AppContainer.configure()
+                        isConfigured = true
                     }
+                }
             }
         }
     }

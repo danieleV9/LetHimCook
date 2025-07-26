@@ -26,5 +26,20 @@ final class CoreDataSavedRecipesRepository: SavedRecipeRepository {
         } catch {
             print("Failed to save: \(error)")
         }
+
+        let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
+        request.sortDescriptors = [] // No timestamp, so keep fetch order
+        do {
+            let allRecipes = try viewContext.fetch(request)
+            if allRecipes.count > 5 {
+                let toDelete = allRecipes.prefix(allRecipes.count - 5)
+                for entity in toDelete {
+                    viewContext.delete(entity)
+                }
+                try viewContext.save()
+            }
+        } catch {
+            print("Failed to trim old recipes: \(error)")
+        }
     }
 }
