@@ -1,11 +1,7 @@
 import SwiftUI
 
 struct RecipeView: View {
-    var ingredients: [String]
-
-    @State private var recipe: String?
-    @State private var isLoading = false
-    @State private var errorMessage: String?
+    @Bindable var viewModel: RecipeViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -15,17 +11,17 @@ struct RecipeView: View {
                 .padding(.top)
             Divider()
 
-            if isLoading {
+            if case .loading = viewModel.state {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
-            } else if let recipe {
+            } else if case let .success(recipe) = viewModel.state {
                 ScrollView {
                     Text(.init(recipe))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom)
                 }
-            } else if let errorMessage {
-                Text(errorMessage)
+            } else if case let .failure(message) = viewModel.state {
+                Text(message)
                     .foregroundColor(.red)
             } else {
                 Text("Welcome! Your recipe will appear here.")
@@ -36,21 +32,11 @@ struct RecipeView: View {
         }
         .padding()
         .task {
-            guard !ingredients.isEmpty else { return }
-            errorMessage = nil
-            isLoading = true
-            let prompt = "Sei un esperto di cucina. Suggerisci una ricetta (già esistente o nuova) usando questi ingredienti: \(ingredients.joined(separator: ", "))"
-            do {
-                recipe = try await FoundationModelManager.shared.predict(input: prompt)
-            } catch {
-                errorMessage = "Failed to load recipe."
-                recipe = nil
-            }
-            isLoading = false
+            await viewModel.loadRecipe()
         }
     }
 }
 
 #Preview {
-    RecipeView(ingredients: ["Eggs", "Milk", "Flour"])
+    RecipeView(viewModel: RecipeViewModel(ingredients: ["Eggs", "Milk", "Flour"]))
 }
