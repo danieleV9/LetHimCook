@@ -16,6 +16,18 @@ struct MyRecipeView: View {
                 .buttonStyle(.plain)
             }
             .navigationTitle("My Recipes")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    if !viewModel.recipes.isEmpty {
+                        Button("Clean all") {
+                            Task {
+                                await viewModel.deleteAllRecipes()
+                            }
+                        }
+                        .tint(.red)
+                    }
+                }
+            }
             .sheet(item: $selectedRecipe) { recipe in
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
