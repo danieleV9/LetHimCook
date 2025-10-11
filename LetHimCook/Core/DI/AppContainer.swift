@@ -11,7 +11,7 @@ import ActorDI
 
 enum AppContainer {
     
-    static var container: DIContainer = DIContainer()
+    static var container: DIContainer = DIContainer.shared
 
     static func configure() async {
 

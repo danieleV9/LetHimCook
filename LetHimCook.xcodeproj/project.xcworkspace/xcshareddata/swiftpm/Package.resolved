@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danieleV9/ActorDI",
       "state" : {
-        "revision" : "633cfe3f7bbecc21baa25fad040a702230de38ca",
-        "version" : "1.1.0"
+        "revision" : "9f01758377fa82c059573ea7e88a36e7e2f456f4",
+        "version" : "1.6.0"
       }
     }
   ],
