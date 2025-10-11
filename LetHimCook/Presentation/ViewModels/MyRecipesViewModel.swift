@@ -3,14 +3,13 @@ import SwiftUI
 import ActorDI
 
 @Observable
-@MainActor
 final class MyRecipesViewModel {
     private var getSavedRecipesUseCase: GetSavedRecipesUseCase?
     private var deleteSavedRecipesUseCase: DeleteSavedRecipesUseCase?
     private var logger: Logger?
     private(set) var recipes: [Recipe] = []
 
-    @MainActor
+    
     init() {
         Task { [weak self] in
             self?.getSavedRecipesUseCase = try? await AppContainer.container.resolve(GetSavedRecipesUseCase.self)
@@ -20,7 +19,6 @@ final class MyRecipesViewModel {
         }
     }
 
-    @MainActor
     func loadRecipes() async {
         guard let getSavedRecipesUseCase else { return }
         let result = await getSavedRecipesUseCase.execute()
@@ -28,7 +26,6 @@ final class MyRecipesViewModel {
         recipes = result
     }
 
-    @MainActor
     func deleteAllRecipes() async {
         guard let deleteSavedRecipesUseCase else { return }
         await deleteSavedRecipesUseCase.execute()
