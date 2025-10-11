@@ -11,73 +11,85 @@ struct IngredientInputView: View {
     @FocusState private var isTextFieldFocused: Bool
 
     var body: some View {
-        VStack(spacing: 0) {
-            Text("Your Ingredients")
-                .font(.title2)
-                .padding(.top)
+        NavigationStack {
+            Form {
+                Section {
+                    HStack(spacing: 12) {
+                        TextField("Add an ingredient", text: $viewModel.currentInput)
+                            .autocorrectionDisabled()
+                            .textInputAutocapitalization(.words)
+                            .focused($isTextFieldFocused)
 
-            if viewModel.ingredients.wrappedValue.count >= 10 {
-                Text("Puoi aggiungere al massimo 10 ingredienti")
-                    .foregroundColor(.red)
-                    .font(.footnote)
-                    .padding(.horizontal)
-                    .padding(.bottom, 4)
+                        Button {
+                            viewModel.addIngredient()
+                            isTextFieldFocused = true
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title2)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(.white, .accentColor)
+                                .accessibilityLabel("Add ingredient")
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.wrappedValue.count >= 10)
+                    }
+                } footer: {
+                    if viewModel.ingredients.wrappedValue.count >= 10 {
+                        Text("Puoi aggiungere al massimo 10 ingredienti")
+                            .foregroundStyle(.red)
+                    } else {
+                        Text("Aggiungi fino a 10 ingredienti per ottenere suggerimenti più precisi.")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                if viewModel.ingredients.wrappedValue.isEmpty {
+                    Section {
+                        VStack(spacing: 12) {
+                            Image(systemName: "leaf")
+                                .font(.title)
+                                .foregroundStyle(.tertiary)
+
+                            Text("Nessun ingrediente")
+                                .font(.headline)
+
+                            Text("Inizia aggiungendo gli ingredienti che hai a disposizione.")
+                                .font(.footnote)
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(.secondary)
+                                .padding(.horizontal)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.vertical, 24)
+                    }
+                    .listRowBackground(Color.clear)
+                } else {
+                    Section("I tuoi ingredienti") {
+                        ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
+                            Text(ingredient)
+                                .font(.body)
+                        }
+                        .onDelete { offsets in
+                            viewModel.removeIngredient(at: offsets)
+                        }
+
+                        Button(role: .destructive) {
+                            viewModel.reset()
+                        } label: {
+                            Label("Svuota lista", systemImage: "trash")
+                        }
+                    }
+                }
             }
-
-            List {
-                ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
-                    Text("\u{2022}  " + ingredient)
-                        .font(.system(size: 18))
-                }
-                .onDelete { offsets in
-                    viewModel.removeIngredient(at: offsets)
+            .navigationTitle("Ingredienti")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Fine") {
+                        dismiss()
+                    }
+                    .bold()
                 }
             }
-            .listStyle(.plain)
-
-            if !viewModel.ingredients.wrappedValue.isEmpty {
-                Button(action: {
-                    viewModel.reset()
-                }) {
-                    Label("Clean", systemImage: "trash")
-                        .font(.body)
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 6)
-                }
-                .background(Color(.systemGray6))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-            }
-
-            Spacer()
-            Divider()
-            HStack(spacing: 12) {
-                TextField("Add an ingredient", text: $viewModel.currentInput)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.vertical, 10)
-                    .focused($isTextFieldFocused)
-
-                Button {
-                    viewModel.addIngredient()
-                    isTextFieldFocused = true
-                } label: {
-                    Label("Add", systemImage: "plus")
-                }
-                .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.wrappedValue.count >= 10)
-                .foregroundColor(.accentColor)
-                .labelStyle(.titleAndIcon)
-
-                Button {
-                    dismiss()
-                } label: {
-                    Label("Done", systemImage: "checkmark")
-                }
-                .foregroundColor(.teal)
-                .labelStyle(.titleAndIcon)
-            }
-            .padding([.horizontal, .bottom])
         }
         .presentationDetents([.medium, .large])
     }
