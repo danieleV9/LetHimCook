@@ -42,4 +42,18 @@ final class CoreDataSavedRecipesRepository: SavedRecipeRepository {
             print("Failed to trim old recipes: \(error)")
         }
     }
+
+    func deleteAll() async {
+        await viewContext.perform {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeEntity")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+            do {
+                try self.viewContext.execute(deleteRequest)
+                try self.viewContext.save()
+            } catch {
+                print("Failed to delete recipes: \(error)")
+            }
+        }
+    }
 }

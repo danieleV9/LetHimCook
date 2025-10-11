@@ -23,6 +23,7 @@ enum AppContainer {
         let savedRecipesRepository = CoreDataSavedRecipesRepository()
         let saveUseCase = SaveRecipeUseCaseImpl(repository: savedRecipesRepository)
         let getSavedUseCase = GetSavedRecipesUseCaseImpl(repository: savedRecipesRepository)
+        let deleteSavedUseCase = DeleteSavedRecipesUseCaseImpl(repository: savedRecipesRepository)
 
         await container.register(Logger.self, scope: .singleton) {
             logger
@@ -50,6 +51,10 @@ enum AppContainer {
 
         await container.register(GetSavedRecipesUseCase.self, scope: .singleton) {
             getSavedUseCase
+        }
+
+        await container.register(DeleteSavedRecipesUseCase.self, scope: .singleton) {
+            deleteSavedUseCase
         }
 
     }

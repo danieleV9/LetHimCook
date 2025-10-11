@@ -6,6 +6,7 @@ import ActorDI
 @MainActor
 final class MyRecipesViewModel {
     private var getSavedRecipesUseCase: GetSavedRecipesUseCase?
+    private var deleteSavedRecipesUseCase: DeleteSavedRecipesUseCase?
     private var logger: Logger?
     private(set) var recipes: [Recipe] = []
 
@@ -13,6 +14,7 @@ final class MyRecipesViewModel {
     init() {
         Task { [weak self] in
             self?.getSavedRecipesUseCase = try? await AppContainer.container.resolve(GetSavedRecipesUseCase.self)
+            self?.deleteSavedRecipesUseCase = try? await AppContainer.container.resolve(DeleteSavedRecipesUseCase.self)
             self?.logger = try? await AppContainer.container.resolve(Logger.self)
             await self?.loadRecipes()
         }
@@ -24,5 +26,13 @@ final class MyRecipesViewModel {
         let result = await getSavedRecipesUseCase.execute()
         logger?.debug("Retrieved \(result.count) recipes")
         recipes = result
+    }
+
+    @MainActor
+    func deleteAllRecipes() async {
+        guard let deleteSavedRecipesUseCase else { return }
+        await deleteSavedRecipesUseCase.execute()
+        recipes.removeAll()
+        logger?.debug("Deleted all saved recipes")
     }
 }
