@@ -27,7 +27,7 @@ struct IngredientInputView: View {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title2)
                                 .symbolRenderingMode(.palette)
-                                .foregroundStyle(.white, .accentColor)
+                                .foregroundStyle(.white, .tint)
                                 .accessibilityLabel("Add ingredient")
                         }
                         .buttonStyle(.plain)
@@ -35,10 +35,10 @@ struct IngredientInputView: View {
                     }
                 } footer: {
                     if viewModel.ingredients.wrappedValue.count >= 10 {
-                        Text("Puoi aggiungere al massimo 10 ingredienti")
+                        Text("You can add up to 10 ingredients")
                             .foregroundStyle(.red)
                     } else {
-                        Text("Aggiungi fino a 10 ingredienti per ottenere suggerimenti più precisi.")
+                        Text("Add up to 10 ingredients for more precise suggestions.")
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -50,10 +50,10 @@ struct IngredientInputView: View {
                                 .font(.title)
                                 .foregroundStyle(.tertiary)
 
-                            Text("Nessun ingrediente")
+                            Text("No ingredients")
                                 .font(.headline)
 
-                            Text("Inizia aggiungendo gli ingredienti che hai a disposizione.")
+                            Text("Start by adding the ingredients you have available.")
                                 .font(.footnote)
                                 .multilineTextAlignment(.center)
                                 .foregroundStyle(.secondary)
@@ -64,7 +64,7 @@ struct IngredientInputView: View {
                     }
                     .listRowBackground(Color.clear)
                 } else {
-                    Section("I tuoi ingredienti") {
+                    Section("Your ingredients") {
                         ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
                             Text(ingredient)
                                 .font(.body)
@@ -76,12 +76,12 @@ struct IngredientInputView: View {
                         Button(role: .destructive) {
                             viewModel.reset()
                         } label: {
-                            Label("Svuota lista", systemImage: "trash")
+                            Label("Clear list", systemImage: "trash")
                         }
                     }
                 }
             }
-            .navigationTitle("Ingredienti")
+            .navigationTitle("Ingredients")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Fine") {
