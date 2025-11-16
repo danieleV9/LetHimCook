@@ -15,7 +15,7 @@ struct IngredientInputView: View {
             Form {
                 Section {
                     HStack(spacing: 12) {
-                        TextField("Add an ingredient", text: $viewModel.currentInput)
+                        TextField("ingredient_input_placeholder", text: $viewModel.currentInput)
                             .autocorrectionDisabled()
                             .textInputAutocapitalization(.words)
                             .focused($isTextFieldFocused)
@@ -28,17 +28,17 @@ struct IngredientInputView: View {
                                 .font(.title2)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.white, .tint)
-                                .accessibilityLabel("Add ingredient")
+                                .accessibilityLabel("ingredient_input_accessibility_add")
                         }
                         .buttonStyle(.plain)
                         .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.wrappedValue.count >= 10)
                     }
                 } footer: {
                     if viewModel.ingredients.wrappedValue.count >= 10 {
-                        Text("You can add up to 10 ingredients")
+                        Text("ingredient_input_footer_limit")
                             .foregroundStyle(.red)
                     } else {
-                        Text("Add up to 10 ingredients for more precise suggestions.")
+                        Text("ingredient_input_footer_hint")
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -50,10 +50,10 @@ struct IngredientInputView: View {
                                 .font(.title)
                                 .foregroundStyle(.tertiary)
 
-                            Text("No ingredients")
+                            Text("ingredient_input_empty_title")
                                 .font(.headline)
 
-                            Text("Start by adding the ingredients you have available.")
+                            Text("ingredient_input_empty_description")
                                 .font(.footnote)
                                 .multilineTextAlignment(.center)
                                 .foregroundStyle(.secondary)
@@ -64,7 +64,7 @@ struct IngredientInputView: View {
                     }
                     .listRowBackground(Color.clear)
                 } else {
-                    Section("Your ingredients") {
+                    Section {
                         ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
                             Text(ingredient)
                                 .font(.body)
@@ -76,15 +76,17 @@ struct IngredientInputView: View {
                         Button(role: .destructive) {
                             viewModel.reset()
                         } label: {
-                            Label("Clear list", systemImage: "trash")
+                            Label("ingredient_input_clear_list", systemImage: "trash")
                         }
+                    } header: {
+                        Text("ingredient_input_section_title")
                     }
                 }
             }
-            .navigationTitle("Ingredients")
+            .navigationTitle("ingredient_input_nav_title")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Fine") {
+                    Button("ingredient_input_done_button") {
                         dismiss()
                     }
                     .bold()

@@ -18,7 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("LetHimCook")
+            Text("app_title")
                 .font(.largeTitle)
                 .bold()
                 .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
@@ -45,7 +45,7 @@ struct ContentView: View {
                     // Live updated list of ingredients
                     if !viewModel.ingredients.isEmpty {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Ingredients:")
+                            Text("home_ingredients_title")
                                 .font(.title)
                                 .bold()
                             ForEach(viewModel.ingredients, id: \.self) { ingredient in
@@ -67,7 +67,7 @@ struct ContentView: View {
                     Button(action: {
                         viewModel.showRecipe()
                     }) {
-                        Text("Find the recipe")
+                        Text("home_find_recipe_button")
                             .font(.title2)
                             .bold()
                             .padding()
@@ -80,7 +80,7 @@ struct ContentView: View {
                 Button(action: {
                     viewModel.showInput()
                 }) {
-                    Text("Tell me what's in your fridge")
+                    Text("home_tell_me_prompt")
                         .bold()
                         .font(.title2)
                         .padding()

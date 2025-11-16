@@ -38,7 +38,7 @@ final class RecipeViewModel {
             logger?.debug("The saved recipe is: \(recipe)")
             await saveRecipeUseCase?.execute(recipe: recipe)
         } catch {
-            state = .failure("Failed to load recipe.")
+            state = .failure(String(localized: "recipe_error_message"))
         }
     }
 }

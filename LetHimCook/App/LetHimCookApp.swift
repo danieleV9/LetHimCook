@@ -18,11 +18,11 @@ struct LetHimCookApp: App {
                     TabView {
                         ContentView()
                             .tabItem {
-                                Label("Home", systemImage: "house")
+                                Label("tab_home_title", systemImage: "house")
                             }
                         MyRecipeView()
                             .tabItem {
-                                Label("My recipes", systemImage: "book")
+                                Label("tab_saved_recipes_title", systemImage: "book")
                             }
                     }
                 } else {
