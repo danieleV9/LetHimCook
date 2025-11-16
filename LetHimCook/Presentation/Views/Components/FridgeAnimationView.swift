@@ -24,7 +24,7 @@ struct FridgeAnimationView: View {
                 Image("fridge_opened")
                     .resizable()
                     .scaledToFit()
-                    .opacity(doorProgress)
+                    .opacity(0.25 + 0.65 * doorProgress)
                     .scaleEffect(1 + 0.02 * doorProgress)
 
                 Image("fridge_closed")
