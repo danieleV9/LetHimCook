@@ -10,11 +10,11 @@ struct RecipeView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Label("Back", systemImage: "chevron.backward")
+                    Label("recipe_back_button", systemImage: "chevron.backward")
                 }
                 .labelStyle(.titleAndIcon)
             }
-            Text("Recipe")
+            Text("recipe_title")
                 .font(.largeTitle)
                 .bold()
                 .padding(.top)
@@ -33,7 +33,7 @@ struct RecipeView: View {
                 Text(message)
                     .foregroundColor(.red)
             } else {
-                Text("Welcome! Your recipe will appear here.")
+                Text("recipe_placeholder")
                     .foregroundColor(.secondary)
             }
 

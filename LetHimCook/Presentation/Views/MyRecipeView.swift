@@ -15,11 +15,11 @@ struct MyRecipeView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .navigationTitle("My Recipes")
+            .navigationTitle("saved_recipes_nav_title")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     if !viewModel.recipes.isEmpty {
-                        Button("Clean all") {
+                        Button("saved_recipes_clear_all") {
                             Task {
                                 await viewModel.deleteAllRecipes()
                             }
