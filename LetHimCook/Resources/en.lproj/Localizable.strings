@@ -1,7 +1,7 @@
 "app_title" = "LetHimCook";
 "home_ingredients_title" = "Ingredients:";
 "home_find_recipe_button" = "Find the recipe";
-"home_tell_me_prompt" = "Tell me what's in your fridge";
+"home_tell_me_prompt" = "Enter your ingredients";
 "ingredient_input_placeholder" = "Add an ingredient";
 "ingredient_input_accessibility_add" = "Add ingredient";
 "ingredient_input_footer_limit" = "You can add up to 10 ingredients";

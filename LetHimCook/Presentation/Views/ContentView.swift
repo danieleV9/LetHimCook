@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct ContentView: View {
     @Bindable var viewModel = ContentViewModel()
@@ -29,22 +30,9 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(spacing: 8) {
-                    FridgeAnimationView(
-                        isOpen: Binding(
-                            get: { isFridgeOpen || !viewModel.ingredients.isEmpty },
-                            set: { newValue in
-                                guard viewModel.ingredients.isEmpty else { return }
-                                isFridgeOpen = newValue
-                            }
-                        ),
-                        allowsInteraction: viewModel.ingredients.isEmpty,
-                        onTap: {
-                            guard viewModel.ingredients.isEmpty else { return }
-                            isFridgeOpen.toggle()
-                        }
-                    )
-                    .frame(height: 260)
-                    .padding(.top, 12)
+                    LottieFoodView()
+                        .frame(height: 260)
+                        .padding(.top, 12)
 
                     // Live updated list of ingredients
                     if !viewModel.ingredients.isEmpty {
@@ -58,6 +46,7 @@ struct ContentView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
                         .padding()
                     }
                 }
