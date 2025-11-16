@@ -29,18 +29,22 @@ struct ContentView: View {
 
             ScrollView {
                 VStack(spacing: 8) {
-                    Image(isFridgeOpen || !viewModel.ingredients.isEmpty ? "fridge_opened" : "fridge_closed")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 250)
-                        .padding(.top, 20)
-                        .onTapGesture {
-                            guard viewModel.ingredients.isEmpty else { return }
-                            withAnimation(.easeInOut(duration: 0.6)) {
-                                isFridgeOpen.toggle()
+                    FridgeAnimationView(
+                        isOpen: Binding(
+                            get: { isFridgeOpen || !viewModel.ingredients.isEmpty },
+                            set: { newValue in
+                                guard viewModel.ingredients.isEmpty else { return }
+                                isFridgeOpen = newValue
                             }
+                        ),
+                        allowsInteraction: viewModel.ingredients.isEmpty,
+                        onTap: {
+                            guard viewModel.ingredients.isEmpty else { return }
+                            isFridgeOpen.toggle()
                         }
-                        .animation(.easeInOut(duration: 0.4), value: isFridgeOpen)
+                    )
+                    .frame(height: 260)
+                    .padding(.top, 12)
 
                     // Live updated list of ingredients
                     if !viewModel.ingredients.isEmpty {
@@ -102,6 +106,10 @@ struct ContentView: View {
                 set: { viewModel.ingredients = $0 }
             )))
             .presentationDetents([.large])
+        }
+        .onChange(of: viewModel.ingredients) { _, newIngredients in
+            guard newIngredients.isEmpty else { return }
+            isFridgeOpen = false
         }
         .fullScreenCover(isPresented: Binding(get: { viewModel.isPresentingRecipe }, set: { viewModel.isPresentingRecipe = $0 })) {
             RecipeView(viewModel: RecipeViewModel(ingredients: viewModel.ingredients))
