@@ -46,7 +46,7 @@ struct ContentView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
+                        .foregroundColor(Color(red: 0.96, green: 0.49, blue: 0.16))
                         .padding()
                     }
                 }

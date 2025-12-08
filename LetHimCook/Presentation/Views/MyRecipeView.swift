@@ -6,11 +6,11 @@ struct MyRecipeView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.recipes.indices, id: \.self) { index in
+            List(viewModel.recipes) { recipe in
                 Button {
-                    selectedRecipe = viewModel.recipes[index]
+                    selectedRecipe = recipe
                 } label: {
-                    Text(.init(viewModel.recipes[index].text))
+                    Text(.init(recipe.text))
                         .lineLimit(2)
                 }
                 .buttonStyle(.plain)
