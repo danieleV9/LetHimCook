@@ -1,20 +1,18 @@
 import Foundation
 import SwiftUI
+import Observation
 import ActorDI
 
 @Observable
 final class MyRecipesViewModel {
-    private var getSavedRecipesUseCase: GetSavedRecipesUseCase?
-    private var deleteSavedRecipesUseCase: DeleteSavedRecipesUseCase?
-    private var logger: Logger?
+    @ObservationIgnored @Inject private var getSavedRecipesUseCase: GetSavedRecipesUseCase?
+    @ObservationIgnored @Inject private var deleteSavedRecipesUseCase: DeleteSavedRecipesUseCase?
+    @ObservationIgnored @Inject private var logger: Logger?
     private(set) var recipes: [Recipe] = []
 
-    
+
     init() {
         Task { [weak self] in
-            self?.getSavedRecipesUseCase = try? await AppContainer.container.resolve(GetSavedRecipesUseCase.self)
-            self?.deleteSavedRecipesUseCase = try? await AppContainer.container.resolve(DeleteSavedRecipesUseCase.self)
-            self?.logger = try? await AppContainer.container.resolve(Logger.self)
             await self?.loadRecipes()
         }
     }
