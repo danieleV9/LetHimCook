@@ -20,15 +20,14 @@ final class RecipeViewModel {
 
     init(ingredients: [String]) {
         self.ingredients = ingredients
-        Task { [weak self] in
-            self?.getRecipeUseCase = try? await AppContainer.container.resolve(GetRecipeUseCase.self)
-            self?.saveRecipeUseCase = try? await AppContainer.container.resolve(SaveRecipeUseCase.self)
-            self?.logger = try? await AppContainer.container.resolve(Logger.self)
-            await self?.loadRecipe()
-        }
     }
 
     func loadRecipe() async {
+        
+        self.getRecipeUseCase = try? await AppContainer.container.resolve(GetRecipeUseCase.self)
+        self.saveRecipeUseCase = try? await AppContainer.container.resolve(SaveRecipeUseCase.self)
+        self.logger = try? await AppContainer.container.resolve(Logger.self)
+        
         guard let getRecipeUseCase else { return }
         guard !ingredients.isEmpty else { return }
         state = .loading

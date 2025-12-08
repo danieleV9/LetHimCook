@@ -17,9 +17,6 @@ final class IngredientInputViewModel {
     
     init(ingredients: Binding<[String]>) {
         self.ingredients = ingredients
-        Task { [weak self] in
-            self?.logger = try? await AppContainer.container.resolve(Logger.self)
-        }
     }
     
     func addIngredient() {
@@ -27,7 +24,10 @@ final class IngredientInputViewModel {
         guard !trimmed.isEmpty else { return }
         ingredients.wrappedValue.append(trimmed)
         currentInput = ""
-        logger?.debug("\(#function): added ingredient \(trimmed)")
+        Task {
+            self.logger = try? await AppContainer.container.resolve(Logger.self)
+            logger?.debug("\(#function): added ingredient \(trimmed)")
+        }
     }
     
     func removeIngredient(at offsets: IndexSet) {

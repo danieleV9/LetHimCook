@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MyRecipeView: View {
-    @Bindable var viewModel = MyRecipesViewModel()
+    @State var viewModel = MyRecipesViewModel()
     @State private var selectedRecipe: Recipe? = nil
 
     var body: some View {
