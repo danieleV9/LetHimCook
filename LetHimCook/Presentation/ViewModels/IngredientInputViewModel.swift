@@ -5,19 +5,21 @@
 
 import Foundation
 import SwiftUI
-import Observation
 import ActorDI
 
 @Observable
 final class IngredientInputViewModel {
-
-    @ObservationIgnored @Inject var logger: Logger?
+    
+    var logger: Logger?
     
     var ingredients: Binding<[String]>
     var currentInput: String = ""
-
+    
     init(ingredients: Binding<[String]>) {
         self.ingredients = ingredients
+        Task { [weak self] in
+            self?.logger = try? await AppContainer.container.resolve(Logger.self)
+        }
     }
     
     func addIngredient() {
