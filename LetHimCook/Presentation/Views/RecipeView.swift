@@ -30,8 +30,9 @@ struct RecipeView: View {
                         .padding(.bottom)
                 }
             } else if case let .failure(message) = viewModel.state {
-                Text(message)
-                    .foregroundColor(.red)
+                ContentUnavailableView {
+                    Label(message, systemImage: "sparkles.slash")
+                }
             } else {
                 Text("recipe_placeholder")
                     .foregroundColor(.secondary)
