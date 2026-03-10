@@ -33,10 +33,6 @@ struct ContentView: View {
                         VStack(spacing: 12) {
                             LottieFoodView()
                                 .frame(height: 220)
-
-                            Text("home_tell_me_prompt")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundStyle(.secondary)
                         }
                     }
 
@@ -79,16 +75,10 @@ struct ContentView: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("app_title")
-                .font(.system(size: 36, weight: .bold, design: .serif))
-                .foregroundStyle(AppTheme.ink)
-
-            Text("home_tell_me_prompt")
-                .font(.system(size: 16, weight: .medium, design: .rounded))
-                .foregroundStyle(AppTheme.inkMuted)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        Text("app_title")
+            .font(.system(size: 36, weight: .bold, design: .serif))
+            .foregroundStyle(AppTheme.ink)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var actionBar: some View {
