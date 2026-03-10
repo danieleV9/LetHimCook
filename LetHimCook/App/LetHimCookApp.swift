@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct LetHimCookApp: App {
     @State private var isConfigured = false
-    
+
     var body: some Scene {
         WindowGroup {
             Group {
@@ -25,6 +25,7 @@ struct LetHimCookApp: App {
                                 Label("tab_saved_recipes_title", systemImage: "book")
                             }
                     }
+                    .tint(AppTheme.accent)
                 } else {
                     ProgressView().task {
                         await AppContainer.configure()

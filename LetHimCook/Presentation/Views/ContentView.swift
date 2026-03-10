@@ -12,82 +12,55 @@ struct ContentView: View {
     @Bindable var viewModel = ContentViewModel()
     @State private var ingredientInputViewModel: IngredientInputViewModel
         = IngredientInputViewModel(ingredients: Binding(
-            get: { [] }, // temporary; will reset in onAppear
+            get: { [] },
             set: { _ in }
           ))
     @State private var isFridgeOpen = false
 
+    private let chipColumns: [GridItem] = [
+        GridItem(.adaptive(minimum: 90), spacing: 8, alignment: .leading)
+    ]
+
     var body: some View {
-        VStack {
-            Text("app_title")
-                .font(.largeTitle)
-                .bold()
-                .foregroundColor(Color(red: 0.85, green: 0.65, blue: 0.13))
-                .padding(.top, 16)
-                .frame(maxWidth: .infinity)
-                .background(.clear)
-                .shadow(color: .black.opacity(0.07), radius: 6, y: 2)
+        ZStack {
+            AppBackground()
 
             ScrollView {
-                VStack(spacing: 8) {
-                    LottieFoodView()
-                        .frame(height: 260)
-                        .padding(.top, 12)
+                VStack(alignment: .leading, spacing: 20) {
+                    header
 
-                    // Live updated list of ingredients
+                    AppCard {
+                        VStack(spacing: 12) {
+                            LottieFoodView()
+                                .frame(height: 220)
+
+                            Text("home_tell_me_prompt")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+
                     if !viewModel.ingredients.isEmpty {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("home_ingredients_title")
-                                .font(.title)
-                                .bold()
-                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                Text("\u{2022}  " + ingredient)
-                                    .font(.system(size: 19, weight: .regular))
+                        AppCard {
+                            VStack(alignment: .leading, spacing: 12) {
+                                AppSectionHeader(titleKey: "home_ingredients_title")
+
+                                LazyVGrid(columns: chipColumns, alignment: .leading, spacing: 8) {
+                                    ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                                        AppChip(text: ingredient)
+                                    }
+                                }
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color(red: 0.96, green: 0.49, blue: 0.16))
-                        .padding()
                     }
                 }
                 .padding(.horizontal)
+                .padding(.top, 16)
+                .padding(.bottom, 96)
             }
-
         }
         .safeAreaInset(edge: .bottom) {
-            VStack(spacing: 8) {
-                if !viewModel.ingredients.isEmpty {
-                    Button(action: {
-                        viewModel.showRecipe()
-                    }) {
-                        Text("home_find_recipe_button")
-                            .font(.title2)
-                            .bold()
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                    }
-                    .foregroundColor(.teal)
-                    .cornerRadius(12)
-                }
-
-                Button(action: {
-                    viewModel.showInput()
-                }) {
-                    Text("home_tell_me_prompt")
-                        .bold()
-                        .font(.title2)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                }
-                .foregroundColor(.accentColor)
-                .cornerRadius(12)
-            }
-            .padding([.horizontal, .top])
-            .padding(.bottom, 8)
-            .background(
-                Color(.systemBackground)
-                    .ignoresSafeArea()
-            )
+            actionBar
         }
         .sheet(isPresented: $viewModel.isPresentingInput) {
             IngredientInputView(viewModel: IngredientInputViewModel(ingredients: Binding(
@@ -103,6 +76,46 @@ struct ContentView: View {
         .fullScreenCover(isPresented: Binding(get: { viewModel.isPresentingRecipe }, set: { viewModel.isPresentingRecipe = $0 })) {
             RecipeView(viewModel: RecipeViewModel(ingredients: viewModel.ingredients))
         }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("app_title")
+                .font(.system(size: 36, weight: .bold, design: .serif))
+                .foregroundStyle(AppTheme.ink)
+
+            Text("home_tell_me_prompt")
+                .font(.system(size: 16, weight: .medium, design: .rounded))
+                .foregroundStyle(AppTheme.inkMuted)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var actionBar: some View {
+        VStack(spacing: 12) {
+            if !viewModel.ingredients.isEmpty {
+                Button("home_find_recipe_button") {
+                    viewModel.showRecipe()
+                }
+                .buttonStyle(AppPrimaryButtonStyle())
+            }
+
+            Button("home_tell_me_prompt") {
+                viewModel.showInput()
+            }
+            .buttonStyle(AppSecondaryButtonStyle())
+        }
+        .padding(12)
+        .background(
+            .ultraThinMaterial,
+            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(AppTheme.cardStroke, lineWidth: 1)
+        )
+        .padding(.horizontal)
+        .padding(.bottom, 8)
     }
 }
 

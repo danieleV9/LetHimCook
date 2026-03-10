@@ -6,14 +6,47 @@ struct MyRecipeView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.recipes) { recipe in
-                Button {
-                    selectedRecipe = recipe
-                } label: {
-                    Text(.init(recipe.text))
-                        .lineLimit(2)
+            ZStack {
+                AppBackground()
+
+                if viewModel.recipes.isEmpty {
+                    ContentUnavailableView {
+                        Label("saved_recipes_nav_title", systemImage: "bookmark")
+                    }
+                    .padding(.horizontal)
+                } else {
+                    List(viewModel.recipes) { recipe in
+                        Button {
+                            selectedRecipe = recipe
+                        } label: {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("recipe_title")
+                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                    .foregroundStyle(.secondary)
+
+                                Text(.init(recipe.text))
+                                    .font(.system(size: 16, weight: .medium, design: .serif))
+                                    .foregroundStyle(AppTheme.ink)
+                                    .lineLimit(3)
+                            }
+                            .padding(16)
+                            .background(
+                                .ultraThinMaterial,
+                                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .stroke(AppTheme.cardStroke, lineWidth: 1)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
+                    .padding(.horizontal)
                 }
-                .buttonStyle(.plain)
             }
             .navigationTitle("saved_recipes_nav_title")
             .toolbar {
@@ -29,13 +62,7 @@ struct MyRecipeView: View {
                 }
             }
             .sheet(item: $selectedRecipe) { recipe in
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(.init(recipe.text))
-                            .padding()
-                    }
-                }
-                .presentationDetents([.medium, .large])
+                SavedRecipeSheet(recipe: recipe)
             }
         }
         .onAppear {
@@ -43,6 +70,41 @@ struct MyRecipeView: View {
                 await viewModel.loadRecipes()
             }
         }
+    }
+}
+
+private struct SavedRecipeSheet: View {
+    let recipe: Recipe
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                AppBackground()
+
+                ScrollView {
+                    AppCard {
+                        Text(.init(recipe.text))
+                            .font(.system(size: 17, weight: .regular, design: .serif))
+                            .foregroundStyle(AppTheme.ink)
+                            .lineSpacing(6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 20)
+                }
+            }
+            .navigationTitle("recipe_title")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("ingredient_input_done_button") {
+                        dismiss()
+                    }
+                    .bold()
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 }
 
