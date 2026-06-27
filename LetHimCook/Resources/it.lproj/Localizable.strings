@@ -21,3 +21,8 @@
 "tab_home_title" = "Home";
 "tab_saved_recipes_title" = "Le mie ricette";
 "recipe_prompt_format" = "Suggerisci una ricetta usando questi ingredienti: %@";
+"foundation_model_error_device_not_eligible" = "Apple Intelligence non è disponibile su questo dispositivo.";
+"foundation_model_error_intelligence_not_enabled" = "Attiva Apple Intelligence nelle impostazioni per usare questa funzione.";
+"foundation_model_error_model_not_ready" = "Il modello si sta scaricando o non è ancora pronto. Riprova tra poco.";
+"foundation_model_error_unavailable" = "Il modello non è disponibile in questo momento.";
+"foundation_model_error_empty_response" = "Nessuna risposta valida dal modello.";

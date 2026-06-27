@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 import ActorDI
 
 // MARK: - ViewModelFactory
@@ -18,7 +17,7 @@ import ActorDI
 /// and injected inward — respecting the Clean Architecture dependency rule.
 @MainActor
 protocol ViewModelFactory {
-    func makeIngredientInputViewModel(ingredients: Binding<[String]>) -> IngredientInputViewModel
+    func makeIngredientInputViewModel(ingredients: [String], onChange: @escaping ([String]) -> Void) -> IngredientInputViewModel
     func makeRecipeViewModel(ingredients: [String]) -> RecipeViewModel
     func makeMyRecipesViewModel() -> MyRecipesViewModel
 }
@@ -46,8 +45,8 @@ final class AppViewModelFactory: ViewModelFactory {
         self.logger = logger
     }
 
-    func makeIngredientInputViewModel(ingredients: Binding<[String]>) -> IngredientInputViewModel {
-        IngredientInputViewModel(ingredients: ingredients, logger: logger)
+    func makeIngredientInputViewModel(ingredients: [String], onChange: @escaping ([String]) -> Void) -> IngredientInputViewModel {
+        IngredientInputViewModel(ingredients: ingredients, logger: logger, onIngredientsChange: onChange)
     }
 
     func makeRecipeViewModel(ingredients: [String]) -> RecipeViewModel {

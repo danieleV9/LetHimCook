@@ -15,15 +15,15 @@ final class FoundationModelManager {
         var errorDescription: String? {
             switch self {
             case .deviceNotEligible:
-                return "Apple Intelligence non è disponibile su questo dispositivo."
+                return String(localized: "foundation_model_error_device_not_eligible")
             case .appleIntelligenceNotEnabled:
-                return "Attiva Apple Intelligence nelle impostazioni per usare questa funzione."
+                return String(localized: "foundation_model_error_intelligence_not_enabled")
             case .modelNotReady:
-                return "Il modello si sta scaricando o non è ancora pronto. Riprova tra poco."
+                return String(localized: "foundation_model_error_model_not_ready")
             case .unavailable:
-                return "Il modello non è disponibile in questo momento."
+                return String(localized: "foundation_model_error_unavailable")
             case .emptyResponse:
-                return "Nessuna risposta valida dal modello."
+                return String(localized: "foundation_model_error_empty_response")
             }
         }
     }

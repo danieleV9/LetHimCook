@@ -60,10 +60,10 @@ struct ContentView: View {
             actionBar
         }
         .sheet(isPresented: $viewModel.isPresentingInput) {
-            IngredientInputView(viewModel: factory.makeIngredientInputViewModel(ingredients: Binding(
-                get: { viewModel.ingredients },
-                set: { viewModel.ingredients = $0 }
-            )))
+            IngredientInputView(viewModel: factory.makeIngredientInputViewModel(
+                ingredients: viewModel.ingredients,
+                onChange: { viewModel.ingredients = $0 }
+            ))
             .presentationDetents([.large])
         }
         .onChange(of: viewModel.ingredients) { _, newIngredients in

@@ -138,54 +138,50 @@ struct DeleteSavedRecipesUseCaseTests {
 @MainActor
 struct IngredientInputViewModelTests {
 
-    /// Reference box backing a `Binding<[String]>` for testing.
-    final class Box {
-        var value: [String]
-        init(_ value: [String] = []) { self.value = value }
-    }
-
-    private func makeViewModel(_ box: Box) -> IngredientInputViewModel {
-        IngredientInputViewModel(ingredients: Binding(get: { box.value }, set: { box.value = $0 }))
+    /// Captures the values pushed through the view model's change callback.
+    final class ChangeRecorder {
+        private(set) var lastValue: [String]?
+        func record(_ value: [String]) { lastValue = value }
     }
 
     @Test func addIngredientAppendsTrimmedValueAndClearsInput() {
-        let box = Box()
-        let viewModel = makeViewModel(box)
+        let recorder = ChangeRecorder()
+        let viewModel = IngredientInputViewModel(onIngredientsChange: recorder.record)
 
         viewModel.currentInput = "  Tomato  "
         viewModel.addIngredient()
 
-        #expect(box.value == ["Tomato"])
+        #expect(viewModel.ingredients == ["Tomato"])
         #expect(viewModel.currentInput == "")
+        #expect(recorder.lastValue == ["Tomato"])
     }
 
     @Test func addIngredientIgnoresWhitespaceOnlyInput() {
-        let box = Box()
-        let viewModel = makeViewModel(box)
+        let viewModel = IngredientInputViewModel()
 
         viewModel.currentInput = "   "
         viewModel.addIngredient()
 
-        #expect(box.value.isEmpty)
+        #expect(viewModel.ingredients.isEmpty)
     }
 
     @Test func removeIngredientRemovesAtGivenOffsets() {
-        let box = Box(["A", "B", "C"])
-        let viewModel = makeViewModel(box)
+        let recorder = ChangeRecorder()
+        let viewModel = IngredientInputViewModel(ingredients: ["A", "B", "C"], onIngredientsChange: recorder.record)
 
         viewModel.removeIngredient(at: IndexSet(integer: 1))
 
-        #expect(box.value == ["A", "C"])
+        #expect(viewModel.ingredients == ["A", "C"])
+        #expect(recorder.lastValue == ["A", "C"])
     }
 
     @Test func resetClearsListAndInput() {
-        let box = Box(["A", "B"])
-        let viewModel = makeViewModel(box)
+        let viewModel = IngredientInputViewModel(ingredients: ["A", "B"])
         viewModel.currentInput = "pending"
 
         viewModel.reset()
 
-        #expect(box.value.isEmpty)
+        #expect(viewModel.ingredients.isEmpty)
         #expect(viewModel.currentInput == "")
     }
 }
