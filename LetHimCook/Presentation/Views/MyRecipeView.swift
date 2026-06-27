@@ -23,15 +23,18 @@ struct MyRecipeView: View {
                         Button {
                             selectedRecipe = recipe
                         } label: {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("recipe_title")
-                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                    .foregroundStyle(.secondary)
-
-                                Text(.init(recipe.text))
-                                    .font(.system(size: 16, weight: .medium, design: .serif))
+                            VStack(alignment: .leading, spacing: 6) {
+                                (recipe.title.isEmpty ? Text("recipe_title") : Text(recipe.title))
+                                    .font(.system(size: 17, weight: .semibold, design: .serif))
                                     .foregroundStyle(AppTheme.ink)
-                                    .lineLimit(3)
+                                    .lineLimit(2)
+
+                                if !recipe.ingredients.isEmpty {
+                                    Text(recipe.ingredients.joined(separator: ", "))
+                                        .font(.system(size: 13, weight: .regular, design: .rounded))
+                                        .foregroundStyle(.secondary)
+                                        .lineLimit(1)
+                                }
                             }
                             .padding(16)
                             .background(
@@ -88,11 +91,7 @@ private struct SavedRecipeSheet: View {
 
                 ScrollView {
                     AppCard {
-                        Text(.init(recipe.text))
-                            .font(.system(size: 17, weight: .regular, design: .serif))
-                            .foregroundStyle(AppTheme.ink)
-                            .lineSpacing(6)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        RecipeBody(recipe: recipe)
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 20)

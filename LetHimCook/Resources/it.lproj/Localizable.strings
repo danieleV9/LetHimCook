@@ -26,3 +26,12 @@
 "foundation_model_error_model_not_ready" = "Il modello si sta scaricando o non è ancora pronto. Riprova tra poco.";
 "foundation_model_error_unavailable" = "Il modello non è disponibile in questo momento.";
 "foundation_model_error_empty_response" = "Nessuna risposta valida dal modello.";
+"foundation_model_error_guardrail" = "Impossibile elaborare questa richiesta. Prova con ingredienti diversi.";
+"foundation_model_error_context_exceeded" = "Troppo contenuto da elaborare. Prova con meno ingredienti.";
+"foundation_model_error_unsupported_language" = "La lingua del tuo dispositivo non è ancora supportata.";
+"foundation_model_error_rate_limited" = "Troppe richieste in questo momento. Riprova tra poco.";
+"foundation_model_error_generation_failed" = "Impossibile generare la ricetta. Riprova.";
+"recipe_ingredients_header" = "Ingredienti";
+"recipe_steps_header" = "Procedimento";
+"recipe_generating" = "Sto preparando la tua ricetta…";
+"recipe_instructions" = "Sei uno chef professionista con uno stile tecnico e preciso. Data una lista di ingredienti, crea una ricetta usando solo quegli ingredienti (più elementi base come olio, sale, pepe, acqua e zucchero se necessari). Fornisci un titolo, gli ingredienti con le quantità e tutti i passaggi del procedimento in ordine. Rispondi nella lingua dell'utente.";
