@@ -1,5 +1,10 @@
 import Foundation
 
 protocol RecipeRepository {
-    func fetchRecipe(for ingredients: [String]) async throws -> Recipe
+    /// Streams a recipe for the given ingredients, emitting progressively
+    /// more complete snapshots until generation finishes.
+    func recipeStream(for ingredients: [String]) -> AsyncThrowingStream<Recipe, Error>
+
+    /// Warms up the underlying model ahead of a request.
+    func prewarm()
 }

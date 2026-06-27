@@ -7,11 +7,14 @@ final class FoundationRecipeRepository: RecipeRepository {
         self.modelManager = modelManager
     }
 
-    func fetchRecipe(for ingredients: [String]) async throws -> Recipe {
+    func recipeStream(for ingredients: [String]) -> AsyncThrowingStream<Recipe, Error> {
         let ingredientsList = ingredients.joined(separator: ", ")
         let promptFormat = String(localized: "recipe_prompt_format")
         let prompt = String(format: promptFormat, ingredientsList)
-        let text = try await modelManager.predict(input: prompt)
-        return Recipe(text: text)
+        return modelManager.streamRecipe(prompt: prompt)
+    }
+
+    func prewarm() {
+        modelManager.prewarm()
     }
 }

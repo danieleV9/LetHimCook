@@ -59,23 +59,18 @@ struct RecipeView: View {
         switch viewModel.state {
         case .loading:
             AppCard {
-                HStack(spacing: 12) {
-                    ProgressView()
-                        .progressViewStyle(.circular)
-
-                    Text("recipe_title")
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
-                        .foregroundStyle(AppTheme.inkMuted)
+                generatingIndicator
+            }
+        case .streaming(let recipe):
+            AppCard {
+                VStack(alignment: .leading, spacing: 16) {
+                    generatingIndicator
+                    RecipeBody(recipe: recipe)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
             }
         case .success(let recipe):
             AppCard {
-                Text(.init(recipe))
-                    .font(.system(size: 17, weight: .regular, design: .serif))
-                    .foregroundStyle(AppTheme.ink)
-                    .lineSpacing(6)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                RecipeBody(recipe: recipe)
             }
         case .failure(let message):
             AppCard {
@@ -91,6 +86,72 @@ struct RecipeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+    }
+
+    private var generatingIndicator: some View {
+        HStack(spacing: 12) {
+            ProgressView()
+                .progressViewStyle(.circular)
+
+            Text("recipe_generating")
+                .font(.system(size: 15, weight: .semibold, design: .rounded))
+                .foregroundStyle(AppTheme.inkMuted)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// Renders a structured recipe: title, ingredients and ordered steps.
+struct RecipeBody: View {
+    let recipe: Recipe
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            if !recipe.title.isEmpty {
+                Text(recipe.title)
+                    .font(.system(size: 24, weight: .bold, design: .serif))
+                    .foregroundStyle(AppTheme.ink)
+            }
+
+            if !recipe.ingredients.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("recipe_ingredients_header")
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
+                        .foregroundStyle(AppTheme.inkMuted)
+                        .textCase(.uppercase)
+
+                    ForEach(Array(recipe.ingredients.enumerated()), id: \.offset) { _, ingredient in
+                        HStack(alignment: .top, spacing: 8) {
+                            Text("•")
+                            Text(ingredient)
+                        }
+                        .font(.system(size: 16, weight: .regular, design: .serif))
+                        .foregroundStyle(AppTheme.ink)
+                    }
+                }
+            }
+
+            if !recipe.steps.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("recipe_steps_header")
+                        .font(.system(size: 13, weight: .semibold, design: .rounded))
+                        .foregroundStyle(AppTheme.inkMuted)
+                        .textCase(.uppercase)
+
+                    ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
+                        HStack(alignment: .top, spacing: 8) {
+                            Text("\(index + 1).")
+                                .fontWeight(.semibold)
+                            Text(step)
+                        }
+                        .font(.system(size: 16, weight: .regular, design: .serif))
+                        .foregroundStyle(AppTheme.ink)
+                        .lineSpacing(4)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

@@ -26,3 +26,12 @@
 "foundation_model_error_model_not_ready" = "The model is downloading or not ready yet. Please try again shortly.";
 "foundation_model_error_unavailable" = "The model isn't available right now.";
 "foundation_model_error_empty_response" = "No valid response from the model.";
+"foundation_model_error_guardrail" = "This request can't be processed. Try different ingredients.";
+"foundation_model_error_context_exceeded" = "Too much content to process. Try fewer ingredients.";
+"foundation_model_error_unsupported_language" = "Your device language isn't supported yet.";
+"foundation_model_error_rate_limited" = "Too many requests right now. Please try again in a moment.";
+"foundation_model_error_generation_failed" = "Couldn't generate the recipe. Please try again.";
+"recipe_ingredients_header" = "Ingredients";
+"recipe_steps_header" = "Steps";
+"recipe_generating" = "Cooking up your recipe…";
+"recipe_instructions" = "You are a professional chef with a precise, technical style. Given a list of ingredients, create a recipe using only those ingredients (plus basics like oil, salt, pepper, water, and sugar if needed). Provide a title, the ingredients with their quantities, and the full preparation steps in order. Respond in the user's language.";

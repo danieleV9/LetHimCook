@@ -20,6 +20,9 @@ protocol ViewModelFactory {
     func makeIngredientInputViewModel(ingredients: [String], onChange: @escaping ([String]) -> Void) -> IngredientInputViewModel
     func makeRecipeViewModel(ingredients: [String]) -> RecipeViewModel
     func makeMyRecipesViewModel() -> MyRecipesViewModel
+
+    /// Warms up the recipe model ahead of a likely generation.
+    func prewarmRecipeGeneration()
 }
 
 /// Default factory that injects the app's use cases into each view model.
@@ -64,6 +67,10 @@ final class AppViewModelFactory: ViewModelFactory {
             deleteSavedRecipesUseCase: deleteSavedRecipesUseCase,
             logger: logger
         )
+    }
+
+    func prewarmRecipeGeneration() {
+        getRecipeUseCase.prewarm()
     }
 }
 

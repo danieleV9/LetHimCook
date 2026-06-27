@@ -15,16 +15,37 @@ import SwiftUI
 final class MockRecipeRepository: RecipeRepository {
     enum MockError: Error { case failed }
 
-    var result: Result<Recipe, Error>
+    var snapshots: [Recipe]
+    var error: Error?
     private(set) var receivedIngredients: [String]?
+    private(set) var prewarmCallCount = 0
 
-    init(result: Result<Recipe, Error> = .success(Recipe(text: "Mock recipe"))) {
-        self.result = result
+    init(
+        snapshots: [Recipe] = [Recipe(title: "Mock recipe", ingredients: ["Water"], steps: ["Mix"])],
+        error: Error? = nil
+    ) {
+        self.snapshots = snapshots
+        self.error = error
     }
 
-    func fetchRecipe(for ingredients: [String]) async throws -> Recipe {
+    func recipeStream(for ingredients: [String]) -> AsyncThrowingStream<Recipe, Error> {
         receivedIngredients = ingredients
-        return try result.get()
+        let snapshots = snapshots
+        let error = error
+        return AsyncThrowingStream { continuation in
+            for snapshot in snapshots {
+                continuation.yield(snapshot)
+            }
+            if let error {
+                continuation.finish(throwing: error)
+            } else {
+                continuation.finish()
+            }
+        }
+    }
+
+    func prewarm() {
+        prewarmCallCount += 1
     }
 }
 
@@ -53,21 +74,25 @@ final class MockSavedRecipeRepository: SavedRecipeRepository {
     }
 }
 
+private func makeRecipe(_ title: String) -> Recipe {
+    Recipe(title: title, ingredients: [], steps: [])
+}
+
 // MARK: - Entity
 
 struct RecipeTests {
 
-    @Test func idIsDerivedFromText() {
-        let recipe = Recipe(text: "Carbonara")
-        #expect(recipe.id == "Carbonara")
-    }
-
-    @Test func encodesAndDecodesWithoutLoss() throws {
-        let original = Recipe(text: "Tiramisù")
+    @Test func encodesAndDecodesWithoutLoss() async throws {
+        let original = Recipe(title: "Tiramisù", ingredients: ["Mascarpone", "Coffee"], steps: ["Whisk", "Layer"])
         let data = try JSONEncoder().encode(original)
         let decoded = try JSONDecoder().decode(Recipe.self, from: data)
-        #expect(decoded.text == original.text)
-        #expect(decoded.id == original.id)
+        #expect(decoded == original)
+    }
+
+    @Test func eachRecipeHasAUniqueIdentity() async {
+        let first = makeRecipe("Soup")
+        let second = makeRecipe("Soup")
+        #expect(first.id != second.id)
     }
 }
 
@@ -75,23 +100,36 @@ struct RecipeTests {
 
 struct GetRecipeUseCaseTests {
 
-    @Test func forwardsIngredientsAndReturnsRecipe() async throws {
-        let repository = MockRecipeRepository(result: .success(Recipe(text: "Pancakes")))
+    @Test func forwardsIngredientsAndStreamsRecipe() async throws {
+        let expected = Recipe(title: "Pancakes", ingredients: ["Flour"], steps: ["Mix", "Cook"])
+        let repository = MockRecipeRepository(snapshots: [expected])
         let useCase = GetRecipeUseCaseImpl(repository: repository)
 
-        let recipe = try await useCase.execute(with: ["flour", "eggs"])
+        var received: [Recipe] = []
+        for try await recipe in useCase.execute(with: ["flour", "eggs"]) {
+            received.append(recipe)
+        }
 
-        #expect(recipe.text == "Pancakes")
+        #expect(received == [expected])
         #expect(repository.receivedIngredients == ["flour", "eggs"])
     }
 
     @Test func propagatesRepositoryError() async {
-        let repository = MockRecipeRepository(result: .failure(MockRecipeRepository.MockError.failed))
+        let repository = MockRecipeRepository(snapshots: [], error: MockRecipeRepository.MockError.failed)
         let useCase = GetRecipeUseCaseImpl(repository: repository)
 
         await #expect(throws: MockRecipeRepository.MockError.self) {
-            _ = try await useCase.execute(with: ["water"])
+            for try await _ in useCase.execute(with: ["water"]) {}
         }
+    }
+
+    @Test func prewarmDelegatesToRepository() async {
+        let repository = MockRecipeRepository()
+        let useCase = GetRecipeUseCaseImpl(repository: repository)
+
+        useCase.prewarm()
+
+        #expect(repository.prewarmCallCount == 1)
     }
 }
 
@@ -101,29 +139,29 @@ struct SaveRecipeUseCaseTests {
         let repository = MockSavedRecipeRepository()
         let useCase = SaveRecipeUseCaseImpl(repository: repository)
 
-        await useCase.execute(recipe: Recipe(text: "Minestrone"))
+        await useCase.execute(recipe: makeRecipe("Minestrone"))
 
         #expect(repository.saveCallCount == 1)
-        #expect(repository.storedRecipes.map(\.text) == ["Minestrone"])
+        #expect(repository.storedRecipes.map(\.title) == ["Minestrone"])
     }
 }
 
 struct GetSavedRecipesUseCaseTests {
 
     @Test func returnsRecipesFromRepository() async {
-        let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A"), Recipe(text: "B")])
+        let repository = MockSavedRecipeRepository(storedRecipes: [makeRecipe("A"), makeRecipe("B")])
         let useCase = GetSavedRecipesUseCaseImpl(repository: repository)
 
         let result = await useCase.execute()
 
-        #expect(result.map(\.text) == ["A", "B"])
+        #expect(result.map(\.title) == ["A", "B"])
     }
 }
 
 struct DeleteSavedRecipesUseCaseTests {
 
     @Test func deletesAllFromRepository() async {
-        let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A"), Recipe(text: "B")])
+        let repository = MockSavedRecipeRepository(storedRecipes: [makeRecipe("A"), makeRecipe("B")])
         let useCase = DeleteSavedRecipesUseCaseImpl(repository: repository)
 
         await useCase.execute()
@@ -194,8 +232,9 @@ struct IngredientInputViewModelTests {
 @MainActor
 struct RecipeViewModelTests {
 
-    @Test func loadsAndSavesOnSuccess() async {
-        let recipeRepository = MockRecipeRepository(result: .success(Recipe(text: "Risotto")))
+    @Test func streamsThenSucceedsAndSaves() async {
+        let finalRecipe = Recipe(title: "Risotto", ingredients: ["Rice"], steps: ["Cook"])
+        let recipeRepository = MockRecipeRepository(snapshots: [finalRecipe])
         let savedRepository = MockSavedRecipeRepository()
         let viewModel = RecipeViewModel(
             ingredients: ["rice"],
@@ -205,8 +244,8 @@ struct RecipeViewModelTests {
 
         await viewModel.loadRecipe()
 
-        if case .success(let text) = viewModel.state {
-            #expect(text == "Risotto")
+        if case .success(let recipe) = viewModel.state {
+            #expect(recipe == finalRecipe)
         } else {
             Issue.record("Expected .success state, got \(viewModel.state)")
         }
@@ -214,11 +253,12 @@ struct RecipeViewModelTests {
     }
 
     @Test func entersFailureStateOnError() async {
-        let recipeRepository = MockRecipeRepository(result: .failure(MockRecipeRepository.MockError.failed))
+        let recipeRepository = MockRecipeRepository(snapshots: [], error: MockRecipeRepository.MockError.failed)
+        let savedRepository = MockSavedRecipeRepository()
         let viewModel = RecipeViewModel(
             ingredients: ["rice"],
             getRecipeUseCase: GetRecipeUseCaseImpl(repository: recipeRepository),
-            saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: MockSavedRecipeRepository())
+            saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: savedRepository)
         )
 
         await viewModel.loadRecipe()
@@ -228,6 +268,7 @@ struct RecipeViewModelTests {
         } else {
             Issue.record("Expected .failure state, got \(viewModel.state)")
         }
+        #expect(savedRepository.saveCallCount == 0)
     }
 
     @Test func staysIdleWithoutIngredients() async {
@@ -255,7 +296,7 @@ struct RecipeViewModelTests {
 struct MyRecipesViewModelTests {
 
     @Test func loadsRecipes() async {
-        let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A"), Recipe(text: "B")])
+        let repository = MockSavedRecipeRepository(storedRecipes: [makeRecipe("A"), makeRecipe("B")])
         let viewModel = MyRecipesViewModel(
             getSavedRecipesUseCase: GetSavedRecipesUseCaseImpl(repository: repository),
             deleteSavedRecipesUseCase: DeleteSavedRecipesUseCaseImpl(repository: repository)
@@ -263,11 +304,11 @@ struct MyRecipesViewModelTests {
 
         await viewModel.loadRecipes()
 
-        #expect(viewModel.recipes.map(\.text) == ["A", "B"])
+        #expect(viewModel.recipes.map(\.title) == ["A", "B"])
     }
 
     @Test func deletesAllRecipes() async {
-        let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A")])
+        let repository = MockSavedRecipeRepository(storedRecipes: [makeRecipe("A")])
         let viewModel = MyRecipesViewModel(
             getSavedRecipesUseCase: GetSavedRecipesUseCaseImpl(repository: repository),
             deleteSavedRecipesUseCase: DeleteSavedRecipesUseCaseImpl(repository: repository)

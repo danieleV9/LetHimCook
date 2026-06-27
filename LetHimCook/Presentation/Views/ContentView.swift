@@ -70,6 +70,10 @@ struct ContentView: View {
             guard newIngredients.isEmpty else { return }
             isFridgeOpen = false
         }
+        .onChange(of: viewModel.isPresentingInput) { _, isPresenting in
+            // Warm up the model while the user is entering ingredients.
+            if isPresenting { factory.prewarmRecipeGeneration() }
+        }
         .fullScreenCover(isPresented: Binding(get: { viewModel.isPresentingRecipe }, set: { viewModel.isPresentingRecipe = $0 })) {
             RecipeView(viewModel: factory.makeRecipeViewModel(ingredients: viewModel.ingredients))
         }

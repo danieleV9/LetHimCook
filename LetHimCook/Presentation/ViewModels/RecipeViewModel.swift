@@ -6,7 +6,8 @@ final class RecipeViewModel {
     enum State {
         case idle
         case loading
-        case success(String)
+        case streaming(Recipe)
+        case success(Recipe)
         case failure(String)
     }
 
@@ -32,9 +33,19 @@ final class RecipeViewModel {
         guard !ingredients.isEmpty else { return }
         state = .loading
         do {
-            let recipe = try await getRecipeUseCase.execute(with: ingredients)
-            state = .success(recipe.text)
-            logger?.debug("The saved recipe is: \(recipe)")
+            var lastRecipe: Recipe?
+            for try await recipe in getRecipeUseCase.execute(with: ingredients) {
+                lastRecipe = recipe
+                state = .streaming(recipe)
+            }
+
+            guard let recipe = lastRecipe, !recipe.title.isEmpty || !recipe.steps.isEmpty else {
+                state = .failure(String(localized: "foundation_model_error_empty_response"))
+                return
+            }
+
+            state = .success(recipe)
+            logger?.debug("Generated recipe: \(recipe.title)")
             await saveRecipeUseCase.execute(recipe: recipe)
         } catch {
             let localizedError = error as? LocalizedError
