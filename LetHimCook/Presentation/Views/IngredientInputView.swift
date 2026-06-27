@@ -29,9 +29,9 @@ struct IngredientInputView: View {
                                     isTextFieldFocused = true
                                 } label: {
                                     Image(systemName: "plus")
-                                        .font(.system(size: 16, weight: .bold))
+                                        .font(.headline)
                                         .foregroundStyle(.white)
-                                        .frame(width: 36, height: 36)
+                                        .frame(width: 44, height: 44)
                                         .background(
                                             AppTheme.accent,
                                             in: Circle()
@@ -63,7 +63,7 @@ struct IngredientInputView: View {
                                         .foregroundStyle(AppTheme.accent)
 
                                     Text("ingredient_input_empty_title")
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                        .font(.system(.headline, design: .rounded))
 
                                     Text("ingredient_input_empty_description")
                                         .font(.footnote)
@@ -86,8 +86,8 @@ struct IngredientInputView: View {
                                         .foregroundStyle(AppTheme.accent)
 
                                     Text(ingredient)
-                                        .font(.system(size: 17, weight: .medium, design: .rounded))
-                                        .foregroundStyle(AppTheme.ink)
+                                        .font(.system(.body, design: .rounded))
+                                        .foregroundStyle(.primary)
                                 }
                                 .padding(12)
                                 .background(

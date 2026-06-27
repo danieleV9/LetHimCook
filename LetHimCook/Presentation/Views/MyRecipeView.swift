@@ -25,25 +25,26 @@ struct MyRecipeView: View {
                         } label: {
                             VStack(alignment: .leading, spacing: 6) {
                                 (recipe.title.isEmpty ? Text("recipe_title") : Text(recipe.title))
-                                    .font(.system(size: 17, weight: .semibold, design: .serif))
-                                    .foregroundStyle(AppTheme.ink)
+                                    .font(.system(.headline, design: .serif))
+                                    .foregroundStyle(.primary)
                                     .lineLimit(2)
 
                                 if !recipe.ingredients.isEmpty {
                                     Text(recipe.ingredients.joined(separator: ", "))
-                                        .font(.system(size: 13, weight: .regular, design: .rounded))
+                                        .font(.system(.subheadline, design: .rounded))
                                         .foregroundStyle(.secondary)
                                         .lineLimit(1)
                                 }
                             }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(16)
                             .background(
-                                .ultraThinMaterial,
+                                .regularMaterial,
                                 in: RoundedRectangle(cornerRadius: 20, style: .continuous)
                             )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                    .stroke(AppTheme.cardStroke, lineWidth: 1)
+                                    .strokeBorder(Color.primary.opacity(0.06), lineWidth: 1)
                             )
                         }
                         .buttonStyle(.plain)

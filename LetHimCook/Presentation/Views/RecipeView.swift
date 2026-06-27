@@ -33,25 +33,17 @@ struct RecipeView: View {
                 dismiss()
             } label: {
                 Image(systemName: "chevron.backward")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(AppTheme.ink)
-                    .frame(width: 36, height: 36)
-                    .background(
-                        .ultraThinMaterial,
-                        in: Circle()
-                    )
-                    .accessibilityLabel("recipe_back_button")
+                    .font(.headline)
             }
+            .buttonStyle(.glass)
+            .buttonBorderShape(.circle)
+            .accessibilityLabel("recipe_back_button")
 
             Spacer()
         }
         .padding(.horizontal)
         .padding(.top, 12)
         .padding(.bottom, 8)
-        .background(
-            .ultraThinMaterial
-                .opacity(0.9)
-        )
     }
 
     @ViewBuilder
@@ -81,7 +73,7 @@ struct RecipeView: View {
         case .idle:
             AppCard {
                 Text("recipe_placeholder")
-                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                    .font(.system(.body, design: .rounded))
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -94,10 +86,11 @@ struct RecipeView: View {
                 .progressViewStyle(.circular)
 
             Text("recipe_generating")
-                .font(.system(size: 15, weight: .semibold, design: .rounded))
-                .foregroundStyle(AppTheme.inkMuted)
+                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -109,49 +102,50 @@ struct RecipeBody: View {
         VStack(alignment: .leading, spacing: 18) {
             if !recipe.title.isEmpty {
                 Text(recipe.title)
-                    .font(.system(size: 24, weight: .bold, design: .serif))
-                    .foregroundStyle(AppTheme.ink)
+                    .font(.system(.title2, design: .serif).weight(.bold))
+                    .foregroundStyle(.primary)
             }
 
             if !recipe.ingredients.isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("recipe_ingredients_header")
-                        .font(.system(size: 13, weight: .semibold, design: .rounded))
-                        .foregroundStyle(AppTheme.inkMuted)
-                        .textCase(.uppercase)
+                    sectionLabel("recipe_ingredients_header")
 
                     ForEach(Array(recipe.ingredients.enumerated()), id: \.offset) { _, ingredient in
-                        HStack(alignment: .top, spacing: 8) {
+                        HStack(alignment: .firstTextBaseline, spacing: 8) {
                             Text("•")
                             Text(ingredient)
                         }
-                        .font(.system(size: 16, weight: .regular, design: .serif))
-                        .foregroundStyle(AppTheme.ink)
+                        .font(.system(.body, design: .serif))
+                        .foregroundStyle(.primary)
                     }
                 }
             }
 
             if !recipe.steps.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("recipe_steps_header")
-                        .font(.system(size: 13, weight: .semibold, design: .rounded))
-                        .foregroundStyle(AppTheme.inkMuted)
-                        .textCase(.uppercase)
+                    sectionLabel("recipe_steps_header")
 
                     ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                        HStack(alignment: .top, spacing: 8) {
+                        HStack(alignment: .firstTextBaseline, spacing: 8) {
                             Text("\(index + 1).")
                                 .fontWeight(.semibold)
+                                .monospacedDigit()
                             Text(step)
                         }
-                        .font(.system(size: 16, weight: .regular, design: .serif))
-                        .foregroundStyle(AppTheme.ink)
-                        .lineSpacing(4)
+                        .font(.system(.body, design: .serif))
+                        .foregroundStyle(.primary)
                     }
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func sectionLabel(_ key: LocalizedStringKey) -> some View {
+        Text(key)
+            .font(.system(.caption, design: .rounded).weight(.semibold))
+            .foregroundStyle(.secondary)
+            .textCase(.uppercase)
     }
 }
 
