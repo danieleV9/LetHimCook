@@ -10,16 +10,17 @@ import Lottie
 
 struct ContentView: View {
     @Bindable var viewModel = ContentViewModel()
-    @State private var ingredientInputViewModel: IngredientInputViewModel
-        = IngredientInputViewModel(ingredients: Binding(
-            get: { [] },
-            set: { _ in }
-          ))
     @State private var isFridgeOpen = false
+
+    private let factory: ViewModelFactory
 
     private let chipColumns: [GridItem] = [
         GridItem(.adaptive(minimum: 90), spacing: 8, alignment: .leading)
     ]
+
+    init(factory: ViewModelFactory) {
+        self.factory = factory
+    }
 
     var body: some View {
         ZStack {
@@ -59,7 +60,7 @@ struct ContentView: View {
             actionBar
         }
         .sheet(isPresented: $viewModel.isPresentingInput) {
-            IngredientInputView(viewModel: IngredientInputViewModel(ingredients: Binding(
+            IngredientInputView(viewModel: factory.makeIngredientInputViewModel(ingredients: Binding(
                 get: { viewModel.ingredients },
                 set: { viewModel.ingredients = $0 }
             )))
@@ -70,7 +71,7 @@ struct ContentView: View {
             isFridgeOpen = false
         }
         .fullScreenCover(isPresented: Binding(get: { viewModel.isPresentingRecipe }, set: { viewModel.isPresentingRecipe = $0 })) {
-            RecipeView(viewModel: RecipeViewModel(ingredients: viewModel.ingredients))
+            RecipeView(viewModel: factory.makeRecipeViewModel(ingredients: viewModel.ingredients))
         }
     }
 
@@ -110,5 +111,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(factory: AppViewModelFactory.preview)
 }

@@ -9,18 +9,18 @@ import SwiftUI
 
 @main
 struct LetHimCookApp: App {
-    @State private var isConfigured = false
+    @State private var factory: ViewModelFactory?
 
     var body: some Scene {
         WindowGroup {
             Group {
-                if isConfigured {
+                if let factory {
                     TabView {
-                        ContentView()
+                        ContentView(factory: factory)
                             .tabItem {
                                 Label("tab_home_title", systemImage: "house")
                             }
-                        MyRecipeView()
+                        MyRecipeView(viewModel: factory.makeMyRecipesViewModel())
                             .tabItem {
                                 Label("tab_saved_recipes_title", systemImage: "book")
                             }
@@ -28,8 +28,7 @@ struct LetHimCookApp: App {
                     .tint(AppTheme.accent)
                 } else {
                     ProgressView().task {
-                        await AppContainer.configure()
-                        isConfigured = true
+                        factory = await AppContainer.makeViewModelFactory()
                     }
                 }
             }

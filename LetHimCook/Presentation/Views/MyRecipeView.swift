@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct MyRecipeView: View {
-    @State var viewModel = MyRecipesViewModel()
+    @State private var viewModel: MyRecipesViewModel
     @State private var selectedRecipe: Recipe? = nil
+
+    init(viewModel: MyRecipesViewModel) {
+        _viewModel = State(initialValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
@@ -109,5 +113,5 @@ private struct SavedRecipeSheet: View {
 }
 
 #Preview {
-    MyRecipeView()
+    MyRecipeView(viewModel: AppViewModelFactory.preview.makeMyRecipesViewModel())
 }
