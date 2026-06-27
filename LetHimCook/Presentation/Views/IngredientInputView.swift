@@ -39,13 +39,13 @@ struct IngredientInputView: View {
                                         .accessibilityLabel("ingredient_input_accessibility_add")
                                 }
                                 .buttonStyle(.plain)
-                                .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.wrappedValue.count >= 10)
+                                .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.count >= 10)
                             }
                         }
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
                     } footer: {
-                        if viewModel.ingredients.wrappedValue.count >= 10 {
+                        if viewModel.ingredients.count >= 10 {
                             Text("ingredient_input_footer_limit")
                                 .foregroundStyle(.red)
                         } else {
@@ -54,7 +54,7 @@ struct IngredientInputView: View {
                         }
                     }
 
-                    if viewModel.ingredients.wrappedValue.isEmpty {
+                    if viewModel.ingredients.isEmpty {
                         Section {
                             AppCard {
                                 VStack(spacing: 10) {
@@ -79,7 +79,7 @@ struct IngredientInputView: View {
                         }
                     } else {
                         Section(header: AppSectionHeader(titleKey: "ingredient_input_section_title")) {
-                            ForEach(viewModel.ingredients.wrappedValue, id: \.self) { ingredient in
+                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
                                 HStack(spacing: 12) {
                                     Image(systemName: "leaf.fill")
                                         .font(.caption)
@@ -129,5 +129,5 @@ struct IngredientInputView: View {
 }
 
 #Preview {
-    IngredientInputView(viewModel: IngredientInputViewModel(ingredients: .constant(["Eggs", "Milk", "Flour"])))
+    IngredientInputView(viewModel: IngredientInputViewModel(ingredients: ["Eggs", "Milk", "Flour"]))
 }
