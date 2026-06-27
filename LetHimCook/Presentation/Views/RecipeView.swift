@@ -95,5 +95,5 @@ struct RecipeView: View {
 }
 
 #Preview {
-    RecipeView(viewModel: RecipeViewModel(ingredients: ["Eggs", "Milk", "Flour"]))
+    RecipeView(viewModel: AppViewModelFactory.preview.makeRecipeViewModel(ingredients: ["Eggs", "Milk", "Flour"]))
 }

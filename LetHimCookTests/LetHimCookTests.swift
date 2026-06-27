@@ -7,7 +7,6 @@
 
 import Testing
 import SwiftUI
-import ActorDI
 @testable import LetHimCook
 
 // MARK: - Test Doubles
@@ -191,32 +190,23 @@ struct IngredientInputViewModelTests {
     }
 }
 
-// MARK: - View Models backed by the DI container
+// MARK: - RecipeViewModel
 //
-// These tests resolve dependencies through `DIContainer.shared`, so they are
-// grouped in a single serialized suite that resets the container before each
-// test to avoid cross-test interference.
+// Dependencies are injected directly through the initializer — no global
+// container, no shared state, no test serialization required.
 
-@Suite(.serialized)
-struct ContainerBackedViewModelTests {
+@MainActor
+struct RecipeViewModelTests {
 
-    init() async {
-        await DIContainer.shared.resetAll()
-    }
-
-    @MainActor
-    @Test func recipeViewModelLoadsAndSavesOnSuccess() async {
+    @Test func loadsAndSavesOnSuccess() async {
         let recipeRepository = MockRecipeRepository(result: .success(Recipe(text: "Risotto")))
         let savedRepository = MockSavedRecipeRepository()
+        let viewModel = RecipeViewModel(
+            ingredients: ["rice"],
+            getRecipeUseCase: GetRecipeUseCaseImpl(repository: recipeRepository),
+            saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: savedRepository)
+        )
 
-        await DIContainer.shared.register(GetRecipeUseCase.self, scope: .singleton) {
-            GetRecipeUseCaseImpl(repository: recipeRepository)
-        }
-        await DIContainer.shared.register(SaveRecipeUseCase.self, scope: .singleton) {
-            SaveRecipeUseCaseImpl(repository: savedRepository)
-        }
-
-        let viewModel = RecipeViewModel(ingredients: ["rice"])
         await viewModel.loadRecipe()
 
         if case .success(let text) = viewModel.state {
@@ -227,18 +217,14 @@ struct ContainerBackedViewModelTests {
         #expect(savedRepository.saveCallCount == 1)
     }
 
-    @MainActor
-    @Test func recipeViewModelEntersFailureStateOnError() async {
+    @Test func entersFailureStateOnError() async {
         let recipeRepository = MockRecipeRepository(result: .failure(MockRecipeRepository.MockError.failed))
+        let viewModel = RecipeViewModel(
+            ingredients: ["rice"],
+            getRecipeUseCase: GetRecipeUseCaseImpl(repository: recipeRepository),
+            saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: MockSavedRecipeRepository())
+        )
 
-        await DIContainer.shared.register(GetRecipeUseCase.self, scope: .singleton) {
-            GetRecipeUseCaseImpl(repository: recipeRepository)
-        }
-        await DIContainer.shared.register(SaveRecipeUseCase.self, scope: .singleton) {
-            SaveRecipeUseCaseImpl(repository: MockSavedRecipeRepository())
-        }
-
-        let viewModel = RecipeViewModel(ingredients: ["rice"])
         await viewModel.loadRecipe()
 
         if case .failure = viewModel.state {
@@ -248,16 +234,14 @@ struct ContainerBackedViewModelTests {
         }
     }
 
-    @MainActor
-    @Test func recipeViewModelStaysIdleWithoutIngredients() async {
-        await DIContainer.shared.register(GetRecipeUseCase.self, scope: .singleton) {
-            GetRecipeUseCaseImpl(repository: MockRecipeRepository())
-        }
-        await DIContainer.shared.register(SaveRecipeUseCase.self, scope: .singleton) {
-            SaveRecipeUseCaseImpl(repository: MockSavedRecipeRepository())
-        }
+    @Test func staysIdleWithoutIngredients() async {
+        let savedRepository = MockSavedRecipeRepository()
+        let viewModel = RecipeViewModel(
+            ingredients: [],
+            getRecipeUseCase: GetRecipeUseCaseImpl(repository: MockRecipeRepository()),
+            saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: savedRepository)
+        )
 
-        let viewModel = RecipeViewModel(ingredients: [])
         await viewModel.loadRecipe()
 
         if case .idle = viewModel.state {
@@ -265,30 +249,34 @@ struct ContainerBackedViewModelTests {
         } else {
             Issue.record("Expected .idle state, got \(viewModel.state)")
         }
+        #expect(savedRepository.saveCallCount == 0)
     }
+}
 
-    @Test func myRecipesViewModelLoadsRecipes() async {
+// MARK: - MyRecipesViewModel
+
+@MainActor
+struct MyRecipesViewModelTests {
+
+    @Test func loadsRecipes() async {
         let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A"), Recipe(text: "B")])
-        await DIContainer.shared.register(GetSavedRecipesUseCase.self, scope: .singleton) {
-            GetSavedRecipesUseCaseImpl(repository: repository)
-        }
+        let viewModel = MyRecipesViewModel(
+            getSavedRecipesUseCase: GetSavedRecipesUseCaseImpl(repository: repository),
+            deleteSavedRecipesUseCase: DeleteSavedRecipesUseCaseImpl(repository: repository)
+        )
 
-        let viewModel = MyRecipesViewModel()
         await viewModel.loadRecipes()
 
         #expect(viewModel.recipes.map(\.text) == ["A", "B"])
     }
 
-    @Test func myRecipesViewModelDeletesAllRecipes() async {
+    @Test func deletesAllRecipes() async {
         let repository = MockSavedRecipeRepository(storedRecipes: [Recipe(text: "A")])
-        await DIContainer.shared.register(GetSavedRecipesUseCase.self, scope: .singleton) {
-            GetSavedRecipesUseCaseImpl(repository: repository)
-        }
-        await DIContainer.shared.register(DeleteSavedRecipesUseCase.self, scope: .singleton) {
-            DeleteSavedRecipesUseCaseImpl(repository: repository)
-        }
+        let viewModel = MyRecipesViewModel(
+            getSavedRecipesUseCase: GetSavedRecipesUseCaseImpl(repository: repository),
+            deleteSavedRecipesUseCase: DeleteSavedRecipesUseCaseImpl(repository: repository)
+        )
 
-        let viewModel = MyRecipesViewModel()
         await viewModel.loadRecipes()
         await viewModel.deleteAllRecipes()
 
