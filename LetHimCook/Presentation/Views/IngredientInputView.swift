@@ -10,109 +10,27 @@ struct IngredientInputView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isTextFieldFocused: Bool
 
+    private let chipColumns = [GridItem(.adaptive(minimum: 110), spacing: 8, alignment: .leading)]
+
+    private var isAtLimit: Bool { viewModel.ingredients.count >= 10 }
+    private var canAdd: Bool {
+        !viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !isAtLimit
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
                 AppBackground()
 
-                List {
-                    Section {
-                        AppCard {
-                            HStack(spacing: 12) {
-                                TextField("ingredient_input_placeholder", text: $viewModel.currentInput)
-                                    .autocorrectionDisabled()
-                                    .textInputAutocapitalization(.words)
-                                    .focused($isTextFieldFocused)
-
-                                Button {
-                                    viewModel.addIngredient()
-                                    isTextFieldFocused = true
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .font(.headline)
-                                        .foregroundStyle(.white)
-                                        .frame(width: 44, height: 44)
-                                        .background(
-                                            AppTheme.accent,
-                                            in: Circle()
-                                        )
-                                        .accessibilityLabel("ingredient_input_accessibility_add")
-                                }
-                                .buttonStyle(.plain)
-                                .disabled(viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || viewModel.ingredients.count >= 10)
-                            }
-                        }
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
-                    } footer: {
-                        if viewModel.ingredients.count >= 10 {
-                            Text("ingredient_input_footer_limit")
-                                .foregroundStyle(.red)
-                        } else {
-                            Text("ingredient_input_footer_hint")
-                                .foregroundStyle(.secondary)
-                        }
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        inputField
+                        hint
+                        ingredientsSection
                     }
-
-                    if viewModel.ingredients.isEmpty {
-                        Section {
-                            AppCard {
-                                VStack(spacing: 10) {
-                                    Image(systemName: "leaf")
-                                        .font(.title2)
-                                        .foregroundStyle(AppTheme.accent)
-
-                                    Text("ingredient_input_empty_title")
-                                        .font(.system(.headline, design: .rounded))
-
-                                    Text("ingredient_input_empty_description")
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(.secondary)
-                                        .padding(.horizontal)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.vertical, 12)
-                            }
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
-                        }
-                    } else {
-                        Section(header: AppSectionHeader(titleKey: "ingredient_input_section_title")) {
-                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                HStack(spacing: 12) {
-                                    Image(systemName: "leaf.fill")
-                                        .font(.caption)
-                                        .foregroundStyle(AppTheme.accent)
-
-                                    Text(ingredient)
-                                        .font(.system(.body, design: .rounded))
-                                        .foregroundStyle(.primary)
-                                }
-                                .padding(12)
-                                .background(
-                                    .thinMaterial,
-                                    in: RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                )
-                                .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                            }
-                            .onDelete { offsets in
-                                viewModel.removeIngredient(at: offsets)
-                            }
-
-                            Button(role: .destructive) {
-                                viewModel.reset()
-                            } label: {
-                                Label("ingredient_input_clear_list", systemImage: "trash")
-                            }
-                            .listRowBackground(Color.clear)
-                        }
-                    }
+                    .padding()
                 }
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
-                .padding(.horizontal)
+                .scrollDismissesKeyboard(.interactively)
             }
             .navigationTitle("ingredient_input_nav_title")
             .toolbar {
@@ -125,6 +43,123 @@ struct IngredientInputView: View {
             }
         }
         .presentationDetents([.medium, .large])
+    }
+
+    // MARK: - Input
+
+    private var inputField: some View {
+        HStack(spacing: 10) {
+            TextField("ingredient_input_placeholder", text: $viewModel.currentInput)
+                .textFieldStyle(.plain)
+                .font(.system(.body, design: .rounded))
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.words)
+                .focused($isTextFieldFocused)
+                .submitLabel(.done)
+                .onSubmit(addIngredient)
+
+            Button(action: addIngredient) {
+                Image(systemName: "plus")
+                    .font(.headline)
+            }
+            .buttonStyle(.glassProminent)
+            .tint(AppTheme.accent)
+            .buttonBorderShape(.circle)
+            .controlSize(.large)
+            .disabled(!canAdd)
+            .accessibilityLabel("ingredient_input_accessibility_add")
+        }
+        .padding(.vertical, 8)
+        .padding(.leading, 18)
+        .padding(.trailing, 8)
+        .background(.regularMaterial, in: Capsule(style: .continuous))
+        .overlay(
+            Capsule(style: .continuous)
+                .strokeBorder(Color.primary.opacity(0.06), lineWidth: 1)
+        )
+    }
+
+    private var hint: some View {
+        HStack {
+            Text(isAtLimit ? "ingredient_input_footer_limit" : "ingredient_input_footer_hint")
+                .foregroundStyle(isAtLimit ? Color.red : Color.secondary)
+            Spacer()
+            Text("\(viewModel.ingredients.count)/10")
+                .fontWeight(.semibold)
+                .monospacedDigit()
+                .foregroundStyle(isAtLimit ? Color.red : Color.secondary)
+        }
+        .font(.footnote)
+        .padding(.horizontal, 4)
+    }
+
+    // MARK: - Ingredients
+
+    @ViewBuilder
+    private var ingredientsSection: some View {
+        if viewModel.ingredients.isEmpty {
+            ContentUnavailableView {
+                Label("ingredient_input_empty_title", systemImage: "leaf")
+            } description: {
+                Text("ingredient_input_empty_description")
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.top, 24)
+        } else {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text("ingredient_input_section_title")
+                        .font(.system(.title3, design: .rounded).weight(.bold))
+                        .foregroundStyle(.primary)
+
+                    Spacer()
+
+                    Button(role: .destructive) {
+                        withAnimation { viewModel.reset() }
+                        isTextFieldFocused = true
+                    } label: {
+                        Text("ingredient_input_clear_list")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.red)
+                }
+
+                LazyVGrid(columns: chipColumns, alignment: .leading, spacing: 8) {
+                    ForEach(Array(viewModel.ingredients.enumerated()), id: \.offset) { index, ingredient in
+                        ingredientChip(ingredient, at: index)
+                    }
+                }
+            }
+        }
+    }
+
+    private func ingredientChip(_ ingredient: String, at index: Int) -> some View {
+        Button {
+            withAnimation {
+                viewModel.removeIngredient(at: IndexSet(integer: index))
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Text(ingredient)
+                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                Image(systemName: "xmark.circle.fill")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .background(AppTheme.accentSoft.opacity(0.30), in: Capsule(style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(String(format: String(localized: "ingredient_input_remove"), ingredient)))
+    }
+
+    private func addIngredient() {
+        viewModel.addIngredient()
+        isTextFieldFocused = true
     }
 }
 
