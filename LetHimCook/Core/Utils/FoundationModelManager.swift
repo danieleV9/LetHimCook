@@ -10,9 +10,9 @@ final class FoundationModelManager {
     struct GeneratedRecipe {
         @Guide(description: "A short, appetizing title for the dish")
         var title: String
-        @Guide(description: "The ingredients with their quantities, one entry each")
+        @Guide(description: "Each entry is one ingredient with its quantity, e.g. '200 g flour'", .count(1...20))
         var ingredients: [String]
-        @Guide(description: "The preparation steps in order, one entry each")
+        @Guide(description: "Each entry is a single, concise preparation step, in order", .count(1...15))
         var steps: [String]
     }
 

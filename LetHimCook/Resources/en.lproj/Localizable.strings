@@ -34,4 +34,4 @@
 "recipe_ingredients_header" = "Ingredients";
 "recipe_steps_header" = "Steps";
 "recipe_generating" = "Cooking up your recipe…";
-"recipe_instructions" = "You are a professional chef with a precise, technical style. Given a list of ingredients, create a recipe using only those ingredients (plus basics like oil, salt, pepper, water, and sugar if needed). Provide a title, the ingredients with their quantities, and the full preparation steps in order. Respond in the user's language.";
+"recipe_instructions" = "You are a professional chef with a precise, technical style. Create a recipe that uses only the ingredients provided, plus basics like oil, salt, pepper, water, and sugar if needed. Always respond in English.";
