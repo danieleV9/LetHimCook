@@ -81,34 +81,49 @@ struct ContentView: View {
 
     private var header: some View {
         Text("app_title")
-            .font(.system(size: 36, weight: .bold, design: .serif))
-            .foregroundStyle(AppTheme.ink)
+            .font(.system(.largeTitle, design: .serif).weight(.bold))
+            .foregroundStyle(.primary)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var actionBar: some View {
         VStack(spacing: 12) {
-            if !viewModel.ingredients.isEmpty {
-                Button("home_find_recipe_button") {
-                    viewModel.showRecipe()
+            if viewModel.ingredients.isEmpty {
+                // No ingredients yet: entering them is the primary action.
+                Button {
+                    viewModel.showInput()
+                } label: {
+                    Label("home_tell_me_prompt", systemImage: "plus")
+                        .font(.system(.headline, design: .rounded))
+                        .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(AppPrimaryButtonStyle())
-            }
+                .buttonStyle(.glassProminent)
+                .tint(AppTheme.accent)
+                .controlSize(.large)
+            } else {
+                // Ingredients present: generating the recipe is the primary action.
+                Button {
+                    viewModel.showRecipe()
+                } label: {
+                    Label("home_find_recipe_button", systemImage: "sparkles")
+                        .font(.system(.headline, design: .rounded))
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.glassProminent)
+                .tint(AppTheme.accent)
+                .controlSize(.large)
 
-            Button("home_tell_me_prompt") {
-                viewModel.showInput()
+                Button {
+                    viewModel.showInput()
+                } label: {
+                    Label("home_tell_me_prompt", systemImage: "pencil")
+                        .font(.system(.headline, design: .rounded))
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.glass)
+                .controlSize(.large)
             }
-            .buttonStyle(AppSecondaryButtonStyle())
         }
-        .padding(12)
-        .background(
-            .ultraThinMaterial,
-            in: RoundedRectangle(cornerRadius: 24, style: .continuous)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(AppTheme.cardStroke, lineWidth: 1)
-        )
         .padding(.horizontal)
         .padding(.bottom, 8)
     }
