@@ -4,6 +4,7 @@
 "home_tell_me_prompt" = "Inserisci i tuoi ingredienti";
 "ingredient_input_placeholder" = "Aggiungi un ingrediente";
 "ingredient_input_accessibility_add" = "Aggiungi ingrediente";
+"ingredient_input_remove" = "Rimuovi %@";
 "ingredient_input_footer_limit" = "Puoi aggiungere fino a 10 ingredienti";
 "ingredient_input_footer_hint" = "Aggiungi fino a 10 ingredienti per suggerimenti più precisi.";
 "ingredient_input_empty_title" = "Nessun ingrediente";
