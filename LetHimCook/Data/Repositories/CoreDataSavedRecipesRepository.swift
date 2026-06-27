@@ -16,8 +16,15 @@ final class CoreDataSavedRecipesRepository: SavedRecipeRepository {
         do {
             let entities = try viewContext.fetch(request)
             return entities.compactMap { entity in
-                guard let data = entity.text.data(using: .utf8) else { return nil }
-                return try? decoder.decode(Recipe.self, from: data)
+                let raw = entity.text
+                if let data = raw.data(using: .utf8),
+                   let recipe = try? decoder.decode(Recipe.self, from: data) {
+                    return recipe
+                }
+                // Legacy entries were stored as plain Markdown text before recipes
+                // became structured. Preserve them as a single-block recipe.
+                guard !raw.isEmpty else { return nil }
+                return Recipe(title: "", ingredients: [], steps: [raw])
             }
         } catch {
             return []
