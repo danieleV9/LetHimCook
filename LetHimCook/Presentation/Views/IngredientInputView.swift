@@ -10,8 +10,6 @@ struct IngredientInputView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isTextFieldFocused: Bool
 
-    private let chipColumns = [GridItem(.adaptive(minimum: 110), spacing: 8, alignment: .leading)]
-
     private var isAtLimit: Bool { viewModel.ingredients.count >= 10 }
     private var canAdd: Bool {
         !viewModel.currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !isAtLimit
@@ -125,11 +123,12 @@ struct IngredientInputView: View {
                     .foregroundStyle(.red)
                 }
 
-                LazyVGrid(columns: chipColumns, alignment: .leading, spacing: 8) {
+                FlowLayout(spacing: 8) {
                     ForEach(Array(viewModel.ingredients.enumerated()), id: \.offset) { index, ingredient in
                         ingredientChip(ingredient, at: index)
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
