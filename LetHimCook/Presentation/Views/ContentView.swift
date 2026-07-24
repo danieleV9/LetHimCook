@@ -14,10 +14,6 @@ struct ContentView: View {
 
     private let factory: ViewModelFactory
 
-    private let chipColumns: [GridItem] = [
-        GridItem(.adaptive(minimum: 90), spacing: 8, alignment: .leading)
-    ]
-
     init(factory: ViewModelFactory) {
         self.factory = factory
     }
@@ -42,11 +38,12 @@ struct ContentView: View {
                             VStack(alignment: .leading, spacing: 12) {
                                 AppSectionHeader(titleKey: "home_ingredients_title")
 
-                                LazyVGrid(columns: chipColumns, alignment: .leading, spacing: 8) {
+                                FlowLayout(spacing: 8) {
                                     ForEach(viewModel.ingredients, id: \.self) { ingredient in
                                         AppChip(text: ingredient)
                                     }
                                 }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                     }
