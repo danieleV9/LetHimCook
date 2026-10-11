@@ -1,6 +1,7 @@
 # 🍳 LetHimCook
 
 <p align="center">
+  <a href="https://github.com/danieleV9/LetHimCook/actions/workflows/ci.yml"><img src="https://github.com/danieleV9/LetHimCook/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <img src="https://img.shields.io/badge/Platform-iOS%2026+-black.svg?logo=apple" alt="iOS 26+" />
   <img src="https://img.shields.io/badge/Swift-5-orange.svg?logo=swift" alt="Swift" />
   <img src="https://img.shields.io/badge/UI-SwiftUI-blue.svg" alt="SwiftUI" />
