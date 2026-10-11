@@ -1,68 +1,137 @@
 import SwiftUI
+import UIKit
 
+/// Visual language inspired by TheFork: a deep brand green for primary actions
+/// and headers, a bright lime used sparingly for badges/highlights, and clean,
+/// solid grouped surfaces instead of heavy materials.
 enum AppTheme {
-    /// Brand accent. Used as the tint for prominent controls.
-    static let accent = Color(red: 0.95, green: 0.46, blue: 0.20)
-    static let accentSoft = Color(red: 0.99, green: 0.76, blue: 0.58)
+    /// Brand green. Slightly brightened in dark mode so it stays legible on
+    /// black while still carrying white button labels.
+    static let accent = adaptive(
+        light: UIColor(red: 0.00, green: 0.40, blue: 0.35, alpha: 1),
+        dark: UIColor(red: 0.10, green: 0.58, blue: 0.49, alpha: 1)
+    )
+    /// Darker brand green for hero banners (always paired with light text).
+    static let accentDeep = Color(red: 0.00, green: 0.27, blue: 0.24)
+    /// Lime highlight for badges. Always paired with `onHighlight` text.
+    static let highlight = Color(red: 0.84, green: 0.95, blue: 0.36)
+    static let onHighlight = Color(red: 0.05, green: 0.20, blue: 0.16)
+    /// Tinted fill for chips and icon backgrounds.
+    static let accentSoft = adaptive(
+        light: UIColor(red: 0.00, green: 0.40, blue: 0.35, alpha: 0.10),
+        dark: UIColor(red: 0.30, green: 0.78, blue: 0.66, alpha: 0.18)
+    )
 
-    static let lightBackgroundTop = Color(red: 0.99, green: 0.97, blue: 0.93)
-    static let lightBackgroundBottom = Color(red: 0.98, green: 0.90, blue: 0.80)
-    static let darkBackgroundTop = Color(red: 0.10, green: 0.08, blue: 0.07)
-    static let darkBackgroundBottom = Color(red: 0.16, green: 0.11, blue: 0.08)
-}
+    static let background = Color(uiColor: .systemGroupedBackground)
+    static let surface = Color(uiColor: .secondarySystemGroupedBackground)
+    static let separator = Color(uiColor: .separator)
 
-struct AppBackground: View {
-    @Environment(\.colorScheme) private var colorScheme
+    static let cornerRadius: CGFloat = 16
 
-    var body: some View {
-        LinearGradient(
-            colors: colorScheme == .dark
-                ? [AppTheme.darkBackgroundTop, AppTheme.darkBackgroundBottom]
-                : [AppTheme.lightBackgroundTop, AppTheme.lightBackgroundBottom],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-        .ignoresSafeArea()
+    private static func adaptive(light: UIColor, dark: UIColor) -> Color {
+        Color(uiColor: UIColor { $0.userInterfaceStyle == .dark ? dark : light })
     }
 }
 
-/// A content surface. Uses a system material so it adapts to light/dark and to
-/// the Reduce Transparency / Increase Contrast accessibility settings.
+struct AppBackground: View {
+    var body: some View {
+        AppTheme.background
+            .ignoresSafeArea()
+    }
+}
+
+/// A solid content surface with a soft shadow, like TheFork's listing cards.
 struct AppCard<Content: View>: View {
+    var padding: CGFloat = 16
     let content: Content
 
-    init(@ViewBuilder content: () -> Content) {
+    init(padding: CGFloat = 16, @ViewBuilder content: () -> Content) {
+        self.padding = padding
         self.content = content()
     }
 
     var body: some View {
         content
-            .padding(16)
+            .padding(padding)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .background(
-                .regularMaterial,
-                in: RoundedRectangle(cornerRadius: 24, style: .continuous)
+                AppTheme.surface,
+                in: RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous)
             )
-            .overlay(
-                RoundedRectangle(cornerRadius: 24, style: .continuous)
-                    .strokeBorder(Color.primary.opacity(0.06), lineWidth: 1)
-            )
-            .shadow(color: .black.opacity(0.12), radius: 12, x: 0, y: 8)
+            .shadow(color: .black.opacity(0.06), radius: 10, x: 0, y: 4)
     }
 }
 
+/// An outlined pill, like TheFork's filter chips.
 struct AppChip: View {
     let text: String
 
     var body: some View {
         Text(text)
-            .font(.system(.subheadline, design: .rounded).weight(.semibold))
+            .font(.subheadline.weight(.medium))
             .foregroundStyle(.primary)
             .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .background(
-                AppTheme.accentSoft.opacity(0.35),
-                in: Capsule(style: .continuous)
+            .padding(.horizontal, 14)
+            .background(AppTheme.surface, in: Capsule(style: .continuous))
+            .overlay(
+                Capsule(style: .continuous)
+                    .strokeBorder(AppTheme.separator, lineWidth: 1)
             )
+    }
+}
+
+/// A small lime pill used to highlight a key fact, like TheFork's "-50%" tag.
+struct AppBadge: View {
+    let titleKey: LocalizedStringKey
+    var systemImage: String?
+
+    var body: some View {
+        HStack(spacing: 4) {
+            if let systemImage {
+                Image(systemName: systemImage)
+            }
+            Text(titleKey)
+        }
+        .font(.caption.weight(.bold))
+        .foregroundStyle(AppTheme.onHighlight)
+        .padding(.vertical, 4)
+        .padding(.horizontal, 8)
+        .background(AppTheme.highlight, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+    }
+}
+
+/// A photo-style placeholder for a recipe. There are no real photos, so each
+/// recipe gets a stable gradient derived from `seed` (pass the recipe ID). The
+/// symbol is always the same: picking one from the seed would pair dishes with
+/// unrelated food, like a coffee cup on a pasta recipe.
+struct RecipeArtwork: View {
+    let seed: String
+    var symbolSize: CGFloat = 56
+
+    private static let palettes: [[Color]] = [
+        [Color(red: 0.00, green: 0.40, blue: 0.35), Color(red: 0.00, green: 0.24, blue: 0.21)],
+        [Color(red: 0.93, green: 0.49, blue: 0.24), Color(red: 0.74, green: 0.27, blue: 0.14)],
+        [Color(red: 0.78, green: 0.62, blue: 0.20), Color(red: 0.52, green: 0.38, blue: 0.10)],
+        [Color(red: 0.72, green: 0.25, blue: 0.29), Color(red: 0.46, green: 0.12, blue: 0.18)],
+        [Color(red: 0.34, green: 0.52, blue: 0.27), Color(red: 0.18, green: 0.32, blue: 0.16)]
+    ]
+
+    /// A deterministic hash; `hashValue` is randomized per launch.
+    private var stableHash: Int {
+        seed.unicodeScalars.reduce(0) { ($0 &* 31 &+ Int($1.value)) & 0x7FFF_FFFF }
+    }
+
+    var body: some View {
+        let palette = Self.palettes[stableHash % Self.palettes.count]
+
+        LinearGradient(colors: palette, startPoint: .topLeading, endPoint: .bottomTrailing)
+            .overlay {
+                Image(systemName: "fork.knife")
+                    .font(.system(size: symbolSize, weight: .semibold))
+                    .foregroundStyle(.white.opacity(0.9))
+                    .shadow(color: .black.opacity(0.2), radius: 8, y: 4)
+            }
+            .accessibilityHidden(true)
     }
 }
 
@@ -124,7 +193,7 @@ struct AppSectionHeader: View {
 
     var body: some View {
         Text(titleKey)
-            .font(.system(.title3, design: .rounded).weight(.bold))
+            .font(.title3.weight(.bold))
             .foregroundStyle(.primary)
             .frame(maxWidth: .infinity, alignment: .leading)
     }

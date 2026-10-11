@@ -18,11 +18,11 @@ struct LetHimCookApp: App {
                     TabView {
                         ContentView(factory: factory)
                             .tabItem {
-                                Label("tab_home_title", systemImage: "house")
+                                Label("tab_home_title", systemImage: "fork.knife")
                             }
                         MyRecipeView(viewModel: factory.makeMyRecipesViewModel())
                             .tabItem {
-                                Label("tab_saved_recipes_title", systemImage: "book")
+                                Label("tab_saved_recipes_title", systemImage: "bookmark")
                             }
                     }
                     .tint(AppTheme.accent)
