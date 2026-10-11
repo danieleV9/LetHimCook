@@ -13,6 +13,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: SwiftLint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    container: ghcr.io/realm/swiftlint:0.65.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Lint
+        run: swiftlint lint --reporter github-actions-logging
+
   test:
     name: Build & unit test
     runs-on: macos-26
@@ -41,6 +54,7 @@ jobs:
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
 
       - name: Build and test
+        id: test
         run: |
           set -o pipefail
           xcodebuild test \
@@ -49,7 +63,16 @@ jobs:
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -clonedSourcePackagesDirPath .build/SourcePackages \
             -resultBundlePath TestResults.xcresult \
+            -enableCodeCoverage YES \
             CODE_SIGNING_ALLOWED=NO
+
+      - name: Code coverage
+        if: ${{ !cancelled() && steps.test.outcome != 'skipped' }}
+        run: python3 .github/scripts/coverage_summary.py TestResults.xcresult
+
+      - name: Check compiler warnings
+        if: ${{ !cancelled() && steps.test.outcome != 'skipped' }}
+        run: python3 .github/scripts/check_warnings.py TestResults.xcresult
 
       - name: Upload test results
         if: failure()
