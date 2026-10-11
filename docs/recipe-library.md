@@ -11,6 +11,8 @@ Quando l'utente cerca una ricetta, gli ingredienti vengono confrontati con la ra
 
 Le soglie sono in `LetHimCook/Domain/Services/RecipeMatcher.swift`.
 
+La raccolta contiene 30 piatti (classici italiani e ricette svuotafrigo), ognuno in italiano e in inglese, con dosi per 4 persone. Gli `id` hanno il suffisso della lingua, ad esempio `pasta-zucchine-it` e `pasta-zucchine-en`.
+
 ## Formato
 
 ```json
