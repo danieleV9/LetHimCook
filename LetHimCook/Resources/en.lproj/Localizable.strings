@@ -42,4 +42,7 @@
 "home_banner_subtitle" = "Add what you have and get a recipe made just for you.";
 "badge_on_device_ai" = "On-device AI";
 "recipe_saved_badge" = "Saved";
+"saved_recipes_empty_title" = "No saved recipes";
+"saved_recipes_empty_description" = "Recipes you generate will appear here.";
+"saved_recipes_clear_confirm_title" = "Delete all saved recipes?";
 "recipe_instructions" = "You are a professional chef with a precise, technical style. Create a recipe that uses only the ingredients provided, plus basics like oil, salt, pepper, water, and sugar if needed. Always respond in English.";
