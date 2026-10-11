@@ -204,6 +204,8 @@ struct RecipeBody: View {
 
     /// Ingredients the user has ticked off while cooking. View-only state.
     @State private var checkedIngredients: Set<Int> = []
+    /// Steps the user has marked as done while cooking. View-only state.
+    @State private var completedSteps: Set<Int> = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -233,7 +235,7 @@ struct RecipeBody: View {
                     AppSectionHeader(titleKey: "recipe_steps_header")
 
                     ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                        stepRow(step, number: index + 1)
+                        stepRow(step, at: index)
                     }
                 }
             }
@@ -320,25 +322,49 @@ struct RecipeBody: View {
         .accessibilityAddTraits(isChecked ? .isSelected : [])
     }
 
-    private func stepRow(_ step: String, number: Int) -> some View {
-        HStack(alignment: .top, spacing: 14) {
-            Text(number, format: .number)
-                .font(.subheadline.weight(.bold))
-                .monospacedDigit()
-                .foregroundStyle(.white)
+    private func stepRow(_ step: String, at index: Int) -> some View {
+        let number = index + 1
+        let isCompleted = completedSteps.contains(index)
+
+        return Button {
+            withAnimation(.snappy) {
+                if isCompleted {
+                    completedSteps.remove(index)
+                } else {
+                    completedSteps.insert(index)
+                }
+            }
+        } label: {
+            HStack(alignment: .top, spacing: 14) {
+                ZStack {
+                    if isCompleted {
+                        Image(systemName: "checkmark")
+                            .font(.subheadline.weight(.bold))
+                    } else {
+                        Text(number, format: .number)
+                            .font(.subheadline.weight(.bold))
+                            .monospacedDigit()
+                    }
+                }
+                .foregroundStyle(isCompleted ? AppTheme.accent : .white)
                 .frame(width: 30, height: 30)
-                .background(AppTheme.accent, in: Circle())
+                .background(isCompleted ? AppTheme.accentSoft : AppTheme.accent, in: Circle())
                 .accessibilityHidden(true)
 
-            Text(step)
-                .font(.body)
-                .foregroundStyle(.primary)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.top, 4)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                Text(step)
+                    .font(.body)
+                    .foregroundStyle(isCompleted ? .secondary : .primary)
+                    .strikethrough(isCompleted)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, 4)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("\(number). \(step)"))
+        .accessibilityAddTraits(isCompleted ? .isSelected : [])
     }
 }
 
