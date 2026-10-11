@@ -100,7 +100,13 @@ final class FoundationModelManager {
                     let session = prewarmedSession ?? LanguageModelSession(instructions: Self.instructions())
                     prewarmedSession = nil
 
-                    let options = GenerationOptions(temperature: 0.6, maximumResponseTokens: 2500)
+                    // Top-p sampling keeps some variety between recipes while never
+                    // picking unlikely tokens, which keeps quantities and times sensible.
+                    let options = GenerationOptions(
+                        sampling: .random(probabilityThreshold: 0.9),
+                        temperature: 0.5,
+                        maximumResponseTokens: 2500
+                    )
                     let recipeID = UUID()
 
                     let stream = session.streamResponse(
