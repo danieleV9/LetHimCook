@@ -30,7 +30,7 @@ struct RecipeMatcher: Sendable {
     ]
 
     func bestMatch(for ingredients: [String], in library: [LibraryRecipe]) -> Outcome {
-        let userItems = ingredients.map(Self.normalize).filter { !$0.isEmpty }
+        let userItems = ingredients.map { Self.normalize($0) }.filter { !$0.isEmpty }
         guard !userItems.isEmpty else { return .noMatch }
 
         var best: (outcome: Outcome, rank: Int, score: Double)?
@@ -77,7 +77,7 @@ struct RecipeMatcher: Sendable {
         let words = folded
             .components(separatedBy: CharacterSet.letters.inverted)
             .filter { !$0.isEmpty && !fillerWords.contains($0) }
-        return Set(words.map(stem))
+        return Set(words.map { stem($0) })
     }
 
     /// Drops a plural "s" and trailing vowels so singular and plural forms
