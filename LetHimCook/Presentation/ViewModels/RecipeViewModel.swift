@@ -38,12 +38,7 @@ final class RecipeViewModel {
         do {
             var lastRecipe: Recipe?
             for try await snapshot in getRecipeUseCase.execute(with: ingredients) {
-                let recipe = Recipe(
-                    id: recipeID,
-                    title: snapshot.title,
-                    ingredients: snapshot.ingredients,
-                    steps: snapshot.steps
-                )
+                let recipe = snapshot.with(id: recipeID)
                 lastRecipe = recipe
                 state = .streaming(recipe)
             }

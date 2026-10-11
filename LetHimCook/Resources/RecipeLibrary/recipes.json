@@ -1,0 +1,4343 @@
+{
+  "recipes": [
+    {
+      "id": "spaghetti-carbonara-it",
+      "language": "it",
+      "title": "Spaghetti alla carbonara",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "guanciale"
+        },
+        {
+          "quantity": "4",
+          "name": "tuorli d'uovo"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "pecorino romano"
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe nero",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale grosso",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara il guanciale",
+          "instruction": "Elimina la cotenna e taglia il guanciale a listarelle spesse circa mezzo centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Metti a bollire l'acqua",
+          "instruction": "Porta a bollore abbondante acqua in una pentola capiente e salala solo quando bolle: guanciale e pecorino sono già sapidi, quindi non esagerare.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Rosola il guanciale",
+          "instruction": "Metti il guanciale in una padella fredda senza grassi e accendi a fuoco medio. Lascialo rosolare finché il grasso diventa trasparente e i bordi sono croccanti e dorati, poi spegni.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Prepara la crema",
+          "instruction": "In una ciotola sbatti i tuorli con il pecorino grattugiato finemente e una generosa macinata di pepe, fino a ottenere una crema densa e senza grumi.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Cuoci gli spaghetti un minuto in meno del tempo indicato sulla confezione. Prima di scolarli tieni da parte una tazza di acqua di cottura.",
+          "durationMinutes": 9
+        },
+        {
+          "title": "Manteca fuori dal fuoco",
+          "instruction": "Trasferisci gli spaghetti nella padella con il guanciale e mescola per un minuto a fuoco basso. Spegni, aspetta qualche secondo e versa la crema, mescolando velocemente e aggiungendo poca acqua di cottura alla volta finché la salsa è cremosa e lucida: se fa grumi la padella è troppo calda.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Servi",
+          "instruction": "Impiatta subito e completa con altro pecorino e pepe macinato al momento."
+        }
+      ]
+    },
+    {
+      "id": "pasta-amatriciana-it",
+      "language": "it",
+      "title": "Bucatini all'amatriciana",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "bucatini"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "guanciale"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "pecorino romano"
+        },
+        {
+          "quantity": "1",
+          "name": "peperoncino"
+        },
+        {
+          "quantity": "1",
+          "unit": "cucchiaio",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia il guanciale",
+          "instruction": "Togli la cotenna e taglia il guanciale a listarelle di circa mezzo centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Rosola il guanciale",
+          "instruction": "Scalda l'olio in una padella a fuoco medio con il peperoncino sbriciolato, aggiungi il guanciale e rosolalo finché è dorato e il grasso si è sciolto. Toglilo con una schiumarola e tienilo da parte, lasciando il grasso in padella.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Cuoci il sugo",
+          "instruction": "Versa nella padella i pelati schiacciati con una forchetta, sala poco e cuoci a fuoco medio-basso finché il sugo si addensa e l'olio affiora in superficie.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Nel frattempo cuoci i bucatini in abbondante acqua salata e scolali al dente, tenendo da parte un po' di acqua di cottura.",
+          "durationMinutes": 11
+        },
+        {
+          "title": "Unisci e manteca",
+          "instruction": "Rimetti il guanciale nel sugo, aggiungi la pasta e saltala per un minuto a fuoco vivo con un mestolino di acqua di cottura. Spegni e completa con il pecorino grattugiato.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "spaghetti-aglio-olio-it",
+      "language": "it",
+      "title": "Spaghetti aglio, olio e peperoncino",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "3",
+          "unit": "spicchi",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "name": "peperoncino"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "80",
+          "unit": "ml",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Cuoci gli spaghetti in abbondante acqua salata, un minuto in meno del tempo indicato.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Insaporisci l'olio",
+          "instruction": "Intanto scalda l'olio in una padella larga a fuoco basso con l'aglio a fettine e il peperoncino sbriciolato. Toglilo dal fuoco appena l'aglio diventa dorato chiaro: se scurisce diventa amaro.",
+          "durationMinutes": 4
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Scola la pasta tenendo da parte un mestolo d'acqua, trasferiscila nella padella e saltala a fuoco vivo con un po' di acqua di cottura finché l'olio diventa una salsa leggermente cremosa.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Completa",
+          "instruction": "Spegni, aggiungi il prezzemolo tritato e servi subito."
+        }
+      ]
+    },
+    {
+      "id": "pasta-pomodoro-basilico-it",
+      "language": "it",
+      "title": "Pasta al pomodoro e basilico",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "passata di pomodoro"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "8",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Insaporisci l'olio",
+          "instruction": "Scalda l'olio in una casseruola a fuoco medio-basso con lo spicchio d'aglio schiacciato e lascialo sfrigolare finché è dorato, poi toglilo.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Cuoci il sugo",
+          "instruction": "Versa la passata, sala e cuoci a fuoco basso con il coperchio socchiuso, mescolando ogni tanto, finché il sugo è denso e ha perso il sapore acidulo del crudo.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Cuoci la pasta in abbondante acqua salata e scolala al dente, tenendo da parte un po' di acqua di cottura.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Unisci la pasta al sugo e saltala un minuto a fuoco vivo con un goccio di acqua di cottura. Spegni e aggiungi il basilico spezzettato a mano e il parmigiano.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-zucchine-it",
+      "language": "it",
+      "title": "Pasta e zucchine",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "pasta corta"
+        },
+        {
+          "quantity": "4",
+          "name": "zucchine"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "6",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia le zucchine",
+          "instruction": "Lava le zucchine, spuntale e tagliale a rondelle sottili o a cubetti piccoli.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cuoci le zucchine",
+          "instruction": "Scalda l'olio in una padella larga a fuoco medio con l'aglio schiacciato, aggiungi le zucchine e un pizzico di sale e cuoci mescolando finché sono morbide e in parte dorate. Togli l'aglio.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Cuoci la pasta in abbondante acqua salata e scolala al dente, tenendo da parte un mestolo di acqua di cottura.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Versa la pasta nella padella con le zucchine, aggiungi l'acqua di cottura e il parmigiano e mescola a fuoco basso finché si forma una crema che avvolge la pasta. Completa con basilico e pepe.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-tonno-it",
+      "language": "it",
+      "title": "Pasta al tonno e pomodoro",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "pasta corta"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tonno sott'olio"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Insaporisci l'olio",
+          "instruction": "Scalda l'olio in una padella a fuoco medio con l'aglio schiacciato finché è dorato, poi toglilo.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Prepara il sugo",
+          "instruction": "Aggiungi i pelati schiacciati con una forchetta, sala poco e cuoci a fuoco medio-basso finché il sugo si addensa.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Unisci il tonno",
+          "instruction": "Sgocciola il tonno, sbriciolalo nel sugo e lascialo insaporire per un paio di minuti senza cuocerlo troppo, altrimenti diventa asciutto.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci la pasta e manteca",
+          "instruction": "Cuoci la pasta in acqua salata, scolala al dente e saltala nel sugo con un goccio di acqua di cottura. Completa con prezzemolo tritato.",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    {
+      "id": "penne-arrabbiata-it",
+      "language": "it",
+      "title": "Penne all'arrabbiata",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "penne"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "2",
+          "unit": "spicchi",
+          "name": "aglio"
+        },
+        {
+          "quantity": "2",
+          "name": "peperoncini"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Soffriggi aglio e peperoncino",
+          "instruction": "Scalda l'olio in una padella a fuoco medio-basso con l'aglio a fettine e i peperoncini sbriciolati, finché l'aglio è appena dorato.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci il sugo",
+          "instruction": "Aggiungi i pelati schiacciati, sala e cuoci a fuoco medio finché il sugo è denso e ristretto.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci le penne",
+          "instruction": "Cuoci le penne in abbondante acqua salata e scolale al dente.",
+          "durationMinutes": 11
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Salta le penne nel sugo a fuoco vivo per un minuto e completa con prezzemolo tritato.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-patate-it",
+      "language": "it",
+      "title": "Pasta e patate",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "250",
+          "unit": "g",
+          "name": "pasta mista"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "patate"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1",
+          "name": "carota"
+        },
+        {
+          "quantity": "1",
+          "unit": "costa",
+          "name": "sedano"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "1",
+          "unit": "cucchiaio",
+          "name": "concentrato di pomodoro"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "acqua calda",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara le verdure",
+          "instruction": "Trita finemente cipolla, carota e sedano. Sbuccia le patate e tagliale a cubetti di circa un centimetro.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Fai il soffritto",
+          "instruction": "Scalda l'olio in una pentola a fuoco medio-basso e cuoci il trito finché è morbido e traslucido, senza farlo scurire. Aggiungi il concentrato e mescola per un minuto.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Cuoci le patate",
+          "instruction": "Aggiungi le patate, falle insaporire un paio di minuti, poi copri con l'acqua calda, sala e cuoci a fuoco medio finché sono tenere e alcune iniziano a sfaldarsi.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci la pasta nel brodo",
+          "instruction": "Versa la pasta direttamente nella pentola e cuocila mescolando spesso, aggiungendo poca acqua calda se si asciuga troppo: alla fine deve essere densa e cremosa.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Spegni, aggiungi il parmigiano e una macinata di pepe, mescola e lascia riposare un minuto prima di servire.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-ceci-it",
+      "language": "it",
+      "title": "Pasta e ceci",
+      "tags": [
+        "primo",
+        "pasta",
+        "legumi",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "pasta corta"
+        },
+        {
+          "quantity": "480",
+          "unit": "g",
+          "name": "ceci cotti"
+        },
+        {
+          "quantity": "2",
+          "unit": "spicchi",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "unit": "rametto",
+          "name": "rosmarino"
+        },
+        {
+          "quantity": "1",
+          "unit": "cucchiaio",
+          "name": "concentrato di pomodoro"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "acqua calda",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Insaporisci l'olio",
+          "instruction": "Scalda l'olio in una pentola a fuoco medio-basso con l'aglio schiacciato e il rosmarino finché sono profumati, poi aggiungi il concentrato e mescola per un minuto.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci i ceci",
+          "instruction": "Aggiungi i ceci scolati, falli insaporire, poi copri con l'acqua calda, sala e cuoci a fuoco medio. Togli aglio e rosmarino e frulla circa metà dei ceci per rendere la base cremosa.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Versa la pasta nella pentola e cuocila mescolando spesso, aggiungendo acqua calda se serve, finché è al dente e la minestra è densa.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Servi",
+          "instruction": "Servi con un filo d'olio a crudo e una macinata di pepe."
+        }
+      ]
+    },
+    {
+      "id": "pasta-fagioli-it",
+      "language": "it",
+      "title": "Pasta e fagioli",
+      "tags": [
+        "primo",
+        "pasta",
+        "legumi",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "pasta mista"
+        },
+        {
+          "quantity": "480",
+          "unit": "g",
+          "name": "fagioli borlotti cotti"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1",
+          "name": "carota"
+        },
+        {
+          "quantity": "1",
+          "unit": "costa",
+          "name": "sedano"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "passata di pomodoro"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "acqua calda",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Fai il soffritto",
+          "instruction": "Trita cipolla, carota e sedano e cuocili nell'olio a fuoco medio-basso finché sono morbidi e appena dorati.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cuoci i fagioli",
+          "instruction": "Aggiungi i fagioli scolati e la passata, copri con l'acqua calda, sala e cuoci a fuoco medio. Schiaccia una parte dei fagioli con un mestolo per addensare.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Versa la pasta e cuocila nella minestra mescolando spesso finché è al dente, aggiungendo acqua calda se si asciuga troppo.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Fai riposare",
+          "instruction": "Spegni e lascia riposare qualche minuto: la minestra si rapprende e diventa cremosa. Servi con olio a crudo e pepe.",
+          "durationMinutes": 5
+        }
+      ]
+    },
+    {
+      "id": "risotto-parmigiana-it",
+      "language": "it",
+      "title": "Risotto alla parmigiana",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "riso carnaroli"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1,2",
+          "unit": "l",
+          "name": "brodo vegetale"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "burro"
+        },
+        {
+          "quantity": "100",
+          "unit": "ml",
+          "name": "vino bianco"
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara il brodo e la cipolla",
+          "instruction": "Tieni il brodo caldo su un fornello a fuoco basso. Trita finemente la cipolla.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Appassisci la cipolla",
+          "instruction": "In una casseruola sciogli metà del burro a fuoco medio-basso e cuoci la cipolla finché è morbida e trasparente, senza farla colorire.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Tosta il riso",
+          "instruction": "Alza il fuoco, aggiungi il riso e tostalo mescolando finché i chicchi diventano lucidi e caldi al tatto. Sfuma con il vino e lascialo evaporare.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci il risotto",
+          "instruction": "Aggiungi il brodo un mestolo alla volta, mescolando spesso e versandone altro solo quando il precedente è stato assorbito. Cuoci a fuoco medio finché il riso è al dente e ancora leggermente all'onda.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Togli dal fuoco, aggiungi il burro rimasto freddo e il parmigiano e mescola energicamente finché il risotto è cremoso. Regola di sale, copri e lascia riposare un minuto prima di servire.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "risotto-funghi-it",
+      "language": "it",
+      "title": "Risotto ai funghi",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "riso carnaroli"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "funghi champignon"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1,2",
+          "unit": "l",
+          "name": "brodo vegetale"
+        },
+        {
+          "quantity": "60",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "burro"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cuoci i funghi",
+          "instruction": "Pulisci i funghi con un panno e affettali. Scalda l'olio con l'aglio in padella a fuoco vivo, aggiungi i funghi e cuocili finché hanno perso l'acqua e sono dorati. Sala, togli l'aglio e aggiungi il prezzemolo.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Appassisci la cipolla",
+          "instruction": "In una casseruola cuoci la cipolla tritata con metà del burro a fuoco medio-basso finché è trasparente.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Tosta il riso",
+          "instruction": "Aggiungi il riso e tostalo mescolando per un paio di minuti finché i chicchi sono lucidi.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci il risotto",
+          "instruction": "Aggiungi il brodo caldo un mestolo alla volta, mescolando spesso. A metà cottura unisci i funghi. Cuoci finché il riso è al dente.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Fuori dal fuoco manteca con il burro rimasto e il parmigiano finché è cremoso, poi lascia riposare un minuto.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "risotto-zucca-it",
+      "language": "it",
+      "title": "Risotto alla zucca",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "riso carnaroli"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "zucca"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1,2",
+          "unit": "l",
+          "name": "brodo vegetale"
+        },
+        {
+          "quantity": "60",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "burro"
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara la zucca",
+          "instruction": "Sbuccia la zucca, elimina i semi e tagliala a cubetti piccoli. Trita la cipolla.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cuoci la zucca",
+          "instruction": "Scalda l'olio in una casseruola a fuoco medio, cuoci la cipolla finché è trasparente, poi aggiungi la zucca e un mestolo di brodo e cuoci finché la zucca è morbida e si schiaccia con il cucchiaio.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Tosta il riso",
+          "instruction": "Aggiungi il riso e tostalo mescolando per un paio di minuti.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci il risotto",
+          "instruction": "Aggiungi il brodo caldo un mestolo alla volta mescolando spesso: la zucca si sfalda e colora il riso di arancio. Cuoci finché il riso è al dente.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Manteca",
+          "instruction": "Fuori dal fuoco manteca con burro e parmigiano, regola di sale e pepe e lascia riposare un minuto.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "insalata-riso-it",
+      "language": "it",
+      "title": "Insalata di riso",
+      "tags": [
+        "primo",
+        "riso",
+        "freddo",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "riso"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tonno sott'olio"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "prosciutto cotto"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "formaggio"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "pomodorini"
+        },
+        {
+          "quantity": "2",
+          "name": "uova"
+        },
+        {
+          "quantity": "100",
+          "unit": "g",
+          "name": "olive"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cuoci il riso",
+          "instruction": "Cuoci il riso in abbondante acqua salata finché è al dente, poi scolalo e passalo sotto l'acqua fredda per fermare la cottura. Sgocciolalo bene.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Rassoda le uova",
+          "instruction": "Metti le uova in acqua fredda, porta a bollore e cuocile 9 minuti. Raffreddale in acqua fredda, sgusciale e tagliale a spicchi.",
+          "durationMinutes": 9
+        },
+        {
+          "title": "Taglia gli ingredienti",
+          "instruction": "Taglia a cubetti prosciutto e formaggio, a metà i pomodorini e a rondelle le olive. Sgocciola e sbriciola il tonno.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Unisci e lascia riposare",
+          "instruction": "Unisci tutto al riso con l'olio, mescola, regola di sale e lascia riposare in frigorifero almeno mezz'ora prima di servire. Aggiungi le uova al momento.",
+          "durationMinutes": 30
+        }
+      ]
+    },
+    {
+      "id": "minestrone-it",
+      "language": "it",
+      "title": "Minestrone di verdure",
+      "tags": [
+        "primo",
+        "zuppa",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "2",
+          "name": "patate"
+        },
+        {
+          "quantity": "2",
+          "name": "carote"
+        },
+        {
+          "quantity": "2",
+          "name": "zucchine"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "2",
+          "unit": "coste",
+          "name": "sedano"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "fagioli cotti"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "piselli"
+        },
+        {
+          "quantity": "2",
+          "name": "pomodori"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "1,5",
+          "unit": "l",
+          "name": "acqua",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia le verdure",
+          "instruction": "Pela patate, carote e cipolla e taglia tutte le verdure a cubetti di dimensioni simili, così cuociono in modo uniforme.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Fai il soffritto",
+          "instruction": "Scalda l'olio in una pentola capiente a fuoco medio-basso e cuoci cipolla, sedano e carote finché sono morbidi.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Cuoci il minestrone",
+          "instruction": "Aggiungi le altre verdure, copri con l'acqua, sala e cuoci a fuoco basso con il coperchio socchiuso finché le patate si sfaldano e il brodo è denso. Unisci fagioli e piselli negli ultimi 10 minuti.",
+          "durationMinutes": 40
+        },
+        {
+          "title": "Servi",
+          "instruction": "Servi caldo o tiepido con un filo d'olio a crudo e il parmigiano."
+        }
+      ]
+    },
+    {
+      "id": "frittata-zucchine-it",
+      "language": "it",
+      "title": "Frittata di zucchine",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "6",
+          "name": "uova"
+        },
+        {
+          "quantity": "3",
+          "name": "zucchine"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cuoci le verdure",
+          "instruction": "Affetta sottilmente cipolla e zucchine. Cuocile in una padella antiaderente con 2 cucchiai d'olio a fuoco medio finché le zucchine sono morbide e leggermente dorate. Sala e lascia intiepidire.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Sbatti le uova",
+          "instruction": "In una ciotola sbatti le uova con parmigiano, sale e pepe, poi unisci le verdure.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci il primo lato",
+          "instruction": "Scalda l'olio rimasto nella padella a fuoco medio-basso, versa il composto e cuoci con il coperchio finché i bordi sono rappresi e la superficie è quasi soda.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Gira la frittata",
+          "instruction": "Capovolgi la frittata aiutandoti con un piatto e cuoci l'altro lato finché è dorato. Servila calda o tiepida.",
+          "durationMinutes": 3
+        }
+      ]
+    },
+    {
+      "id": "frittata-patate-cipolle-it",
+      "language": "it",
+      "title": "Frittata di patate e cipolle",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "6",
+          "name": "uova"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "patate"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia patate e cipolla",
+          "instruction": "Pela le patate e tagliale a fettine sottili. Affetta la cipolla.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cuoci le patate",
+          "instruction": "Cuoci patate e cipolla in una padella antiaderente con 3 cucchiai d'olio a fuoco medio-basso, con il coperchio e mescolando ogni tanto, finché le patate sono tenere e dorate ai bordi. Sala.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Sbatti le uova",
+          "instruction": "Sbatti le uova con parmigiano, sale e pepe e unisci le patate leggermente intiepidite.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci la frittata",
+          "instruction": "Scalda l'olio rimasto, versa il composto e cuoci a fuoco basso con il coperchio finché la superficie è quasi soda. Girala con l'aiuto di un piatto e cuoci l'altro lato finché è dorato.",
+          "durationMinutes": 12
+        }
+      ]
+    },
+    {
+      "id": "uova-in-purgatorio-it",
+      "language": "it",
+      "title": "Uova in purgatorio",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "uova"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "passata di pomodoro"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "4",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "4",
+          "unit": "fette",
+          "name": "pane"
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara il sugo",
+          "instruction": "Scalda l'olio con l'aglio in una padella larga a fuoco medio finché è dorato, toglilo, versa la passata, sala e cuoci finché si addensa.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Cuoci le uova",
+          "instruction": "Con un cucchiaio forma quattro incavi nel sugo e rompi un uovo in ognuno. Copri e cuoci a fuoco basso finché l'albume è bianco e rappreso e il tuorlo è ancora morbido.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Servi",
+          "instruction": "Completa con basilico, sale e pepe sulle uova e servi con il pane tostato per fare la scarpetta."
+        }
+      ]
+    },
+    {
+      "id": "tomato-bruschetta-it",
+      "language": "it",
+      "title": "Bruschetta al pomodoro",
+      "tags": [
+        "antipasto",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "unit": "fette",
+          "name": "pane casereccio"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "pomodori maturi"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "6",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Condisci i pomodori",
+          "instruction": "Taglia i pomodori a cubetti eliminando i semi acquosi. Condiscili in una ciotola con basilico spezzettato, 2 cucchiai d'olio e un pizzico di sale e lasciali riposare perché rilascino il sugo.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Tosta il pane",
+          "instruction": "Tosta le fette di pane in una padella ben calda o sotto il grill a fuoco medio-alto finché sono dorate e croccanti fuori ma ancora morbide dentro.",
+          "durationMinutes": 4
+        },
+        {
+          "title": "Strofina l'aglio",
+          "instruction": "Strofina lo spicchio d'aglio tagliato a metà su un lato del pane ancora caldo: la superficie ruvida lo grattugia e lo distribuisce."
+        },
+        {
+          "title": "Componi e servi",
+          "instruction": "Distribuisci i pomodori sul pane, completa con l'olio rimasto e servi subito, prima che il pane si ammorbidisca."
+        }
+      ]
+    },
+    {
+      "id": "insalata-caprese-it",
+      "language": "it",
+      "title": "Insalata caprese",
+      "tags": [
+        "antipasto",
+        "freddo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "pomodori"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "mozzarella"
+        },
+        {
+          "quantity": "10",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "1",
+          "unit": "pizzico",
+          "name": "origano",
+          "pantry": true
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Sgocciola la mozzarella",
+          "instruction": "Togli la mozzarella dal liquido di conservazione e lasciala sgocciolare qualche minuto, così non annacqua il piatto.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Affetta",
+          "instruction": "Taglia pomodori e mozzarella a fette spesse circa un centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Componi e condisci",
+          "instruction": "Alterna le fette su un piatto con le foglie di basilico. Condisci con sale, origano e olio appena prima di servire."
+        }
+      ]
+    },
+    {
+      "id": "parmigiana-melanzane-it",
+      "language": "it",
+      "title": "Parmigiana di melanzane",
+      "tags": [
+        "secondo",
+        "verdure",
+        "forno"
+      ],
+      "ingredients": [
+        {
+          "quantity": "3",
+          "name": "melanzane"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "passata di pomodoro"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "mozzarella"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "8",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "200",
+          "unit": "ml",
+          "name": "olio di semi per friggere",
+          "pantry": true
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Spurga le melanzane",
+          "instruction": "Taglia le melanzane a fette spesse mezzo centimetro, disponile a strati in uno scolapasta cospargendole di sale e lasciale riposare: perderanno l'acqua amarognola. Sciacquale e asciugale bene.",
+          "durationMinutes": 30
+        },
+        {
+          "title": "Prepara il sugo",
+          "instruction": "Scalda l'olio extravergine con l'aglio, aggiungi la passata, sala e cuoci a fuoco basso finché si addensa. Togli l'aglio e aggiungi il basilico.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Friggi le melanzane",
+          "instruction": "Friggi le fette poche alla volta nell'olio di semi ben caldo finché sono dorate su entrambi i lati, poi scolale su carta assorbente.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Componi la parmigiana",
+          "instruction": "In una pirofila alterna strati di sugo, melanzane, mozzarella a cubetti e parmigiano, finendo con sugo e parmigiano.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cuoci in forno",
+          "instruction": "Cuoci in forno statico a 180 °C finché la superficie è gratinata e il sugo sobbolle ai bordi. Lasciala riposare almeno 15 minuti prima di tagliarla.",
+          "durationMinutes": 35
+        }
+      ]
+    },
+    {
+      "id": "pollo-cacciatora-it",
+      "language": "it",
+      "title": "Pollo alla cacciatora",
+      "tags": [
+        "secondo",
+        "carne"
+      ],
+      "ingredients": [
+        {
+          "quantity": "1,2",
+          "unit": "kg",
+          "name": "pollo a pezzi"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "1",
+          "name": "cipolla"
+        },
+        {
+          "quantity": "1",
+          "name": "carota"
+        },
+        {
+          "quantity": "1",
+          "unit": "costa",
+          "name": "sedano"
+        },
+        {
+          "quantity": "100",
+          "unit": "g",
+          "name": "olive nere"
+        },
+        {
+          "quantity": "150",
+          "unit": "ml",
+          "name": "vino rosso"
+        },
+        {
+          "quantity": "1",
+          "unit": "rametto",
+          "name": "rosmarino"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Rosola il pollo",
+          "instruction": "Scalda l'olio in una casseruola a fuoco medio-alto e rosola i pezzi di pollo su tutti i lati finché la pelle è dorata. Toglili e tienili da parte.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Fai il soffritto",
+          "instruction": "Nello stesso fondo cuoci cipolla, carota e sedano tritati a fuoco medio finché sono morbidi.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Sfuma con il vino",
+          "instruction": "Rimetti il pollo, alza il fuoco e sfuma con il vino, grattando il fondo, finché l'odore dell'alcol svanisce.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci in umido",
+          "instruction": "Aggiungi pelati, rosmarino, sale e pepe, copri e cuoci a fuoco basso girando i pezzi ogni tanto, finché la carne si stacca facilmente dall'osso. Aggiungi le olive negli ultimi 10 minuti.",
+          "durationMinutes": 40
+        }
+      ]
+    },
+    {
+      "id": "scaloppine-limone-it",
+      "language": "it",
+      "title": "Scaloppine di pollo al limone",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "petto di pollo"
+        },
+        {
+          "quantity": "1",
+          "name": "limone"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "farina"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "burro"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "2",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara la carne",
+          "instruction": "Taglia il petto di pollo a fette sottili e battile leggermente tra due fogli di carta forno perché abbiano lo stesso spessore. Infarinale scuotendo via l'eccesso.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Rosola le scaloppine",
+          "instruction": "Scalda olio e metà del burro in una padella larga a fuoco medio-alto e cuoci le fette 2-3 minuti per lato, finché sono dorate e non più rosa all'interno. Sala, pepa e tienile da parte.",
+          "durationMinutes": 6
+        },
+        {
+          "title": "Prepara la salsa",
+          "instruction": "Abbassa il fuoco, versa il succo di limone e un goccio d'acqua nella padella e gratta il fondo. Aggiungi il burro rimasto e mescola finché la salsa è lucida e leggermente densa.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Unisci e servi",
+          "instruction": "Rimetti le scaloppine nella salsa per pochi secondi per lato e servi con prezzemolo tritato.",
+          "durationMinutes": 1
+        }
+      ]
+    },
+    {
+      "id": "polpette-sugo-it",
+      "language": "it",
+      "title": "Polpette al sugo",
+      "tags": [
+        "secondo",
+        "carne"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "carne macinata"
+        },
+        {
+          "quantity": "1",
+          "name": "uovo"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "pane raffermo"
+        },
+        {
+          "quantity": "100",
+          "unit": "ml",
+          "name": "latte"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "passata di pomodoro"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Ammolla il pane",
+          "instruction": "Togli la crosta al pane e ammollalo nel latte finché è morbido, poi strizzalo bene.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Prepara l'impasto",
+          "instruction": "In una ciotola impasta con le mani carne, pane strizzato, uovo, parmigiano, prezzemolo tritato, sale e pepe finché il composto è omogeneo. Forma polpette grandi come una noce, con le mani inumidite.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Avvia il sugo",
+          "instruction": "Scalda l'olio con l'aglio in una casseruola larga a fuoco medio, togli l'aglio quando è dorato, versa la passata e sala.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cuoci le polpette nel sugo",
+          "instruction": "Quando il sugo sobbolle adagia le polpette una accanto all'altra, copri e cuoci a fuoco basso. Non mescolare nei primi 10 minuti, poi girale con delicatezza: sono pronte quando sono sode e il sugo è denso.",
+          "durationMinutes": 30
+        }
+      ]
+    },
+    {
+      "id": "cotolette-pollo-it",
+      "language": "it",
+      "title": "Cotolette di pollo impanate",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "petto di pollo"
+        },
+        {
+          "quantity": "2",
+          "name": "uova"
+        },
+        {
+          "quantity": "120",
+          "unit": "g",
+          "name": "pangrattato"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "1",
+          "name": "limone"
+        },
+        {
+          "quantity": "150",
+          "unit": "ml",
+          "name": "olio di semi per friggere",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Batti la carne",
+          "instruction": "Taglia il petto di pollo a fette e battile tra due fogli di carta forno fino a uno spessore di circa mezzo centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Impana",
+          "instruction": "Sbatti le uova con un pizzico di sale e mescola il pangrattato con il parmigiano. Passa ogni fetta nell'uovo, poi nel pangrattato premendo bene perché la panatura aderisca.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Friggi",
+          "instruction": "Scalda l'olio in una padella a fuoco medio: è pronto quando una briciola di pane sfrigola subito. Cuoci le cotolette 3-4 minuti per lato finché sono dorate e croccanti.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Servi",
+          "instruction": "Scolale su carta assorbente, sala leggermente e servi con spicchi di limone."
+        }
+      ]
+    },
+    {
+      "id": "fettine-pizzaiola-it",
+      "language": "it",
+      "title": "Fettine alla pizzaiola",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "fettine di manzo"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "2",
+          "unit": "spicchi",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "unit": "cucchiaino",
+          "name": "origano",
+          "pantry": true
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepara il sugo",
+          "instruction": "Scalda l'olio con l'aglio schiacciato in una padella larga a fuoco medio, aggiungi i pelati schiacciati, sala e cuoci finché il sugo inizia ad addensarsi.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cuoci la carne nel sugo",
+          "instruction": "Adagia le fettine nel sugo senza sovrapporle, cospargile di origano, copri e cuoci a fuoco basso pochi minuti per lato: cotte troppo a lungo diventano dure.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Servi",
+          "instruction": "Servi subito con abbondante sugo e pane per accompagnare."
+        }
+      ]
+    },
+    {
+      "id": "polpette-tonno-patate-it",
+      "language": "it",
+      "title": "Polpette di tonno e patate",
+      "tags": [
+        "secondo",
+        "pesce",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "patate"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tonno sott'olio"
+        },
+        {
+          "quantity": "1",
+          "name": "uovo"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "parmigiano grattugiato"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "pangrattato"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Lessa le patate",
+          "instruction": "Lessa le patate con la buccia in acqua salata finché una forchetta le trapassa senza resistenza. Pelale e schiacciale ancora calde.",
+          "durationMinutes": 30
+        },
+        {
+          "title": "Prepara l'impasto",
+          "instruction": "Unisci alle patate il tonno sgocciolato e sbriciolato, l'uovo, il parmigiano e il prezzemolo tritato. Mescola e forma polpette leggermente schiacciate, poi passale nel pangrattato.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cuoci",
+          "instruction": "Cuocile in padella con l'olio a fuoco medio 4-5 minuti per lato, finché sono dorate e croccanti. In alternativa cuocile in forno a 200 °C per circa 20 minuti.",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    {
+      "id": "patate-forno-it",
+      "language": "it",
+      "title": "Patate al forno con rosmarino",
+      "tags": [
+        "contorno",
+        "forno",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "1",
+          "unit": "kg",
+          "name": "patate"
+        },
+        {
+          "quantity": "2",
+          "unit": "rametti",
+          "name": "rosmarino"
+        },
+        {
+          "quantity": "3",
+          "unit": "spicchi",
+          "name": "aglio"
+        },
+        {
+          "quantity": "5",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "pepe",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia le patate",
+          "instruction": "Pela le patate e tagliale a spicchi o cubotti di dimensioni simili. Sciacquale per togliere l'amido e asciugale bene con un canovaccio: così diventano croccanti.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Condisci",
+          "instruction": "In una teglia condisci le patate con olio, aglio in camicia, rosmarino, sale e pepe, mescolando con le mani. Disponile in un solo strato.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Cuoci in forno",
+          "instruction": "Cuoci in forno ventilato a 200 °C girandole a metà cottura, finché sono dorate e croccanti fuori e morbide dentro.",
+          "durationMinutes": 45
+        }
+      ]
+    },
+    {
+      "id": "zucchine-trifolate-it",
+      "language": "it",
+      "title": "Zucchine trifolate",
+      "tags": [
+        "contorno",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "zucchine"
+        },
+        {
+          "quantity": "1",
+          "unit": "spicchio",
+          "name": "aglio"
+        },
+        {
+          "quantity": "1",
+          "unit": "ciuffo",
+          "name": "prezzemolo"
+        },
+        {
+          "quantity": "3",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia le zucchine",
+          "instruction": "Lava e spunta le zucchine e tagliale a rondelle di circa mezzo centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cuoci",
+          "instruction": "Scalda l'olio con l'aglio in una padella larga a fuoco medio-alto, aggiungi le zucchine in un solo strato e cuoci mescolando di tanto in tanto finché sono dorate ai bordi ma ancora sode.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Completa",
+          "instruction": "Togli l'aglio, sala e completa con il prezzemolo tritato."
+        }
+      ]
+    },
+    {
+      "id": "peperonata-it",
+      "language": "it",
+      "title": "Peperonata",
+      "tags": [
+        "contorno",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "peperoni"
+        },
+        {
+          "quantity": "2",
+          "name": "cipolle"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "pomodori pelati"
+        },
+        {
+          "quantity": "6",
+          "name": "foglie di basilico"
+        },
+        {
+          "quantity": "4",
+          "unit": "cucchiai",
+          "name": "olio extravergine d'oliva",
+          "pantry": true
+        },
+        {
+          "quantity": "q.b.",
+          "name": "sale",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Taglia le verdure",
+          "instruction": "Elimina semi e filamenti bianchi dai peperoni e tagliali a falde. Affetta le cipolle.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Appassisci le cipolle",
+          "instruction": "Cuoci le cipolle nell'olio in una casseruola larga a fuoco medio finché sono morbide e trasparenti.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Aggiungi i peperoni",
+          "instruction": "Aggiungi i peperoni, sala e cuoci a fuoco medio mescolando finché iniziano ad ammorbidirsi.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Stufa con il pomodoro",
+          "instruction": "Unisci i pelati schiacciati, copri e cuoci a fuoco basso finché i peperoni sono teneri e il sugo si è ristretto. Completa con il basilico. È ottima anche tiepida.",
+          "durationMinutes": 25
+        }
+      ]
+    },
+    {
+      "id": "spaghetti-carbonara-en",
+      "language": "en",
+      "title": "Spaghetti carbonara",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "guanciale"
+        },
+        {
+          "quantity": "4",
+          "name": "egg yolks"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "pecorino romano"
+        },
+        {
+          "name": "black pepper",
+          "pantry": true
+        },
+        {
+          "name": "coarse salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the guanciale",
+          "instruction": "Remove the rind and cut the guanciale into strips about half a centimetre thick.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Bring the water to the boil",
+          "instruction": "Bring a large pot of water to the boil and salt it only once it boils: the guanciale and pecorino are already salty, so go easy.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Render the guanciale",
+          "instruction": "Put the guanciale in a cold pan with no fat and turn the heat to medium. Let it cook until the fat turns translucent and the edges are crisp and golden, then turn off the heat.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Make the egg cream",
+          "instruction": "In a bowl, whisk the yolks with the finely grated pecorino and plenty of black pepper until you have a thick, smooth cream.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Cook the spaghetti one minute less than the packet says. Before draining, set aside a cup of the cooking water.",
+          "durationMinutes": 9
+        },
+        {
+          "title": "Toss off the heat",
+          "instruction": "Move the spaghetti into the pan with the guanciale and toss over low heat for a minute. Turn off the heat, wait a few seconds and pour in the egg cream, tossing quickly and adding a splash of cooking water at a time until the sauce is creamy and glossy: if it scrambles, the pan is too hot.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Serve",
+          "instruction": "Serve straight away, finished with more pecorino and freshly ground pepper."
+        }
+      ]
+    },
+    {
+      "id": "pasta-amatriciana-en",
+      "language": "en",
+      "title": "Bucatini all'amatriciana",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "bucatini"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "guanciale"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "pecorino romano"
+        },
+        {
+          "quantity": "1",
+          "name": "dried chilli"
+        },
+        {
+          "quantity": "1",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cut the guanciale",
+          "instruction": "Remove the rind and cut the guanciale into strips about half a centimetre wide.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Render the guanciale",
+          "instruction": "Heat the oil in a pan over medium heat with the crumbled chilli, add the guanciale and cook until golden and the fat has melted. Lift it out with a slotted spoon and set aside, leaving the fat in the pan.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Simmer the sauce",
+          "instruction": "Add the peeled tomatoes, crushed with a fork, season lightly with salt and simmer over medium-low heat until the sauce thickens and the fat rises to the surface.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Meanwhile cook the bucatini in plenty of salted water and drain them al dente, keeping some cooking water aside.",
+          "durationMinutes": 11
+        },
+        {
+          "title": "Combine and toss",
+          "instruction": "Return the guanciale to the sauce, add the pasta and toss for a minute over high heat with a splash of cooking water. Turn off the heat and finish with the grated pecorino.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "spaghetti-aglio-olio-en",
+      "language": "en",
+      "title": "Spaghetti with garlic, oil and chilli",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "3",
+          "unit": "cloves",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "name": "dried chilli"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "80",
+          "unit": "ml",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cook the pasta",
+          "instruction": "Cook the spaghetti in plenty of salted water, one minute less than the packet says.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Infuse the oil",
+          "instruction": "Meanwhile warm the oil in a wide pan over low heat with the sliced garlic and crumbled chilli. Take it off the heat as soon as the garlic turns pale gold: if it browns it turns bitter.",
+          "durationMinutes": 4
+        },
+        {
+          "title": "Toss together",
+          "instruction": "Drain the pasta, keeping a ladle of water, add it to the pan and toss over high heat with a little cooking water until the oil turns into a lightly creamy sauce.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Finish",
+          "instruction": "Turn off the heat, add the chopped parsley and serve straight away."
+        }
+      ]
+    },
+    {
+      "id": "pasta-pomodoro-basilico-en",
+      "language": "en",
+      "title": "Pasta with tomato and basil",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "spaghetti"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "tomato passata"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "8",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Flavour the oil",
+          "instruction": "Warm the oil in a saucepan over medium-low heat with the crushed garlic clove and let it sizzle until golden, then remove it.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Simmer the sauce",
+          "instruction": "Pour in the passata, season with salt and simmer over low heat with the lid ajar, stirring now and then, until the sauce is thick and no longer tastes raw.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Cook the pasta in plenty of salted water and drain it al dente, keeping some cooking water.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Toss together",
+          "instruction": "Add the pasta to the sauce and toss for a minute over high heat with a splash of cooking water. Turn off the heat and stir in the torn basil and Parmesan.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-zucchine-en",
+      "language": "en",
+      "title": "Pasta with courgettes",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "short pasta"
+        },
+        {
+          "quantity": "4",
+          "name": "courgettes"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "6",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Slice the courgettes",
+          "instruction": "Wash and trim the courgettes, then cut them into thin rounds or small cubes.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cook the courgettes",
+          "instruction": "Heat the oil in a wide pan over medium heat with the crushed garlic, add the courgettes and a pinch of salt and cook, stirring, until soft and partly golden. Remove the garlic.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Cook the pasta in plenty of salted water and drain it al dente, keeping a ladle of cooking water.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Toss together",
+          "instruction": "Tip the pasta into the pan with the courgettes, add the cooking water and Parmesan and stir over low heat until a creamy sauce coats the pasta. Finish with basil and pepper.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-tonno-en",
+      "language": "en",
+      "title": "Pasta with tuna and tomato",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "short pasta"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tuna in oil"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Flavour the oil",
+          "instruction": "Heat the oil in a pan over medium heat with the crushed garlic until golden, then remove it.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Make the sauce",
+          "instruction": "Add the peeled tomatoes crushed with a fork, season lightly and simmer over medium-low heat until the sauce thickens.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Add the tuna",
+          "instruction": "Drain the tuna, flake it into the sauce and let it warm through for a couple of minutes without overcooking, or it turns dry.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the pasta and toss",
+          "instruction": "Cook the pasta in salted water, drain it al dente and toss it in the sauce with a splash of cooking water. Finish with chopped parsley.",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    {
+      "id": "penne-arrabbiata-en",
+      "language": "en",
+      "title": "Penne arrabbiata",
+      "tags": [
+        "primo",
+        "pasta"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "penne"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "2",
+          "unit": "cloves",
+          "name": "garlic"
+        },
+        {
+          "quantity": "2",
+          "name": "dried chillies"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Fry garlic and chilli",
+          "instruction": "Warm the oil in a pan over medium-low heat with the sliced garlic and crumbled chillies until the garlic is just golden.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Simmer the sauce",
+          "instruction": "Add the crushed peeled tomatoes, season with salt and simmer over medium heat until thick and reduced.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the penne",
+          "instruction": "Cook the penne in plenty of salted water and drain them al dente.",
+          "durationMinutes": 11
+        },
+        {
+          "title": "Toss together",
+          "instruction": "Toss the penne in the sauce over high heat for a minute and finish with chopped parsley.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-patate-en",
+      "language": "en",
+      "title": "Pasta and potatoes",
+      "tags": [
+        "primo",
+        "pasta",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "250",
+          "unit": "g",
+          "name": "mixed short pasta"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "potatoes"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1",
+          "name": "carrot"
+        },
+        {
+          "quantity": "1",
+          "unit": "stick",
+          "name": "celery"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "1",
+          "unit": "tbsp",
+          "name": "tomato paste"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "hot water",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the vegetables",
+          "instruction": "Finely chop the onion, carrot and celery. Peel the potatoes and cut them into roughly one-centimetre cubes.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Make the soffritto",
+          "instruction": "Heat the oil in a pot over medium-low heat and cook the chopped vegetables until soft and translucent, without browning. Stir in the tomato paste for a minute.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Cook the potatoes",
+          "instruction": "Add the potatoes, stir for a couple of minutes, then cover with the hot water, season and cook over medium heat until tender and some begin to break up.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the pasta in the broth",
+          "instruction": "Add the pasta straight into the pot and cook, stirring often and adding a little hot water if it gets too dry: it should end up thick and creamy.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Finish",
+          "instruction": "Turn off the heat, stir in the Parmesan and some pepper, and let it rest for a minute before serving.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "pasta-ceci-en",
+      "language": "en",
+      "title": "Pasta and chickpeas",
+      "tags": [
+        "primo",
+        "pasta",
+        "legumi",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "short pasta"
+        },
+        {
+          "quantity": "480",
+          "unit": "g",
+          "name": "cooked chickpeas"
+        },
+        {
+          "quantity": "2",
+          "unit": "cloves",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "unit": "sprig",
+          "name": "rosemary"
+        },
+        {
+          "quantity": "1",
+          "unit": "tbsp",
+          "name": "tomato paste"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "hot water",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Flavour the oil",
+          "instruction": "Warm the oil in a pot over medium-low heat with the crushed garlic and rosemary until fragrant, then add the tomato paste and stir for a minute.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the chickpeas",
+          "instruction": "Add the drained chickpeas, stir, then cover with the hot water, season and simmer over medium heat. Remove the garlic and rosemary and blend about half the chickpeas to make the base creamy.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Add the pasta to the pot and cook, stirring often and adding hot water if needed, until al dente and the soup is thick.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Serve",
+          "instruction": "Serve with a drizzle of raw olive oil and some ground pepper."
+        }
+      ]
+    },
+    {
+      "id": "pasta-fagioli-en",
+      "language": "en",
+      "title": "Pasta and beans",
+      "tags": [
+        "primo",
+        "pasta",
+        "legumi",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "mixed short pasta"
+        },
+        {
+          "quantity": "480",
+          "unit": "g",
+          "name": "cooked borlotti beans"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1",
+          "name": "carrot"
+        },
+        {
+          "quantity": "1",
+          "unit": "stick",
+          "name": "celery"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "tomato passata"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "quantity": "1",
+          "unit": "l",
+          "name": "hot water",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Make the soffritto",
+          "instruction": "Chop the onion, carrot and celery and cook them in the oil over medium-low heat until soft and lightly golden.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Simmer the beans",
+          "instruction": "Add the drained beans and passata, cover with the hot water, season and simmer over medium heat. Mash some of the beans with a ladle to thicken.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Cook the pasta",
+          "instruction": "Add the pasta and cook it in the soup, stirring often, until al dente, adding hot water if it gets too dry.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Rest",
+          "instruction": "Turn off the heat and let it rest for a few minutes so it thickens and turns creamy. Serve with raw olive oil and pepper.",
+          "durationMinutes": 5
+        }
+      ]
+    },
+    {
+      "id": "risotto-parmigiana-en",
+      "language": "en",
+      "title": "Parmesan risotto",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "carnaroli rice"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1.2",
+          "unit": "l",
+          "name": "vegetable stock"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "butter"
+        },
+        {
+          "quantity": "100",
+          "unit": "ml",
+          "name": "white wine"
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare stock and onion",
+          "instruction": "Keep the stock hot on a back burner over low heat. Finely chop the onion.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Soften the onion",
+          "instruction": "Melt half the butter in a wide saucepan over medium-low heat and cook the onion until soft and translucent, without colouring.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Toast the rice",
+          "instruction": "Raise the heat, add the rice and toast it, stirring, until the grains look glossy and feel hot. Pour in the wine and let it evaporate.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the risotto",
+          "instruction": "Add the stock one ladle at a time, stirring often and adding more only once the last has been absorbed. Cook over medium heat until the rice is al dente and still slightly loose.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Finish with butter and cheese",
+          "instruction": "Take off the heat, add the remaining cold butter and the Parmesan and stir vigorously until creamy. Adjust the salt, cover and rest for a minute before serving.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "risotto-funghi-en",
+      "language": "en",
+      "title": "Mushroom risotto",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "carnaroli rice"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "button mushrooms"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1.2",
+          "unit": "l",
+          "name": "vegetable stock"
+        },
+        {
+          "quantity": "60",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "butter"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Sauté the mushrooms",
+          "instruction": "Wipe the mushrooms clean and slice them. Heat the oil with the garlic in a pan over high heat, add the mushrooms and cook until their water has evaporated and they are golden. Season, remove the garlic and add the parsley.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Soften the onion",
+          "instruction": "In a wide saucepan cook the chopped onion in half the butter over medium-low heat until translucent.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Toast the rice",
+          "instruction": "Add the rice and toast it, stirring, for a couple of minutes until the grains look glossy.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the risotto",
+          "instruction": "Add the hot stock one ladle at a time, stirring often. Halfway through, stir in the mushrooms. Cook until the rice is al dente.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Finish",
+          "instruction": "Off the heat, stir in the remaining butter and the Parmesan until creamy, then rest for a minute.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "risotto-zucca-en",
+      "language": "en",
+      "title": "Pumpkin risotto",
+      "tags": [
+        "primo",
+        "riso"
+      ],
+      "ingredients": [
+        {
+          "quantity": "320",
+          "unit": "g",
+          "name": "carnaroli rice"
+        },
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "pumpkin"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1.2",
+          "unit": "l",
+          "name": "vegetable stock"
+        },
+        {
+          "quantity": "60",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "butter"
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the pumpkin",
+          "instruction": "Peel and deseed the pumpkin and cut it into small cubes. Chop the onion.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cook the pumpkin",
+          "instruction": "Heat the oil in a wide saucepan over medium heat, cook the onion until translucent, then add the pumpkin and a ladle of stock and cook until the pumpkin is soft enough to mash with a spoon.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Toast the rice",
+          "instruction": "Add the rice and toast it, stirring, for a couple of minutes.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the risotto",
+          "instruction": "Add the hot stock one ladle at a time, stirring often: the pumpkin breaks down and turns the rice orange. Cook until the rice is al dente.",
+          "durationMinutes": 17
+        },
+        {
+          "title": "Finish",
+          "instruction": "Off the heat, stir in the butter and Parmesan, season with salt and pepper and rest for a minute.",
+          "durationMinutes": 2
+        }
+      ]
+    },
+    {
+      "id": "insalata-riso-en",
+      "language": "en",
+      "title": "Italian rice salad",
+      "tags": [
+        "primo",
+        "riso",
+        "freddo",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "rice"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tuna in oil"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "cooked ham"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "cheese"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "cherry tomatoes"
+        },
+        {
+          "quantity": "2",
+          "name": "eggs"
+        },
+        {
+          "quantity": "100",
+          "unit": "g",
+          "name": "olives"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cook the rice",
+          "instruction": "Cook the rice in plenty of salted water until al dente, then drain it and rinse under cold water to stop the cooking. Drain well.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Hard-boil the eggs",
+          "instruction": "Put the eggs in cold water, bring to the boil and cook for 9 minutes. Cool them in cold water, peel and cut into wedges.",
+          "durationMinutes": 9
+        },
+        {
+          "title": "Chop the ingredients",
+          "instruction": "Dice the ham and cheese, halve the cherry tomatoes and slice the olives. Drain and flake the tuna.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Combine and chill",
+          "instruction": "Mix everything into the rice with the oil, season with salt and chill for at least half an hour before serving. Add the eggs just before serving.",
+          "durationMinutes": 30
+        }
+      ]
+    },
+    {
+      "id": "minestrone-en",
+      "language": "en",
+      "title": "Vegetable minestrone",
+      "tags": [
+        "primo",
+        "zuppa",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "2",
+          "name": "potatoes"
+        },
+        {
+          "quantity": "2",
+          "name": "carrots"
+        },
+        {
+          "quantity": "2",
+          "name": "courgettes"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "2",
+          "unit": "sticks",
+          "name": "celery"
+        },
+        {
+          "quantity": "200",
+          "unit": "g",
+          "name": "cooked beans"
+        },
+        {
+          "quantity": "150",
+          "unit": "g",
+          "name": "peas"
+        },
+        {
+          "quantity": "2",
+          "name": "tomatoes"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "quantity": "1.5",
+          "unit": "l",
+          "name": "water",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Dice the vegetables",
+          "instruction": "Peel the potatoes, carrots and onion and dice all the vegetables to a similar size so they cook evenly.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Start the soffritto",
+          "instruction": "Heat the oil in a large pot over medium-low heat and cook the onion, celery and carrots until soft.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Simmer the soup",
+          "instruction": "Add the remaining vegetables, cover with the water, season and simmer over low heat with the lid ajar until the potatoes start to break up and the broth is thick. Add the beans and peas for the last 10 minutes.",
+          "durationMinutes": 40
+        },
+        {
+          "title": "Serve",
+          "instruction": "Serve hot or warm with a drizzle of raw olive oil and the Parmesan."
+        }
+      ]
+    },
+    {
+      "id": "frittata-zucchine-en",
+      "language": "en",
+      "title": "Courgette frittata",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "6",
+          "name": "eggs"
+        },
+        {
+          "quantity": "3",
+          "name": "courgettes"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cook the vegetables",
+          "instruction": "Thinly slice the onion and courgettes. Cook them in a non-stick pan with 2 tablespoons of oil over medium heat until the courgettes are soft and lightly golden. Season and let them cool slightly.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Beat the eggs",
+          "instruction": "In a bowl beat the eggs with the Parmesan, salt and pepper, then stir in the vegetables.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the first side",
+          "instruction": "Heat the remaining oil in the pan over medium-low heat, pour in the mixture and cook with a lid until the edges are set and the top is almost firm.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Flip the frittata",
+          "instruction": "Flip the frittata using a plate and cook the other side until golden. Serve hot or warm.",
+          "durationMinutes": 3
+        }
+      ]
+    },
+    {
+      "id": "frittata-patate-cipolle-en",
+      "language": "en",
+      "title": "Potato and onion frittata",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "6",
+          "name": "eggs"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "potatoes"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Slice potatoes and onion",
+          "instruction": "Peel the potatoes and slice them thinly. Slice the onion.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Cook the potatoes",
+          "instruction": "Cook the potatoes and onion in a non-stick pan with 3 tablespoons of oil over medium-low heat, covered and stirring now and then, until the potatoes are tender and golden at the edges. Season.",
+          "durationMinutes": 15
+        },
+        {
+          "title": "Beat the eggs",
+          "instruction": "Beat the eggs with the Parmesan, salt and pepper and fold in the slightly cooled potatoes.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cook the frittata",
+          "instruction": "Heat the remaining oil, pour in the mixture and cook over low heat with a lid until the top is almost set. Flip it using a plate and cook the other side until golden.",
+          "durationMinutes": 12
+        }
+      ]
+    },
+    {
+      "id": "uova-in-purgatorio-en",
+      "language": "en",
+      "title": "Eggs in tomato sauce",
+      "tags": [
+        "secondo",
+        "uova",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "eggs"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "tomato passata"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "4",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "4",
+          "unit": "slices",
+          "name": "bread"
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Make the sauce",
+          "instruction": "Heat the oil with the garlic in a wide pan over medium heat until golden, remove it, pour in the passata, season and simmer until thickened.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Poach the eggs",
+          "instruction": "Make four wells in the sauce with a spoon and crack an egg into each. Cover and cook over low heat until the whites are set but the yolks are still runny.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Serve",
+          "instruction": "Finish with basil, salt and pepper on the eggs and serve with toasted bread for mopping up the sauce."
+        }
+      ]
+    },
+    {
+      "id": "tomato-bruschetta-en",
+      "language": "en",
+      "title": "Tomato and basil bruschetta",
+      "tags": [
+        "antipasto",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "unit": "slices",
+          "name": "rustic bread"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "ripe tomatoes"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "6",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Dress the tomatoes",
+          "instruction": "Dice the tomatoes, discarding the watery seeds. Toss them in a bowl with torn basil, 2 tablespoons of oil and a pinch of salt, then leave them to rest so they release their juices.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Toast the bread",
+          "instruction": "Toast the bread in a hot pan or under the grill over medium-high heat until golden and crisp outside but still soft inside.",
+          "durationMinutes": 4
+        },
+        {
+          "title": "Rub with garlic",
+          "instruction": "While the bread is still hot, rub one side with the halved garlic clove: the rough surface grates it and spreads the flavour."
+        },
+        {
+          "title": "Assemble and serve",
+          "instruction": "Spoon the tomatoes over the bread, drizzle with the remaining oil and serve straight away, before the bread softens."
+        }
+      ]
+    },
+    {
+      "id": "insalata-caprese-en",
+      "language": "en",
+      "title": "Caprese salad",
+      "tags": [
+        "antipasto",
+        "freddo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "tomatoes"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "mozzarella"
+        },
+        {
+          "quantity": "10",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "1",
+          "unit": "pinch",
+          "name": "dried oregano",
+          "pantry": true
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Drain the mozzarella",
+          "instruction": "Take the mozzarella out of its liquid and let it drain for a few minutes so it doesn't water down the dish.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Slice",
+          "instruction": "Cut the tomatoes and mozzarella into slices about one centimetre thick.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Arrange and dress",
+          "instruction": "Alternate the slices on a plate with the basil leaves. Season with salt, oregano and oil just before serving."
+        }
+      ]
+    },
+    {
+      "id": "parmigiana-melanzane-en",
+      "language": "en",
+      "title": "Aubergine parmigiana",
+      "tags": [
+        "secondo",
+        "verdure",
+        "forno"
+      ],
+      "ingredients": [
+        {
+          "quantity": "3",
+          "name": "aubergines"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "tomato passata"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "mozzarella"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "8",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "200",
+          "unit": "ml",
+          "name": "frying oil",
+          "pantry": true
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Salt the aubergines",
+          "instruction": "Slice the aubergines half a centimetre thick, layer them in a colander with salt and leave them to drain their bitter water. Rinse and pat them thoroughly dry.",
+          "durationMinutes": 30
+        },
+        {
+          "title": "Make the sauce",
+          "instruction": "Warm the olive oil with the garlic, add the passata, season and simmer over low heat until thick. Remove the garlic and add the basil.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Fry the aubergines",
+          "instruction": "Fry the slices a few at a time in hot frying oil until golden on both sides, then drain them on paper towels.",
+          "durationMinutes": 20
+        },
+        {
+          "title": "Layer the dish",
+          "instruction": "In a baking dish, alternate layers of sauce, aubergine, diced mozzarella and Parmesan, finishing with sauce and Parmesan.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Bake",
+          "instruction": "Bake at 180 °C (conventional) until the top is browned and the sauce bubbles at the edges. Let it rest at least 15 minutes before cutting.",
+          "durationMinutes": 35
+        }
+      ]
+    },
+    {
+      "id": "pollo-cacciatora-en",
+      "language": "en",
+      "title": "Chicken cacciatore",
+      "tags": [
+        "secondo",
+        "carne"
+      ],
+      "ingredients": [
+        {
+          "quantity": "1.2",
+          "unit": "kg",
+          "name": "chicken pieces"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "1",
+          "name": "onion"
+        },
+        {
+          "quantity": "1",
+          "name": "carrot"
+        },
+        {
+          "quantity": "1",
+          "unit": "stick",
+          "name": "celery"
+        },
+        {
+          "quantity": "100",
+          "unit": "g",
+          "name": "black olives"
+        },
+        {
+          "quantity": "150",
+          "unit": "ml",
+          "name": "red wine"
+        },
+        {
+          "quantity": "1",
+          "unit": "sprig",
+          "name": "rosemary"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Brown the chicken",
+          "instruction": "Heat the oil in a casserole over medium-high heat and brown the chicken pieces on all sides until the skin is golden. Lift them out and set aside.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Make the soffritto",
+          "instruction": "In the same fat, cook the chopped onion, carrot and celery over medium heat until soft.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Deglaze with wine",
+          "instruction": "Return the chicken, raise the heat and pour in the wine, scraping the bottom, until the smell of alcohol fades.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Braise",
+          "instruction": "Add the tomatoes, rosemary, salt and pepper, cover and cook over low heat, turning the pieces occasionally, until the meat comes away easily from the bone. Add the olives for the last 10 minutes.",
+          "durationMinutes": 40
+        }
+      ]
+    },
+    {
+      "id": "scaloppine-limone-en",
+      "language": "en",
+      "title": "Lemon chicken scaloppine",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "chicken breast"
+        },
+        {
+          "quantity": "1",
+          "name": "lemon"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "flour"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "butter"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "2",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Prepare the chicken",
+          "instruction": "Slice the chicken breast thinly and pound the slices lightly between two sheets of baking paper so they are even. Dust them with flour, shaking off the excess.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Brown the scaloppine",
+          "instruction": "Heat the oil and half the butter in a wide pan over medium-high heat and cook the slices for 2-3 minutes per side until golden and no longer pink inside. Season and set aside.",
+          "durationMinutes": 6
+        },
+        {
+          "title": "Make the sauce",
+          "instruction": "Lower the heat, add the lemon juice and a splash of water and scrape up the pan juices. Add the remaining butter and stir until the sauce is glossy and slightly thick.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Combine and serve",
+          "instruction": "Return the scaloppine to the sauce for a few seconds on each side and serve with chopped parsley.",
+          "durationMinutes": 1
+        }
+      ]
+    },
+    {
+      "id": "polpette-sugo-en",
+      "language": "en",
+      "title": "Meatballs in tomato sauce",
+      "tags": [
+        "secondo",
+        "carne"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "minced meat"
+        },
+        {
+          "quantity": "1",
+          "name": "egg"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "stale bread"
+        },
+        {
+          "quantity": "100",
+          "unit": "ml",
+          "name": "milk"
+        },
+        {
+          "quantity": "50",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "700",
+          "unit": "g",
+          "name": "tomato passata"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Soak the bread",
+          "instruction": "Remove the crust from the bread and soak it in the milk until soft, then squeeze it out well.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Make the mixture",
+          "instruction": "In a bowl, mix the meat, squeezed bread, egg, Parmesan, chopped parsley, salt and pepper with your hands until evenly combined. With damp hands, roll into walnut-sized balls.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Start the sauce",
+          "instruction": "Heat the oil with the garlic in a wide pan over medium heat, remove the garlic once golden, pour in the passata and season.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Simmer the meatballs",
+          "instruction": "Once the sauce simmers, lay the meatballs side by side, cover and cook over low heat. Don't stir for the first 10 minutes, then turn them gently: they are done when firm and the sauce has thickened.",
+          "durationMinutes": 30
+        }
+      ]
+    },
+    {
+      "id": "cotolette-pollo-en",
+      "language": "en",
+      "title": "Breaded chicken cutlets",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "chicken breast"
+        },
+        {
+          "quantity": "2",
+          "name": "eggs"
+        },
+        {
+          "quantity": "120",
+          "unit": "g",
+          "name": "breadcrumbs"
+        },
+        {
+          "quantity": "30",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "1",
+          "name": "lemon"
+        },
+        {
+          "quantity": "150",
+          "unit": "ml",
+          "name": "frying oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Pound the chicken",
+          "instruction": "Slice the chicken breast and pound the slices between two sheets of baking paper to about half a centimetre thick.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Bread the cutlets",
+          "instruction": "Beat the eggs with a pinch of salt and mix the breadcrumbs with the Parmesan. Dip each slice in egg, then in the breadcrumbs, pressing well so the coating sticks.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Fry",
+          "instruction": "Heat the oil in a pan over medium heat: it is ready when a breadcrumb sizzles straight away. Fry the cutlets for 3-4 minutes per side until golden and crisp.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Serve",
+          "instruction": "Drain them on paper towels, salt lightly and serve with lemon wedges."
+        }
+      ]
+    },
+    {
+      "id": "fettine-pizzaiola-en",
+      "language": "en",
+      "title": "Beef pizzaiola",
+      "tags": [
+        "secondo",
+        "carne",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "thin beef slices"
+        },
+        {
+          "quantity": "400",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "2",
+          "unit": "cloves",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "unit": "tsp",
+          "name": "dried oregano",
+          "pantry": true
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Make the sauce",
+          "instruction": "Heat the oil with the crushed garlic in a wide pan over medium heat, add the crushed tomatoes, season and simmer until the sauce starts to thicken.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cook the beef in the sauce",
+          "instruction": "Lay the beef slices in the sauce without overlapping, sprinkle with oregano, cover and cook over low heat for a few minutes per side: cooked too long they turn tough.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Serve",
+          "instruction": "Serve straight away with plenty of sauce and bread on the side."
+        }
+      ]
+    },
+    {
+      "id": "polpette-tonno-patate-en",
+      "language": "en",
+      "title": "Tuna and potato patties",
+      "tags": [
+        "secondo",
+        "pesce",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "500",
+          "unit": "g",
+          "name": "potatoes"
+        },
+        {
+          "quantity": "160",
+          "unit": "g",
+          "name": "tuna in oil"
+        },
+        {
+          "quantity": "1",
+          "name": "egg"
+        },
+        {
+          "quantity": "40",
+          "unit": "g",
+          "name": "grated Parmesan"
+        },
+        {
+          "quantity": "80",
+          "unit": "g",
+          "name": "breadcrumbs"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Boil the potatoes",
+          "instruction": "Boil the potatoes in their skins in salted water until a fork slides through easily. Peel and mash them while still hot.",
+          "durationMinutes": 30
+        },
+        {
+          "title": "Make the mixture",
+          "instruction": "Add the drained, flaked tuna, egg, Parmesan and chopped parsley to the potatoes. Mix and shape into slightly flattened patties, then coat them in breadcrumbs.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Cook",
+          "instruction": "Cook them in a pan with the oil over medium heat for 4-5 minutes per side until golden and crisp. Alternatively bake at 200 °C for about 20 minutes.",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    {
+      "id": "patate-forno-en",
+      "language": "en",
+      "title": "Roast potatoes with rosemary",
+      "tags": [
+        "contorno",
+        "forno",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "1",
+          "unit": "kg",
+          "name": "potatoes"
+        },
+        {
+          "quantity": "2",
+          "unit": "sprigs",
+          "name": "rosemary"
+        },
+        {
+          "quantity": "3",
+          "unit": "cloves",
+          "name": "garlic"
+        },
+        {
+          "quantity": "5",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        },
+        {
+          "name": "pepper",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Cut the potatoes",
+          "instruction": "Peel the potatoes and cut them into similar-sized wedges or chunks. Rinse off the starch and dry them well with a tea towel so they crisp up.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Season",
+          "instruction": "In a roasting tin toss the potatoes with the oil, unpeeled garlic, rosemary, salt and pepper using your hands. Spread them in a single layer.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Roast",
+          "instruction": "Roast in a fan oven at 200 °C, turning them halfway, until golden and crisp outside and soft inside.",
+          "durationMinutes": 45
+        }
+      ]
+    },
+    {
+      "id": "zucchine-trifolate-en",
+      "language": "en",
+      "title": "Sautéed courgettes",
+      "tags": [
+        "contorno",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "courgettes"
+        },
+        {
+          "quantity": "1",
+          "unit": "clove",
+          "name": "garlic"
+        },
+        {
+          "quantity": "1",
+          "unit": "handful",
+          "name": "parsley"
+        },
+        {
+          "quantity": "3",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Slice the courgettes",
+          "instruction": "Wash and trim the courgettes and cut them into rounds about half a centimetre thick.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Sauté",
+          "instruction": "Heat the oil with the garlic in a wide pan over medium-high heat, add the courgettes in a single layer and cook, stirring now and then, until golden at the edges but still firm.",
+          "durationMinutes": 12
+        },
+        {
+          "title": "Finish",
+          "instruction": "Remove the garlic, season with salt and finish with chopped parsley."
+        }
+      ]
+    },
+    {
+      "id": "peperonata-en",
+      "language": "en",
+      "title": "Peperonata (stewed peppers)",
+      "tags": [
+        "contorno",
+        "verdure",
+        "svuotafrigo"
+      ],
+      "ingredients": [
+        {
+          "quantity": "4",
+          "name": "peppers"
+        },
+        {
+          "quantity": "2",
+          "name": "onions"
+        },
+        {
+          "quantity": "300",
+          "unit": "g",
+          "name": "peeled tomatoes"
+        },
+        {
+          "quantity": "6",
+          "name": "basil leaves"
+        },
+        {
+          "quantity": "4",
+          "unit": "tbsp",
+          "name": "extra virgin olive oil",
+          "pantry": true
+        },
+        {
+          "name": "salt",
+          "pantry": true
+        }
+      ],
+      "steps": [
+        {
+          "title": "Slice the vegetables",
+          "instruction": "Remove the seeds and white pith from the peppers and cut them into strips. Slice the onions.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Soften the onions",
+          "instruction": "Cook the onions in the oil in a wide pan over medium heat until soft and translucent.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Add the peppers",
+          "instruction": "Add the peppers, season and cook over medium heat, stirring, until they begin to soften.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Stew with tomato",
+          "instruction": "Add the crushed tomatoes, cover and cook over low heat until the peppers are tender and the sauce has reduced. Finish with basil. It is also excellent warm.",
+          "durationMinutes": 25
+        }
+      ]
+    }
+  ]
+}

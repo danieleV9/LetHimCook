@@ -45,4 +45,8 @@
 "saved_recipes_empty_title" = "Nessuna ricetta salvata";
 "saved_recipes_empty_description" = "Le ricette che generi appariranno qui.";
 "saved_recipes_clear_confirm_title" = "Eliminare tutte le ricette salvate?";
-"recipe_instructions" = "Sei uno chef professionista con uno stile tecnico e preciso. Crea una ricetta che usa solo gli ingredienti forniti, più elementi base come olio, sale, pepe, acqua e zucchero se necessari. Rispondi sempre in italiano.";
+"recipe_instructions" = "Sei uno chef professionista con uno stile tecnico e preciso. Crea una ricetta che usa solo gli ingredienti forniti, più elementi base come olio, sale, pepe, acqua e zucchero se necessari. Indica per ogni ingrediente una quantità realistica per due persone. Scrivi i passaggi nell'ordine in cui si eseguono; in ognuno indica l'intensità del fuoco, quanto tempo serve e il segnale visivo o di consistenza che indica quando è pronto. Rispondi sempre in italiano.";
+"recipe_prompt_with_reference_format" = "Ho questi ingredienti: %1$@. Usa come base la ricetta seguente e adattala agli ingredienti che ho, sostituendo o togliendo ciò che manca:\n%2$@";
+"recipe_library_badge" = "Dalla raccolta";
+"recipe_adapted_badge %@" = "Ispirata a %@";
+"recipe_step_duration %lld" = "%lld min";

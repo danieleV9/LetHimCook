@@ -45,4 +45,8 @@
 "saved_recipes_empty_title" = "No saved recipes";
 "saved_recipes_empty_description" = "Recipes you generate will appear here.";
 "saved_recipes_clear_confirm_title" = "Delete all saved recipes?";
-"recipe_instructions" = "You are a professional chef with a precise, technical style. Create a recipe that uses only the ingredients provided, plus basics like oil, salt, pepper, water, and sugar if needed. Always respond in English.";
+"recipe_instructions" = "You are a professional chef with a precise, technical style. Create a recipe that uses only the ingredients provided, plus basics like oil, salt, pepper, water, and sugar if needed. Give every ingredient a realistic quantity for two servings. Write the steps in the order they are carried out; in each one state the heat level, how long it takes and the visual or texture cue that tells when it is done. Always respond in English.";
+"recipe_prompt_with_reference_format" = "I have these ingredients: %1$@. Use the following recipe as a base and adapt it to the ingredients I have, replacing or leaving out what is missing:\n%2$@";
+"recipe_library_badge" = "From the collection";
+"recipe_adapted_badge %@" = "Inspired by %@";
+"recipe_step_duration %lld" = "%lld min";

@@ -11,6 +11,17 @@ import SwiftUI
 
 // MARK: - Test Doubles
 
+extension Recipe {
+    /// A recipe built from plain strings, for tests that don't care about structure.
+    static func simple(_ title: String, ingredients: [String] = [], steps: [String] = []) -> Recipe {
+        Recipe(
+            title: title,
+            ingredients: ingredients.map { RecipeIngredient(name: $0) },
+            steps: steps.map { RecipeStep(instruction: $0) }
+        )
+    }
+}
+
 /// A configurable stub/spy for `RecipeRepository`.
 final class MockRecipeRepository: RecipeRepository {
     enum MockError: Error { case failed }
@@ -18,18 +29,22 @@ final class MockRecipeRepository: RecipeRepository {
     var snapshots: [Recipe]
     var error: Error?
     private(set) var receivedIngredients: [String]?
+    private(set) var receivedReference: LibraryRecipe?
+    private(set) var streamCallCount = 0
     private(set) var prewarmCallCount = 0
 
     init(
-        snapshots: [Recipe] = [Recipe(title: "Mock recipe", ingredients: ["Water"], steps: ["Mix"])],
+        snapshots: [Recipe] = [.simple("Mock recipe", ingredients: ["Water"], steps: ["Mix"])],
         error: Error? = nil
     ) {
         self.snapshots = snapshots
         self.error = error
     }
 
-    func recipeStream(for ingredients: [String]) -> AsyncThrowingStream<Recipe, Error> {
+    func recipeStream(for ingredients: [String], reference: LibraryRecipe?) -> AsyncThrowingStream<Recipe, Error> {
         receivedIngredients = ingredients
+        receivedReference = reference
+        streamCallCount += 1
         let snapshots = snapshots
         let error = error
         return AsyncThrowingStream { continuation in
@@ -46,6 +61,15 @@ final class MockRecipeRepository: RecipeRepository {
 
     func prewarm() {
         prewarmCallCount += 1
+    }
+}
+
+/// A fixed in-memory recipe library.
+struct MockRecipeLibraryRepository: RecipeLibraryRepository {
+    var stored: [LibraryRecipe]
+
+    func recipes() async -> [LibraryRecipe] {
+        stored
     }
 }
 
@@ -75,7 +99,7 @@ final class MockSavedRecipeRepository: SavedRecipeRepository {
 }
 
 private func makeRecipe(_ title: String) -> Recipe {
-    Recipe(title: title, ingredients: [], steps: [])
+    .simple(title)
 }
 
 // MARK: - Entity
@@ -84,10 +108,34 @@ private func makeRecipe(_ title: String) -> Recipe {
 struct RecipeTests {
 
     @Test func encodesAndDecodesWithoutLoss() async throws {
-        let original = Recipe(title: "Tiramisù", ingredients: ["Mascarpone", "Coffee"], steps: ["Whisk", "Layer"])
+        let original = Recipe(
+            title: "Tiramisù",
+            ingredients: [RecipeIngredient(quantity: "250", unit: "g", name: "Mascarpone"), RecipeIngredient(name: "Coffee")],
+            steps: [RecipeStep(title: "Whisk", instruction: "Whisk the mascarpone", durationMinutes: 3)],
+            origin: .adapted(fromTitle: "Tiramisù classico")
+        )
         let data = try JSONEncoder().encode(original)
         let decoded = try JSONDecoder().decode(Recipe.self, from: data)
         #expect(decoded == original)
+    }
+
+    @Test func decodesRecipesSavedWithPlainStrings() async throws {
+        let id = UUID()
+        let legacy = """
+            {"id":"\(id.uuidString)","title":"Soup","ingredients":["Water","Salt"],"steps":["Boil","Serve"]}
+            """
+        let decoded = try JSONDecoder().decode(Recipe.self, from: Data(legacy.utf8))
+
+        #expect(decoded.id == id)
+        #expect(decoded.ingredients == [RecipeIngredient(name: "Water"), RecipeIngredient(name: "Salt")])
+        #expect(decoded.steps == [RecipeStep(instruction: "Boil"), RecipeStep(instruction: "Serve")])
+        #expect(decoded.origin == .generated)
+    }
+
+    @Test func amountJoinsQuantityAndUnit() {
+        #expect(RecipeIngredient(quantity: "200", unit: "g", name: "Flour").amount == "200 g")
+        #expect(RecipeIngredient(quantity: "2", name: "Eggs").amount == "2")
+        #expect(RecipeIngredient(quantity: " ", unit: "", name: "Salt").amount == nil)
     }
 
     @Test func eachRecipeHasAUniqueIdentity() async {
@@ -103,7 +151,7 @@ struct RecipeTests {
 struct GetRecipeUseCaseTests {
 
     @Test func forwardsIngredientsAndStreamsRecipe() async throws {
-        let expected = Recipe(title: "Pancakes", ingredients: ["Flour"], steps: ["Mix", "Cook"])
+        let expected = Recipe.simple("Pancakes", ingredients: ["Flour"], steps: ["Mix", "Cook"])
         let repository = MockRecipeRepository(snapshots: [expected])
         let useCase = GetRecipeUseCaseImpl(repository: repository)
 
@@ -114,6 +162,7 @@ struct GetRecipeUseCaseTests {
 
         #expect(received == [expected])
         #expect(repository.receivedIngredients == ["flour", "eggs"])
+        #expect(repository.receivedReference == nil)
     }
 
     @Test func propagatesRepositoryError() async {
@@ -238,7 +287,7 @@ struct IngredientInputViewModelTests {
 struct RecipeViewModelTests {
 
     @Test func streamsThenSucceedsAndSaves() async {
-        let finalRecipe = Recipe(title: "Risotto", ingredients: ["Rice"], steps: ["Cook"])
+        let finalRecipe = Recipe.simple("Risotto", ingredients: ["Rice"], steps: ["Cook"])
         let recipeRepository = MockRecipeRepository(snapshots: [finalRecipe])
         let savedRepository = MockSavedRecipeRepository()
         let viewModel = RecipeViewModel(

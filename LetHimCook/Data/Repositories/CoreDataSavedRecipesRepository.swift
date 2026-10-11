@@ -24,7 +24,7 @@ final class CoreDataSavedRecipesRepository: SavedRecipeRepository {
                 // Legacy entries were stored as plain Markdown text before recipes
                 // became structured. Preserve them as a single-block recipe.
                 guard !raw.isEmpty else { return nil }
-                return Recipe(title: "", ingredients: [], steps: [raw])
+                return Recipe(title: "", ingredients: [], steps: [RecipeStep(instruction: raw)])
             }
         } catch {
             return []
