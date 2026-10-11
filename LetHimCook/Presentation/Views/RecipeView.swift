@@ -135,6 +135,9 @@ struct RecipeDetailLayout<Content: View>: View {
                     isBarVisible = reachedBar
                 }
             }
+            // The system navigation bar would otherwise blur and wash out the
+            // top of the hero; the solid top bar takes over once it scrolls.
+            .scrollEdgeEffectHidden(true, for: .top)
             .ignoresSafeArea(edges: .top)
             .overlay(alignment: .top) {
                 topBar(topInset: topInset)
