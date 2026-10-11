@@ -19,42 +19,36 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             AppBackground()
 
+            // Paints the status bar area (and the pull-to-bounce area) in brand
+            // green so the scrolling header appears to extend to the top edge.
+            AppTheme.accentDeep
+                .frame(height: 120)
+                .frame(maxWidth: .infinity)
+                .ignoresSafeArea(edges: .top)
+
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 24) {
                     header
 
-                    AppCard {
-                        VStack(spacing: 12) {
-                            LottieFoodView()
-                                .frame(height: 220)
+                    VStack(alignment: .leading, spacing: 24) {
+                        promoBanner
+
+                        if !viewModel.ingredients.isEmpty {
+                            ingredientsSection
                         }
                     }
-
-                    if !viewModel.ingredients.isEmpty {
-                        AppCard {
-                            VStack(alignment: .leading, spacing: 12) {
-                                AppSectionHeader(titleKey: "home_ingredients_title")
-
-                                FlowLayout(spacing: 8) {
-                                    ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                        AppChip(text: ingredient)
-                                    }
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }
-                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                .padding(.top, 16)
-                .padding(.bottom, 96)
+                .padding(.bottom, 24)
             }
         }
         .safeAreaInset(edge: .bottom) {
-            actionBar
+            if !viewModel.ingredients.isEmpty {
+                actionBar
+            }
         }
         .sheet(isPresented: $viewModel.isPresentingInput) {
             IngredientInputView(viewModel: factory.makeIngredientInputViewModel(
@@ -76,51 +70,106 @@ struct ContentView: View {
         }
     }
 
+    // MARK: - Header
+
+    /// Brand-green header with a search-style entry point, like TheFork's home.
     private var header: some View {
-        Text("app_title")
-            .font(.system(.largeTitle, design: .serif).weight(.bold))
-            .foregroundStyle(.primary)
-            .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("app_title")
+                    .font(.largeTitle.weight(.heavy))
+                Text("home_subtitle")
+                    .font(.body)
+                    .opacity(0.85)
+            }
+            .foregroundStyle(.white)
+
+            Button {
+                viewModel.showInput()
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(AppTheme.accent)
+                    Text(viewModel.ingredients.isEmpty ? "home_tell_me_prompt" : "home_edit_ingredients")
+                        .foregroundStyle(.secondary)
+                    Spacer(minLength: 0)
+                }
+                .font(.body.weight(.medium))
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
+                .background(AppTheme.surface, in: Capsule(style: .continuous))
+                .contentShape(Capsule())
+            }
+            .buttonStyle(.plain)
+            .environment(\.colorScheme, .light)
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .padding(.bottom, 24)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background {
+            AppTheme.accentDeep
+                .clipShape(UnevenRoundedRectangle(bottomLeadingRadius: 28, bottomTrailingRadius: 28, style: .continuous))
+        }
     }
 
-    private var actionBar: some View {
-        VStack(spacing: 12) {
-            if viewModel.ingredients.isEmpty {
-                // No ingredients yet: entering them is the primary action.
-                Button {
-                    viewModel.showInput()
-                } label: {
-                    Label("home_tell_me_prompt", systemImage: "plus")
-                        .font(.system(.headline, design: .rounded))
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glassProminent)
-                .tint(AppTheme.accent)
-                .controlSize(.large)
-            } else {
-                // Ingredients present: generating the recipe is the primary action.
-                Button {
-                    viewModel.showRecipe()
-                } label: {
-                    Label("home_find_recipe_button", systemImage: "sparkles")
-                        .font(.system(.headline, design: .rounded))
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.glassProminent)
-                .tint(AppTheme.accent)
-                .controlSize(.large)
+    // MARK: - Sections
 
-                Button {
-                    viewModel.showInput()
-                } label: {
-                    Label("home_tell_me_prompt", systemImage: "pencil")
-                        .font(.system(.headline, design: .rounded))
-                        .frame(maxWidth: .infinity)
+    private var promoBanner: some View {
+        AppCard(padding: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                LottieFoodView()
+                    .frame(height: 180)
+                    .frame(maxWidth: .infinity)
+                    .background(AppTheme.accentSoft)
+
+                VStack(alignment: .leading, spacing: 8) {
+                    AppBadge(titleKey: "badge_on_device_ai", systemImage: "sparkles")
+                    Text("home_banner_title")
+                        .font(.title3.weight(.bold))
+                    Text("home_banner_subtitle")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
-                .buttonStyle(.glass)
-                .controlSize(.large)
+                .padding(16)
             }
         }
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+    }
+
+    private var ingredientsSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                AppSectionHeader(titleKey: "ingredient_input_section_title")
+                Button("home_edit_button") {
+                    viewModel.showInput()
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppTheme.accent)
+            }
+
+            FlowLayout(spacing: 8) {
+                ForEach(viewModel.ingredients, id: \.self) { ingredient in
+                    AppChip(text: ingredient)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    // MARK: - Action bar
+
+    private var actionBar: some View {
+        Button {
+            viewModel.showRecipe()
+        } label: {
+            Label("home_find_recipe_button", systemImage: "sparkles")
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.glassProminent)
+        .tint(AppTheme.accent)
+        .controlSize(.large)
         .padding(.horizontal)
         .padding(.bottom, 8)
     }
@@ -128,4 +177,10 @@ struct ContentView: View {
 
 #Preview {
     ContentView(factory: AppViewModelFactory.preview)
+}
+
+#Preview("With ingredients") {
+    let view = ContentView(factory: AppViewModelFactory.preview)
+    view.viewModel.ingredients = ["Eggs", "Milk", "Flour", "Parmigiano", "Basil"]
+    return view
 }
