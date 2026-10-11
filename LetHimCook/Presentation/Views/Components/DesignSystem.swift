@@ -1,25 +1,25 @@
 import SwiftUI
 import UIKit
 
-/// Visual language inspired by TheFork: a deep brand green for primary actions
-/// and headers, a bright lime used sparingly for badges/highlights, and clean,
+/// A warm kitchen palette: terracotta for primary actions, a deep paprika
+/// brown for headers, saffron used sparingly for badges/highlights, and clean,
 /// solid grouped surfaces instead of heavy materials.
 enum AppTheme {
-    /// Brand green. Slightly brightened in dark mode so it stays legible on
-    /// black while still carrying white button labels.
+    /// Brand terracotta. Slightly brightened in dark mode so it stays legible
+    /// on black while still carrying white button labels.
     static let accent = adaptive(
-        light: UIColor(red: 0.00, green: 0.40, blue: 0.35, alpha: 1),
-        dark: UIColor(red: 0.10, green: 0.58, blue: 0.49, alpha: 1)
+        light: UIColor(red: 0.72, green: 0.27, blue: 0.12, alpha: 1),
+        dark: UIColor(red: 0.83, green: 0.40, blue: 0.21, alpha: 1)
     )
-    /// Darker brand green for hero banners (always paired with light text).
-    static let accentDeep = Color(red: 0.00, green: 0.27, blue: 0.24)
-    /// Lime highlight for badges. Always paired with `onHighlight` text.
-    static let highlight = Color(red: 0.84, green: 0.95, blue: 0.36)
-    static let onHighlight = Color(red: 0.05, green: 0.20, blue: 0.16)
+    /// Deep paprika for hero banners (always paired with light text).
+    static let accentDeep = Color(red: 0.42, green: 0.15, blue: 0.08)
+    /// Saffron highlight for badges. Always paired with `onHighlight` text.
+    static let highlight = Color(red: 1.00, green: 0.80, blue: 0.36)
+    static let onHighlight = Color(red: 0.30, green: 0.15, blue: 0.04)
     /// Tinted fill for chips and icon backgrounds.
     static let accentSoft = adaptive(
-        light: UIColor(red: 0.00, green: 0.40, blue: 0.35, alpha: 0.10),
-        dark: UIColor(red: 0.30, green: 0.78, blue: 0.66, alpha: 0.18)
+        light: UIColor(red: 0.72, green: 0.27, blue: 0.12, alpha: 0.10),
+        dark: UIColor(red: 0.88, green: 0.45, blue: 0.25, alpha: 0.18)
     )
 
     static let background = Color(uiColor: .systemGroupedBackground)
@@ -40,7 +40,7 @@ struct AppBackground: View {
     }
 }
 
-/// A solid content surface with a soft shadow, like TheFork's listing cards.
+/// A solid content surface with a soft shadow.
 struct AppCard<Content: View>: View {
     var padding: CGFloat = 16
     let content: Content
@@ -62,7 +62,7 @@ struct AppCard<Content: View>: View {
     }
 }
 
-/// An outlined pill, like TheFork's filter chips.
+/// An outlined pill for a single value, such as an ingredient.
 struct AppChip: View {
     let text: String
 
@@ -80,7 +80,7 @@ struct AppChip: View {
     }
 }
 
-/// A small lime pill used to highlight a key fact, like TheFork's "-50%" tag.
+/// A small saffron tag used to highlight a key fact.
 struct AppBadge: View {
     let titleKey: LocalizedStringKey
     var systemImage: String?
@@ -109,7 +109,7 @@ struct RecipeArtwork: View {
     var symbolSize: CGFloat = 56
 
     private static let palettes: [[Color]] = [
-        [Color(red: 0.00, green: 0.40, blue: 0.35), Color(red: 0.00, green: 0.24, blue: 0.21)],
+        [Color(red: 0.42, green: 0.25, blue: 0.45), Color(red: 0.25, green: 0.13, blue: 0.29)],
         [Color(red: 0.93, green: 0.49, blue: 0.24), Color(red: 0.74, green: 0.27, blue: 0.14)],
         [Color(red: 0.78, green: 0.62, blue: 0.20), Color(red: 0.52, green: 0.38, blue: 0.10)],
         [Color(red: 0.72, green: 0.25, blue: 0.29), Color(red: 0.46, green: 0.12, blue: 0.18)],

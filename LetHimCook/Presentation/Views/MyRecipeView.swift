@@ -77,7 +77,7 @@ struct MyRecipeView: View {
     }
 }
 
-/// A listing card with a thumbnail on the left, like TheFork's restaurant rows.
+/// A listing card with a thumbnail on the left.
 private struct SavedRecipeRow: View {
     let recipe: Recipe
 

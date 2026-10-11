@@ -22,8 +22,8 @@ struct ContentView: View {
         ZStack(alignment: .top) {
             AppBackground()
 
-            // Paints the status bar area (and the pull-to-bounce area) in brand
-            // green so the scrolling header appears to extend to the top edge.
+            // Paints the status bar area (and the pull-to-bounce area) in the
+            // header colour so the scrolling header appears to extend to the top edge.
             AppTheme.accentDeep
                 .frame(height: 120)
                 .frame(maxWidth: .infinity)
@@ -72,7 +72,7 @@ struct ContentView: View {
 
     // MARK: - Header
 
-    /// Brand-green header with a search-style entry point, like TheFork's home.
+    /// Brand-coloured header with a search-style entry point.
     private var header: some View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {

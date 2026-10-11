@@ -58,10 +58,10 @@ struct RecipeView: View {
     }
 }
 
-/// Full-bleed hero artwork with a rounded content sheet overlapping it, like
-/// a restaurant detail page on TheFork. Once the content sheet scrolls up to
-/// the top controls, a solid bar fades in behind them so the content never
-/// runs under the status bar or the back button.
+/// Full-bleed hero artwork with a rounded content sheet overlapping it. Once
+/// the content sheet scrolls up to the top controls, a solid bar fades in
+/// behind them so the content never runs under the status bar or the back
+/// button.
 struct RecipeDetailLayout<Content: View>: View {
     /// Where the layout is shown, which decides who owns the top controls.
     enum Chrome {
