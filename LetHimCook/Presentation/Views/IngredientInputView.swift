@@ -37,6 +37,7 @@ struct IngredientInputView: View {
                         dismiss()
                     }
                     .bold()
+                    .tint(AppTheme.accent)
                 }
             }
         }
@@ -49,7 +50,7 @@ struct IngredientInputView: View {
         HStack(spacing: 10) {
             TextField("ingredient_input_placeholder", text: $viewModel.currentInput)
                 .textFieldStyle(.plain)
-                .font(.system(.body, design: .rounded))
+                .font(.body)
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.words)
                 .focused($isTextFieldFocused)
@@ -67,14 +68,15 @@ struct IngredientInputView: View {
             .disabled(!canAdd)
             .accessibilityLabel("ingredient_input_accessibility_add")
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 6)
         .padding(.leading, 18)
-        .padding(.trailing, 8)
-        .background(.regularMaterial, in: Capsule(style: .continuous))
+        .padding(.trailing, 6)
+        .background(AppTheme.surface, in: Capsule(style: .continuous))
         .overlay(
             Capsule(style: .continuous)
-                .strokeBorder(Color.primary.opacity(0.06), lineWidth: 1)
+                .strokeBorder(isTextFieldFocused ? AppTheme.accent : AppTheme.separator, lineWidth: isTextFieldFocused ? 2 : 1)
         )
+        .animation(.easeInOut(duration: 0.15), value: isTextFieldFocused)
     }
 
     private var hint: some View {
@@ -107,7 +109,7 @@ struct IngredientInputView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("ingredient_input_section_title")
-                        .font(.system(.title3, design: .rounded).weight(.bold))
+                        .font(.title3.weight(.bold))
                         .foregroundStyle(.primary)
 
                     Spacer()
@@ -141,16 +143,20 @@ struct IngredientInputView: View {
         } label: {
             HStack(spacing: 6) {
                 Text(ingredient)
-                    .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                    .foregroundStyle(.primary)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent)
                     .lineLimit(1)
-                Image(systemName: "xmark.circle.fill")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                Image(systemName: "xmark")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(AppTheme.accent)
             }
             .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .background(AppTheme.accentSoft.opacity(0.30), in: Capsule(style: .continuous))
+            .padding(.horizontal, 14)
+            .background(AppTheme.accentSoft, in: Capsule(style: .continuous))
+            .overlay(
+                Capsule(style: .continuous)
+                    .strokeBorder(AppTheme.accent.opacity(0.35), lineWidth: 1)
+            )
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text(String(format: String(localized: "ingredient_input_remove"), ingredient)))
