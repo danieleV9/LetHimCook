@@ -107,14 +107,14 @@ private struct SavedRecipeRow: View {
                     } icon: {
                         Image(systemName: "basket")
                     }
-                    .accessibilityLabel(Text("recipe_ingredients_header") + Text(" \(recipe.ingredients.count)"))
+                    .accessibilityLabel(Text("\(Text("recipe_ingredients_header")) \(recipe.ingredients.count)"))
 
                     Label {
                         Text(recipe.steps.count, format: .number)
                     } icon: {
                         Image(systemName: "list.number")
                     }
-                    .accessibilityLabel(Text("recipe_steps_header") + Text(" \(recipe.steps.count)"))
+                    .accessibilityLabel(Text("\(Text("recipe_steps_header")) \(recipe.steps.count)"))
                 }
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(AppTheme.accent)

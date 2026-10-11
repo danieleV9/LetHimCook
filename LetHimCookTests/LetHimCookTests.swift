@@ -80,6 +80,7 @@ private func makeRecipe(_ title: String) -> Recipe {
 
 // MARK: - Entity
 
+@MainActor
 struct RecipeTests {
 
     @Test func encodesAndDecodesWithoutLoss() async throws {
@@ -98,6 +99,7 @@ struct RecipeTests {
 
 // MARK: - Use Cases
 
+@MainActor
 struct GetRecipeUseCaseTests {
 
     @Test func forwardsIngredientsAndStreamsRecipe() async throws {
@@ -133,6 +135,7 @@ struct GetRecipeUseCaseTests {
     }
 }
 
+@MainActor
 struct SaveRecipeUseCaseTests {
 
     @Test func savesRecipeToRepository() async {
@@ -146,6 +149,7 @@ struct SaveRecipeUseCaseTests {
     }
 }
 
+@MainActor
 struct GetSavedRecipesUseCaseTests {
 
     @Test func returnsRecipesFromRepository() async {
@@ -158,6 +162,7 @@ struct GetSavedRecipesUseCaseTests {
     }
 }
 
+@MainActor
 struct DeleteSavedRecipesUseCaseTests {
 
     @Test func deletesAllFromRepository() async {
