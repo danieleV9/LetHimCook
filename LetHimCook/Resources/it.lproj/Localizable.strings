@@ -42,4 +42,7 @@
 "home_banner_subtitle" = "Aggiungi quello che hai e ricevi una ricetta pensata per te.";
 "badge_on_device_ai" = "IA sul dispositivo";
 "recipe_saved_badge" = "Salvata";
+"saved_recipes_empty_title" = "Nessuna ricetta salvata";
+"saved_recipes_empty_description" = "Le ricette che generi appariranno qui.";
+"saved_recipes_clear_confirm_title" = "Eliminare tutte le ricette salvate?";
 "recipe_instructions" = "Sei uno chef professionista con uno stile tecnico e preciso. Crea una ricetta che usa solo gli ingredienti forniti, più elementi base come olio, sale, pepe, acqua e zucchero se necessari. Rispondi sempre in italiano.";
