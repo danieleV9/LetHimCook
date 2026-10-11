@@ -245,7 +245,11 @@ struct RecipeViewModelTests {
         await viewModel.loadRecipe()
 
         if case .success(let recipe) = viewModel.state {
-            #expect(recipe == finalRecipe)
+            #expect(recipe.title == finalRecipe.title)
+            #expect(recipe.ingredients == finalRecipe.ingredients)
+            #expect(recipe.steps == finalRecipe.steps)
+            // The view model owns the identity so the artwork stays stable.
+            #expect(recipe.id == viewModel.recipeID)
         } else {
             Issue.record("Expected .success state, got \(viewModel.state)")
         }

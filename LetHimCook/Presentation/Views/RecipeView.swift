@@ -2,138 +2,235 @@ import SwiftUI
 
 struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
-    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        ZStack {
-            AppBackground()
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    AppSectionHeader(titleKey: "recipe_title")
-
-                    content
-                }
-                .padding(.horizontal)
-                .padding(.top, 70)
-                .padding(.bottom, 24)
-            }
-        }
-        .safeAreaInset(edge: .top) {
-            topBar
+        RecipeDetailLayout(artworkSeed: viewModel.recipeID.uuidString, title: title) {
+            content
         }
         .task {
             await viewModel.loadRecipe()
         }
     }
 
-    private var topBar: some View {
-        HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "chevron.backward")
-                    .font(.headline)
-            }
-            .buttonStyle(.glass)
-            .buttonBorderShape(.circle)
-            .accessibilityLabel("recipe_back_button")
-
-            Spacer()
+    private var title: String {
+        switch viewModel.state {
+        case .streaming(let recipe), .success(let recipe): recipe.title
+        default: ""
         }
-        .padding(.horizontal)
-        .padding(.top, 12)
-        .padding(.bottom, 8)
     }
 
     @ViewBuilder
     private var content: some View {
         switch viewModel.state {
         case .loading:
-            AppCard {
-                generatingIndicator
-            }
+            generatingIndicator
         case .streaming(let recipe):
-            AppCard {
-                VStack(alignment: .leading, spacing: 16) {
-                    generatingIndicator
-                    RecipeBody(recipe: recipe)
-                }
-            }
-        case .success(let recipe):
-            AppCard {
+            VStack(alignment: .leading, spacing: 20) {
+                generatingIndicator
                 RecipeBody(recipe: recipe)
             }
+        case .success(let recipe):
+            RecipeBody(recipe: recipe, isSaved: true)
         case .failure(let message):
-            AppCard {
-                ContentUnavailableView {
-                    Label(message, systemImage: "sparkles.slash")
-                }
+            ContentUnavailableView {
+                Label(message, systemImage: "sparkles.slash")
             }
         case .idle:
-            AppCard {
-                Text("recipe_placeholder")
-                    .font(.system(.body, design: .rounded))
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
+            Text("recipe_placeholder")
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
     private var generatingIndicator: some View {
         HStack(spacing: 12) {
             ProgressView()
-                .progressViewStyle(.circular)
+                .tint(AppTheme.accent)
 
             Text("recipe_generating")
-                .font(.system(.subheadline, design: .rounded).weight(.semibold))
-                .foregroundStyle(.secondary)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(AppTheme.accent)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 14)
+        .background(AppTheme.accentSoft, in: Capsule(style: .continuous))
         .accessibilityElement(children: .combine)
     }
 }
 
-/// Renders a structured recipe: title, ingredients and ordered steps.
-struct RecipeBody: View {
-    let recipe: Recipe
+/// Full-bleed hero artwork with a rounded content sheet overlapping it, like
+/// a restaurant detail page on TheFork. Once the content sheet scrolls up to
+/// the top controls, a solid bar fades in behind them so the content never
+/// runs under the status bar or the back button.
+struct RecipeDetailLayout<Content: View>: View {
+    /// Where the layout is shown, which decides who owns the top controls.
+    enum Chrome {
+        /// Full-screen cover: the layout draws its own back button and title.
+        case standalone
+        /// Pushed on a `NavigationStack`: the system bar keeps the back button
+        /// and swipe-to-go-back, and shows the title once the bar appears.
+        case navigationStack
+    }
+
+    let artworkSeed: String
+    var title: String = ""
+    var chrome: Chrome = .standalone
+    let content: Content
+
+    @Environment(\.dismiss) private var dismiss
+
+    private static var heroHeight: CGFloat { 280 }
+    private static var sheetOverlap: CGFloat { 28 }
+    /// Height of the area below the status bar that holds the custom back
+    /// button. A navigation bar is already part of the top safe area.
+    private static var standaloneBarHeight: CGFloat { 60 }
+
+    @State private var isBarVisible = false
+
+    init(
+        artworkSeed: String,
+        title: String = "",
+        chrome: Chrome = .standalone,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.artworkSeed = artworkSeed
+        self.title = title
+        self.chrome = chrome
+        self.content = content()
+    }
+
+    private var barHeight: CGFloat {
+        chrome == .standalone ? Self.standaloneBarHeight : 0
+    }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            if !recipe.title.isEmpty {
-                Text(recipe.title)
-                    .font(.system(.title2, design: .serif).weight(.bold))
-                    .foregroundStyle(.primary)
+        GeometryReader { proxy in
+            let topInset = proxy.safeAreaInsets.top
+
+            ScrollView {
+                VStack(spacing: 0) {
+                    RecipeArtwork(seed: artworkSeed, symbolSize: 72)
+                        .frame(height: Self.heroHeight)
+
+                    content
+                        .padding(20)
+                        .padding(.bottom, 24)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            AppTheme.surface,
+                            in: UnevenRoundedRectangle(
+                                topLeadingRadius: Self.sheetOverlap,
+                                topTrailingRadius: Self.sheetOverlap,
+                                style: .continuous
+                            )
+                        )
+                        .padding(.top, -Self.sheetOverlap)
+                }
+            }
+            .onScrollGeometryChange(for: Bool.self) { geometry in
+                let sheetTop = Self.heroHeight - Self.sheetOverlap - geometry.contentOffset.y
+                return sheetTop <= topInset + barHeight
+            } action: { _, reachedBar in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    isBarVisible = reachedBar
+                }
+            }
+            .ignoresSafeArea(edges: .top)
+            .overlay(alignment: .top) {
+                topBar(topInset: topInset)
+                    .opacity(isBarVisible ? 1 : 0)
+                    .allowsHitTesting(false)
+                    .ignoresSafeArea(edges: .top)
+            }
+            .overlay(alignment: .topLeading) {
+                if chrome == .standalone {
+                    backButton
+                }
+            }
+        }
+        .background(AppTheme.surface)
+        .toolbar {
+            if chrome == .navigationStack {
+                ToolbarItem(placement: .principal) {
+                    Text(title)
+                        .font(.headline)
+                        .lineLimit(1)
+                        .opacity(isBarVisible ? 1 : 0)
+                }
+            }
+        }
+    }
+
+    private var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "chevron.backward")
+                .font(.headline)
+        }
+        .buttonStyle(.glass)
+        .buttonBorderShape(.circle)
+        .controlSize(.large)
+        .accessibilityLabel("recipe_back_button")
+        .padding(.horizontal)
+        .padding(.top, 8)
+    }
+
+    /// Solid backing for the top controls. In `.standalone` it also carries
+    /// the title; in `.navigationStack` the system bar shows it instead.
+    private func topBar(topInset: CGFloat) -> some View {
+        Text(chrome == .standalone ? title : "")
+            .font(.headline)
+            .lineLimit(1)
+            .padding(.horizontal, 72)
+            .padding(.top, topInset)
+            .frame(maxWidth: .infinity)
+            .frame(height: topInset + barHeight)
+            .background(AppTheme.surface)
+            .overlay(alignment: .bottom) {
+                Divider()
+            }
+            .accessibilityHidden(true)
+    }
+}
+
+/// Renders a structured recipe: title, key facts, ingredients and ordered steps.
+struct RecipeBody: View {
+    let recipe: Recipe
+    var isSaved = false
+
+    /// Ingredients the user has ticked off while cooking. View-only state.
+    @State private var checkedIngredients: Set<Int> = []
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            titleBlock
+
+            if !recipe.ingredients.isEmpty || !recipe.steps.isEmpty {
+                factsRow
             }
 
             if !recipe.ingredients.isEmpty {
-                VStack(alignment: .leading, spacing: 6) {
-                    sectionLabel("recipe_ingredients_header")
+                VStack(alignment: .leading, spacing: 4) {
+                    AppSectionHeader(titleKey: "recipe_ingredients_header")
+                        .padding(.bottom, 8)
 
-                    ForEach(Array(recipe.ingredients.enumerated()), id: \.offset) { _, ingredient in
-                        HStack(alignment: .firstTextBaseline, spacing: 8) {
-                            Text("•")
-                            Text(ingredient)
+                    ForEach(Array(recipe.ingredients.enumerated()), id: \.offset) { index, ingredient in
+                        ingredientRow(ingredient, at: index)
+
+                        if index < recipe.ingredients.count - 1 {
+                            Divider().padding(.leading, 36)
                         }
-                        .font(.system(.body, design: .serif))
-                        .foregroundStyle(.primary)
                     }
                 }
             }
 
             if !recipe.steps.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    sectionLabel("recipe_steps_header")
+                VStack(alignment: .leading, spacing: 16) {
+                    AppSectionHeader(titleKey: "recipe_steps_header")
 
                     ForEach(Array(recipe.steps.enumerated()), id: \.offset) { index, step in
-                        HStack(alignment: .firstTextBaseline, spacing: 8) {
-                            Text("\(index + 1).")
-                                .fontWeight(.semibold)
-                                .monospacedDigit()
-                            Text(step)
-                        }
-                        .font(.system(.body, design: .serif))
-                        .foregroundStyle(.primary)
+                        stepRow(step, number: index + 1)
                     }
                 }
             }
@@ -141,11 +238,121 @@ struct RecipeBody: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func sectionLabel(_ key: LocalizedStringKey) -> some View {
-        Text(key)
-            .font(.system(.caption, design: .rounded).weight(.semibold))
-            .foregroundStyle(.secondary)
-            .textCase(.uppercase)
+    // MARK: - Pieces
+
+    @ViewBuilder
+    private var titleBlock: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                AppBadge(titleKey: "badge_on_device_ai", systemImage: "sparkles")
+                if isSaved {
+                    AppBadge(titleKey: "recipe_saved_badge", systemImage: "bookmark.fill")
+                }
+            }
+
+            if !recipe.title.isEmpty {
+                Text(recipe.title)
+                    .font(.title.weight(.bold))
+                    .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+    }
+
+    private var factsRow: some View {
+        HStack(spacing: 12) {
+            factTile(value: recipe.ingredients.count, titleKey: "recipe_ingredients_header", systemImage: "basket")
+            factTile(value: recipe.steps.count, titleKey: "recipe_steps_header", systemImage: "list.number")
+        }
+    }
+
+    private func factTile(value: Int, titleKey: LocalizedStringKey, systemImage: String) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: systemImage)
+                .font(.title3)
+                .foregroundStyle(AppTheme.accent)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(value, format: .number)
+                    .font(.headline)
+                    .monospacedDigit()
+                    .contentTransition(.numericText())
+                Text(titleKey)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity)
+        .background(AppTheme.background, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .accessibilityElement(children: .combine)
+    }
+
+    private func ingredientRow(_ ingredient: String, at index: Int) -> some View {
+        let isChecked = checkedIngredients.contains(index)
+
+        return Button {
+            withAnimation(.snappy) {
+                if isChecked {
+                    checkedIngredients.remove(index)
+                } else {
+                    checkedIngredients.insert(index)
+                }
+            }
+        } label: {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(isChecked ? AppTheme.accent : .secondary)
+                Text(ingredient)
+                    .font(.body)
+                    .foregroundStyle(isChecked ? .secondary : .primary)
+                    .strikethrough(isChecked)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.vertical, 10)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isChecked ? .isSelected : [])
+    }
+
+    private func stepRow(_ step: String, number: Int) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Text(number, format: .number)
+                .font(.subheadline.weight(.bold))
+                .monospacedDigit()
+                .foregroundStyle(.white)
+                .frame(width: 30, height: 30)
+                .background(AppTheme.accent, in: Circle())
+                .accessibilityHidden(true)
+
+            Text(step)
+                .font(.body)
+                .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.top, 4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(number). \(step)"))
+    }
+}
+
+#Preview("Recipe detail") {
+    RecipeDetailLayout(artworkSeed: "Carbonara", title: "Creamy Egg & Parmigiano Pasta") {
+        RecipeBody(
+            recipe: Recipe(
+                title: "Creamy Egg & Parmigiano Pasta",
+                ingredients: ["200 g spaghetti", "2 eggs", "50 g Parmigiano", "Black pepper", "Salt"],
+                steps: [
+                    "Boil the spaghetti in salted water until al dente.",
+                    "Whisk the eggs with the grated Parmigiano and plenty of pepper.",
+                    "Toss the drained pasta off the heat with the egg mixture, adding pasta water until creamy."
+                ]
+            ),
+            isSaved: true
+        )
     }
 }
 

@@ -16,6 +16,9 @@ final class RecipeViewModel {
     private let saveRecipeUseCase: SaveRecipeUseCase
     private let logger: Logger?
     private(set) var state: State = .idle
+    /// Assigned up front so the recipe keeps one identity (and one artwork)
+    /// from the first loading frame through to the saved copy.
+    let recipeID = UUID()
 
     init(
         ingredients: [String],
@@ -34,7 +37,13 @@ final class RecipeViewModel {
         state = .loading
         do {
             var lastRecipe: Recipe?
-            for try await recipe in getRecipeUseCase.execute(with: ingredients) {
+            for try await snapshot in getRecipeUseCase.execute(with: ingredients) {
+                let recipe = Recipe(
+                    id: recipeID,
+                    title: snapshot.title,
+                    ingredients: snapshot.ingredients,
+                    steps: snapshot.steps
+                )
                 lastRecipe = recipe
                 state = .streaming(recipe)
             }

@@ -41,4 +41,5 @@
 "home_banner_title" = "Trasforma gli avanzi in cena";
 "home_banner_subtitle" = "Aggiungi quello che hai e ricevi una ricetta pensata per te.";
 "badge_on_device_ai" = "IA sul dispositivo";
+"recipe_saved_badge" = "Salvata";
 "recipe_instructions" = "Sei uno chef professionista con uno stile tecnico e preciso. Crea una ricetta che usa solo gli ingredienti forniti, più elementi base come olio, sale, pepe, acqua e zucchero se necessari. Rispondi sempre in italiano.";
