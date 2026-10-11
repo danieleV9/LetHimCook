@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MyRecipeView: View {
     @State private var viewModel: MyRecipesViewModel
-    @State private var selectedRecipeID: Recipe.ID? = nil
+    @State private var selectedRecipeID: Recipe.ID?
     @State private var isConfirmingClearAll = false
 
     init(viewModel: MyRecipesViewModel) {

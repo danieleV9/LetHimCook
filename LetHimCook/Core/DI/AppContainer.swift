@@ -109,11 +109,13 @@ enum AppContainer {
 
         // A failed resolution here means the graph above is misconfigured: that is a
         // programmer error and should crash loudly, not fail silently in the UI.
+        // swiftlint:disable force_try
         let getRecipeUseCase = try! await container.resolve(GetRecipeUseCase.self)
         let saveRecipeUseCase = try! await container.resolve(SaveRecipeUseCase.self)
         let getSavedRecipesUseCase = try! await container.resolve(GetSavedRecipesUseCase.self)
         let deleteSavedRecipesUseCase = try! await container.resolve(DeleteSavedRecipesUseCase.self)
         let resolvedLogger = try! await container.resolve(Logger.self)
+        // swiftlint:enable force_try
 
         return AppViewModelFactory(
             getRecipeUseCase: getRecipeUseCase,
