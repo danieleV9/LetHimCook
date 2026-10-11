@@ -68,7 +68,7 @@ jobs:
 
       - name: Code coverage
         if: ${{ !cancelled() && steps.test.outcome != 'skipped' }}
-        run: python3 .github/scripts/coverage_summary.py TestResults.xcresult
+        run: python3 .github/scripts/coverage_summary.py TestResults.xcresult --min 38
 
       - name: Check compiler warnings
         if: ${{ !cancelled() && steps.test.outcome != 'skipped' }}
