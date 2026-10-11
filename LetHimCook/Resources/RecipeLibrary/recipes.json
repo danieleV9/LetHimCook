@@ -1,0 +1,88 @@
+{
+  "recipes": [
+    {
+      "id": "spaghetti-carbonara",
+      "language": "it",
+      "title": "Spaghetti alla carbonara",
+      "tags": ["primo", "pasta"],
+      "ingredients": [
+        { "quantity": "320", "unit": "g", "name": "spaghetti" },
+        { "quantity": "150", "unit": "g", "name": "guanciale" },
+        { "quantity": "4", "name": "tuorli d'uovo" },
+        { "quantity": "50", "unit": "g", "name": "pecorino romano" },
+        { "quantity": "q.b.", "name": "pepe nero", "pantry": true },
+        { "quantity": "q.b.", "name": "sale grosso", "pantry": true }
+      ],
+      "steps": [
+        {
+          "title": "Prepara il guanciale",
+          "instruction": "Elimina la cotenna e taglia il guanciale a listarelle spesse circa mezzo centimetro.",
+          "durationMinutes": 5
+        },
+        {
+          "title": "Metti a bollire l'acqua",
+          "instruction": "Porta a bollore abbondante acqua in una pentola capiente e salala solo quando bolle: il guanciale e il pecorino sono già sapidi, quindi non esagerare.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Rosola il guanciale",
+          "instruction": "Metti il guanciale in una padella fredda senza grassi e accendi a fuoco medio. Lascialo sciogliere e rosolare finché il grasso diventa trasparente e i bordi sono croccanti e dorati. Spegni e tieni da parte il guanciale con il suo grasso.",
+          "durationMinutes": 8
+        },
+        {
+          "title": "Prepara la crema",
+          "instruction": "In una ciotola sbatti i tuorli con il pecorino grattugiato finemente e una generosa macinata di pepe, fino a ottenere una crema densa e senza grumi.",
+          "durationMinutes": 3
+        },
+        {
+          "title": "Cuoci la pasta",
+          "instruction": "Butta gli spaghetti e cuocili per un minuto in meno del tempo indicato sulla confezione. Prima di scolarli, tieni da parte una tazza di acqua di cottura.",
+          "durationMinutes": 9
+        },
+        {
+          "title": "Manteca fuori dal fuoco",
+          "instruction": "Trasferisci gli spaghetti nella padella con il guanciale e mescola per un minuto a fuoco basso. Spegni, aspetta qualche secondo e versa la crema di tuorli, mescolando velocemente e aggiungendo poca acqua di cottura alla volta finché la salsa è cremosa e lucida: se si rapprende in grumi la padella è troppo calda.",
+          "durationMinutes": 2
+        },
+        {
+          "title": "Servi",
+          "instruction": "Impiatta subito e completa con pecorino grattugiato e altro pepe macinato al momento."
+        }
+      ]
+    },
+    {
+      "id": "tomato-bruschetta",
+      "language": "en",
+      "title": "Tomato and basil bruschetta",
+      "tags": ["starter"],
+      "ingredients": [
+        { "quantity": "4", "name": "slices of rustic bread" },
+        { "quantity": "300", "unit": "g", "name": "ripe tomatoes" },
+        { "quantity": "1", "name": "garlic clove" },
+        { "quantity": "6", "name": "basil leaves" },
+        { "quantity": "3", "unit": "tbsp", "name": "extra virgin olive oil", "pantry": true },
+        { "quantity": "1", "unit": "pinch", "name": "salt", "pantry": true }
+      ],
+      "steps": [
+        {
+          "title": "Dress the tomatoes",
+          "instruction": "Dice the tomatoes, discarding the watery seeds. Toss them in a bowl with torn basil, 2 tablespoons of oil and a pinch of salt, then leave them to rest so they release their juices.",
+          "durationMinutes": 10
+        },
+        {
+          "title": "Toast the bread",
+          "instruction": "Toast the bread slices in a hot pan or under the grill over medium-high heat until both sides are golden and crisp but the centre is still soft.",
+          "durationMinutes": 4
+        },
+        {
+          "title": "Rub with garlic",
+          "instruction": "While the bread is still hot, rub one side of each slice with the halved garlic clove: the rough surface grates it and spreads the flavour."
+        },
+        {
+          "title": "Assemble and serve",
+          "instruction": "Spoon the tomatoes over the bread, drizzle with the remaining oil and serve straight away, before the bread softens."
+        }
+      ]
+    }
+  ]
+}

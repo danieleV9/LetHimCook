@@ -95,7 +95,7 @@ private struct SavedRecipeRow: View {
                     .multilineTextAlignment(.leading)
 
                 if !recipe.ingredients.isEmpty {
-                    Text(recipe.ingredients.joined(separator: ", "))
+                    Text(recipe.ingredients.map(\.name).joined(separator: ", "))
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)

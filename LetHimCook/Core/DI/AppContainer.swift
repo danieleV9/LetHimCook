@@ -90,12 +90,14 @@ enum AppContainer {
         let logger = ConsoleLogger()
         let recipeRepository = FoundationRecipeRepository(modelManager: .shared)
         let savedRecipesRepository = CoreDataSavedRecipesRepository()
+        let recipeLibraryRepository = BundleRecipeLibraryRepository(logger: logger)
 
         await container.register(Logger.self, scope: .singleton) { logger }
         await container.register(RecipeRepository.self, scope: .singleton) { recipeRepository }
         await container.register(SavedRecipeRepository.self, scope: .singleton) { savedRecipesRepository }
+        await container.register(RecipeLibraryRepository.self, scope: .singleton) { recipeLibraryRepository }
         await container.register(GetRecipeUseCase.self, scope: .singleton) {
-            GetRecipeUseCaseImpl(repository: recipeRepository)
+            GetRecipeUseCaseImpl(repository: recipeRepository, library: recipeLibraryRepository)
         }
         await container.register(SaveRecipeUseCase.self, scope: .singleton) {
             SaveRecipeUseCaseImpl(repository: savedRecipesRepository)
@@ -135,7 +137,10 @@ extension AppViewModelFactory {
         let savedRecipesRepository = CoreDataSavedRecipesRepository(container: PersistenceController.preview.container)
         let recipeRepository = FoundationRecipeRepository()
         return AppViewModelFactory(
-            getRecipeUseCase: GetRecipeUseCaseImpl(repository: recipeRepository),
+            getRecipeUseCase: GetRecipeUseCaseImpl(
+                repository: recipeRepository,
+                library: BundleRecipeLibraryRepository()
+            ),
             saveRecipeUseCase: SaveRecipeUseCaseImpl(repository: savedRecipesRepository),
             getSavedRecipesUseCase: GetSavedRecipesUseCaseImpl(repository: savedRecipesRepository),
             deleteSavedRecipesUseCase: DeleteSavedRecipesUseCaseImpl(repository: savedRecipesRepository),
